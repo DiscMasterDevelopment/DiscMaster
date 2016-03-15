@@ -1,4 +1,5 @@
 # files which shouldn't be shared between different computers
+.slcache/
 .idea/
 target/
 *.iml
