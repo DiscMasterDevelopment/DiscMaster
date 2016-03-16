@@ -10,8 +10,7 @@ class Product {
     int totalInStorage
     int totalInOrder
 
-    static hasOne = [description: Description,
-    rev: Review]
+    static hasOne = [description: Description]
 
     static  hasMany = [tag: Tag]
 
