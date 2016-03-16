@@ -1,0 +1,9 @@
+# files which shouldn't be shared between different computers
+.slcache/
+.idea/
+target/
+*.iml
+*~
+
+# an special hidden file which nobody cares about
+.directory
