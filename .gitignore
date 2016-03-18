@@ -4,6 +4,7 @@
 target/
 *.iml
 *~
+.asscache
 
 # an special hidden file which nobody cares about
 .directory
