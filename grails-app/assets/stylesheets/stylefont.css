@@ -1,0 +1,52 @@
+@font-face{
+    font-family: annapolis3d;
+    font-style: normal;
+    font-weight: normal;
+    src: url(../fonts/annapolis3d.ttf);
+}
+
+@font-face{
+    font-family: flamaespina2;
+    font-style: normal;
+    font-weight: normal;
+    src: url(../fonts/Flama_Espina_2.TTF);
+}
+
+h1.tipo_1{
+    font-family: flamaespina2;
+    color: white;
+    font-size: 400%;
+}
+
+h1.tipo_2{
+    text-align: center;
+    font-family: annapolis3d;
+    color: white; 
+    font-size: 800%;
+}
+
+h4.next_rel{
+    font-family: flamaespina2;
+    color: white;
+    text-align: center;
+    margin: 0;
+    font-size: 200%;
+}
+
+li{
+    background-color: red
+}
+
+h5.event{
+    font-family: flamaespina2;
+    color: white;
+    font-size: 200%
+}
+
+p{
+    color: white;
+}
+
+h6{
+    color: white
+}
