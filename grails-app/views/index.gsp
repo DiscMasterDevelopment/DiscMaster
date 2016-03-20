@@ -69,7 +69,25 @@
 	<div class="top-bar", style="background-color:red">
 		<div class="top-bar-right" style="background-color:red">
 			<ul class="menu">
-				<li style="background-color:red"><a href="#" style="color:white">Iniciar Sesión</a></li>
+				<g:if test="${session?.user}" style="background-color: red">
+					<li style="background-color:red; color:#b2d1ff">Estas logeado como: ${session.user?.name}</li> <li><g:link action="logout" controller="user" title="Logout" style="color:white">Logout</g:link></li>
+				</g:if>
+				<g:else>
+                    <li>
+					<g:form controller="user" action="login" name="loginForm" method="POST">
+						<div class="formField">
+							<label for="name">Login:</label>
+							<g:textField name="name" value="${user?.name}"></g:textField>
+						</div>
+						<div class="formField">
+							<label for="password">Password:</label>
+							<g:passwordField name="password" value="${user?.password}"></g:passwordField>
+						</div>
+						<g:submitButton class="formButton" name="login" value="Login"></g:submitButton>
+					</g:form>
+                    </li>
+				</g:else>
+
 				<li style="background-color:red"><a href="#" style="color:white">Registrarse</a></li>
 				<li style="background-color:red"><a href="#" style="color:white">Mi Perfil</a></li>
 				<li style="background-color:red"><a href="#" style="color:white">Mi WishList</a></li>
