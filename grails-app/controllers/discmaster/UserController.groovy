@@ -35,7 +35,24 @@ class UserController {
     }
 
     def create() {
-        respond new User(params)
+        if(request.method == 'POST') {
+            def u = new User()
+            def c = new CarList(totalItems: 0 , user: u)
+            u.properties['name', 'phone', 'realName', 'email', 'password'] = params
+            u.car = c
+            if(u.password != params.confirm) {
+                u.errors.rejectValue("password", "user.password.dontmatch")
+                render "error passwords dont match" // Lanzar excepcion
+                return [user:u]
+            } else
+            if(u.save(failOnError: true)) {
+                c.save(failOnError: true)
+                session.user = u
+                redirect url: "http://localhost:8080/DiscMaster/user/index.gsp" // Cambiar redirect
+            } else {
+                return [user:u] // Lanzar excpcion
+            }
+        }
     }
 
     @Transactional

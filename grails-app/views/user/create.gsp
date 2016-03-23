@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
-		<title><g:message code="default.create.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#create-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="create-user" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<g:hasErrors bean="${userInstance}">
-			<ul class="errors" role="alert">
-				<g:eachError bean="${userInstance}" var="error">
-				<li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
-				</g:eachError>
-			</ul>
-			</g:hasErrors>
-			<g:form url="[resource:userInstance, action:'save']" >
-				<fieldset class="form">
-					<g:render template="form"/>
-				</fieldset>
-				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
+
+<%@ page import="discmaster.User" contentType="text/html;charset=UTF-8" %>
+<head>
+    <title>Registrarse</title>
+</head>
+<body id="body">
+<h1>Registro</h1>
+<g:hasErrors bean="${User}">
+    <div class="errors">
+        <g:renderErrors bean="${user}"></g:renderErrors>
+    </div>
+</g:hasErrors>
+<g:form action="create" name="createForm">
+    <div class="formField">
+        <label for="name">Nick:</label>
+        <g:textField name="name" value="${user?.name}"></g:textField>
+    </div>
+    <div class="formField">
+        <label for="password">Contraseña:</label>
+        <g:passwordField name="password" value="${user?.password}"></g:passwordField>
+    </div>
+    <div class="formField">
+        <label for="confirm">Confirmar contraseña:</label>
+        <g:passwordField name="confirm" value="${params?.confirm}"></g:passwordField>
+    </div>
+    <div class="formField">
+        <label for="realName">Nombre:</label>
+        <g:textField name="realName" value="${user?.realName}"></g:textField>
+    </div>
+    <div class="formField">
+        <label for="email">Correo electronico:</label>
+        <g:textField name="email" value="${user?.email}"></g:textField>
+    </div>
+    <div class="formField">
+        <label for="phone">Telefono:</label>
+        <g:textField name="phone" value="${user?.phone}"></g:textField>
+    </div>
+    <g:submitButton class="formButton" name="create" value="Regisster"></g:submitButton>
+</g:form>
+</body>
 </html>

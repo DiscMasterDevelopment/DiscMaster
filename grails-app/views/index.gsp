@@ -33,7 +33,7 @@
                     </li>
 				</g:else>
 
-				<li style="background-color:red"><a href="#" style="color:white">Registrarse</a></li>
+				<li style="background-color:red"><a href="user/create.gsp" style="color:white">Registrarse</a></li>
 				<li style="background-color:red"><a href="#" style="color:white">Mi Perfil</a></li>
 				<li style="background-color:red"><a href="#" style="color:white">Mi WishList</a></li>
 				<li style="background-color:red"><a href="#" style="color:white"><img src="${resource(dir: 'images', file: 'carrito-de-compras.png')}" alt="kart" style="width:30px;height:30px;"></a></li>
