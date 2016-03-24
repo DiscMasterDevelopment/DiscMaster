@@ -13,32 +13,26 @@
         <g:renderErrors bean="${user}"></g:renderErrors>
     </div>
 </g:hasErrors>
-<g:form action="create" name="createForm">
-    <div class="formField">
-        <label for="name">Nick:</label>
+<g:form action="create">
+    <label for="name">Nick:
         <g:textField name="name" value="${user?.name}"></g:textField>
-    </div>
-    <div class="formField">
-        <label for="password">Contraseña:</label>
-        <g:passwordField name="password" value="${user?.password}"></g:passwordField>
-    </div>
-    <div class="formField">
-        <label for="confirm">Confirmar contraseña:</label>
-        <g:passwordField name="confirm" value="${params?.confirm}"></g:passwordField>
-    </div>
-    <div class="formField">
-        <label for="realName">Nombre:</label>
+    </label>
+    <label for="password">Contraseña:
+        <g:passwordField name="password" value="${user?.password}" type="password"></g:passwordField>
+    </label>
+    <label for="confirm">Confirmar contraseña:
+        <g:passwordField name="confirm" value="${params?.confirm}" type="password"></g:passwordField>
+    </label>
+    <label for="realName">Nombre:
         <g:textField name="realName" value="${user?.realName}"></g:textField>
-    </div>
-    <div class="formField">
-        <label for="email">Correo electronico:</label>
+    </label>
+    <label for="email">Correo electrónico:
         <g:textField name="email" value="${user?.email}"></g:textField>
-    </div>
-    <div class="formField">
-        <label for="phone">Telefono:</label>
+    </label>
+    <label for="phone">Telefono:
         <g:textField name="phone" value="${user?.phone}"></g:textField>
-    </div>
-    <g:submitButton class="formButton" name="create" value="Regisster"></g:submitButton>
+    </label>
+    <g:submitButton class="button" name="create" value="Register"></g:submitButton>
 </g:form>
 </body>
 </html>

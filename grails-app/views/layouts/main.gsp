@@ -8,9 +8,6 @@
 		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
         <%--<link rel="stylesheet" type="text/css" href="${resource(dir: 'stylesheets', file: 'foundation.css')}"> --%>
         <asset:stylesheet src="foundation/foundation.css"/>
-  		<%--
-  		<asset:stylesheet src="application.css"/>
-		<asset:javascript src="application.js"/> --%>
 		<g:layoutHead/>
 	</head>
 	<body>
@@ -19,7 +16,7 @@
     <div class="top-bar">
         <div class="top-bar-left">
             <ul class="menu">
-                <li class="menu-text">DiscMaster</li>
+                <li><g:link uri="/" title="Site's page">DiscMaster</g:link></li>
 
                 <li class="has-form"> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
                     <div class="row collapse"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
@@ -39,12 +36,12 @@
                     <li>
                         <g:form controller="user" action="login" class="has-form rows large-collapse small-collapse" method="POST">
                             <div class="large-5 columns"><g:textField name="name" placeholder="user"></g:textField></div>
-                            <div class="large-5 columns"><g:textField name="password" placeholder="password"></g:textField></div>
+                            <div class="large-5 columns"><g:textField name="password" placeholder="password" type="password"></g:textField></div>
                             <div class="large-2 columns"><g:submitButton class="alert button expand" name="login" value="Login"></g:submitButton></div>
                         </g:form>
                     </li>
+                    <li><g:link action="register" controller="user" title="Sign In">Registrarse</g:link></li>
                 </g:else>
-                <li><g:link action="register" controller="user" title="Sign In">Registrarse</g:link></li>
                 <li><a href="#">Perfil</a></li>
                 <li><a href="#">Cart</a></li>
             </ul>

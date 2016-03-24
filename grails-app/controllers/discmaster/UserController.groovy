@@ -38,6 +38,7 @@ class UserController {
         def u = new User()
         def c = new CarList(totalItems: 0 , user: u)
         u.properties['name', 'phone', 'realName', 'email', 'password'] = params
+        u.age = 18 // TODO: modify view so this value is passed from there
         u.car = c
         if(u.password != params.confirm) {
             u.errors.rejectValue("password", "user.password.dontmatch")
