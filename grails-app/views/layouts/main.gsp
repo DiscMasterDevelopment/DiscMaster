@@ -35,7 +35,7 @@
                             <li>
                                 <g:form controller="user" action="login" class="has-form rows large-collapse small-collapse" method="POST">
                                     <div class="large-5 columns"><g:textField name="name" placeholder="user"></g:textField></div>
-                                    <div class="large-5 columns"><g:textField name="password" placeholder="password" type="password"></g:textField></div>
+                                    <div class="large-5 columns"><g:passwordField name="password" placeholder="password"></g:passwordField></div>
                                     <div class="large-2 columns"><g:submitButton class="alert button expand" name="login" value="Login"></g:submitButton></div>
                                 </g:form>
                             </li>
