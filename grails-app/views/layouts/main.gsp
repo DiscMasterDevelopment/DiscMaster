@@ -21,12 +21,10 @@
             <ul class="menu">
                 <li class="menu-text">DiscMaster</li>
 
-                <li class="has-form"> <%-- source: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
-                    <div class="row collapse">
-                    <ul class="large-8 small-9 columns menu">
-                        <li><input type="text" placeholder="Find Stuff"></li>
-                        <li><a href="#" class="button expand">Search</a></li>
-                    </ul>
+                <li class="has-form"> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
+                    <div class="row collapse"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
+                        <div class="small-9 columns"><input placeholder="Find Stuff" type="text"></div>
+                        <div class="small-3 columns"><a href="#" class="button expand">Search</a></div>
                     </div>
                 </li>
             </ul>
@@ -39,15 +37,11 @@
                 </g:if>
                 <g:else>
                     <li>
-                    <g:form controller="user" action="login" class="has-form" method="POST">
-                        <div class="row collapse">
-                            <ul class="large-8 small-9 columns menu">
-                                <li><g:textField name="name" placeholder="user"></g:textField></li>
-                                <li><g:textField name="password" placeholder="password"></g:textField></li>
-                                <li><g:submitButton class="alert button expand" name="login" value="Login"></g:submitButton></li>
-                            </ul>
-                        </div>
-                    </g:form>
+                        <g:form controller="user" action="login" class="has-form rows large-collapse small-collapse" method="POST">
+                            <div class="large-5 columns"><g:textField name="name" placeholder="user"></g:textField></div>
+                            <div class="large-5 columns"><g:textField name="password" placeholder="password"></g:textField></div>
+                            <div class="large-2 columns"><g:submitButton class="alert button expand" name="login" value="Login"></g:submitButton></div>
+                        </g:form>
                     </li>
                 </g:else>
                 <li><g:link action="register" controller="user" title="Sign In">Registrarse</g:link></li>
