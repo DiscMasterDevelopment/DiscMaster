@@ -8,16 +8,14 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class UserController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [login: "POST", create: "POST", save: "POST", update: "PUT", delete: "DELETE"]
 
     def login() {
-        if(request.method == "POST") {
-            def u = User.findByName(params.name)
-            if(u?.password == params.password) {
-                session.user = u
-            }
-            redirect uri: "/"
+        def u = User.findByName(params.name)
+        if(u?.password == params.password) {
+            session.user = u
         }
+        redirect uri: "/" // TODO: do not redirect to main, return to page from which was called
     }
 
     def logout() {
@@ -34,24 +32,24 @@ class UserController {
         respond userInstance
     }
 
+    def register() {}
+
     def create() {
-        if(request.method == 'POST') {
-            def u = new User()
-            def c = new CarList(totalItems: 0 , user: u)
-            u.properties['name', 'phone', 'realName', 'email', 'password'] = params
-            u.car = c
-            if(u.password != params.confirm) {
-                u.errors.rejectValue("password", "user.password.dontmatch")
-                render "error passwords dont match" // Lanzar excepcion
-                return [user:u]
-            } else
-            if(u.save(failOnError: true)) {
-                c.save(failOnError: true)
-                session.user = u
-                redirect url: "http://localhost:8080/DiscMaster/user/index.gsp" // Cambiar redirect
-            } else {
-                return [user:u] // Lanzar excpcion
-            }
+        def u = new User()
+        def c = new CarList(totalItems: 0 , user: u)
+        u.properties['name', 'phone', 'realName', 'email', 'password'] = params
+        u.car = c
+        if(u.password != params.confirm) {
+            u.errors.rejectValue("password", "user.password.dontmatch")
+            //render "error passwords dont match" // Lanzar excepcion
+            return [user:u] // doesn't work, the book is outdated :S
+        } else
+        if(u.save(failOnError: true)) {
+            c.save(failOnError: true)
+            session.user = u
+            redirect uri: "/"
+        } else {
+            return [user:u] // Lanzar excepción
         }
     }
 

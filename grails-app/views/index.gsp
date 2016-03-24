@@ -15,7 +15,8 @@
 		<div class="top-bar-right" style="background-color:red">
 			<ul class="menu">
 				<g:if test="${session?.user}" style="background-color: red">
-					<li style="background-color:red; color:#b2d1ff">Estas logeado como: ${session.user?.name}</li> <li><g:link action="logout" controller="user" title="Logout" style="color:white">Logout</g:link></li>
+					<li style="background-color:red; color:#b2d1ff">Estas logeado como: ${session.user?.name}</li>
+					<li><g:link action="logout" controller="user" title="Logout" style="color:white">Logout</g:link></li>
 				</g:if>
 				<g:else>
                     <li>
@@ -33,7 +34,7 @@
                     </li>
 				</g:else>
 
-				<li style="background-color:red"><a href="user/create.gsp" style="color:white">Registrarse</a></li>
+				<li style="background-color:red"><a href="user/register.gsp" style="color:white">Registrarse</a></li>
 				<li style="background-color:red"><a href="#" style="color:white">Mi Perfil</a></li>
 				<li style="background-color:red"><a href="#" style="color:white">Mi WishList</a></li>
 				<li style="background-color:red"><a href="#" style="color:white"><img src="${resource(dir: 'images', file: 'carrito-de-compras.png')}" alt="kart" style="width:30px;height:30px;"></a></li>

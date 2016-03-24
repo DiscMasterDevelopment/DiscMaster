@@ -3,6 +3,7 @@
 
 <%@ page import="discmaster.User" contentType="text/html;charset=UTF-8" %>
 <head>
+	<meta name="layout" content="main">
     <title>Registrarse</title>
 </head>
 <body id="body">
