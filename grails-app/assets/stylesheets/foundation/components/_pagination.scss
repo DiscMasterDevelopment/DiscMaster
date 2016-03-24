@@ -94,6 +94,7 @@ $pagination-arrows: true !default;
     display: block;
     padding: $pagination-item-padding;
     border-radius: $global-radius;
+    background: $primary-color;
 
     &:hover {
       background: $pagination-item-background-hover;

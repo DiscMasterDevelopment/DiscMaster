@@ -6,7 +6,7 @@
 	<meta name="layout" content="main">
     <title>Registrarse</title>
 </head>
-<body id="body">
+<body>
 <h1>Registro</h1>
 <g:hasErrors bean="${User}">
     <div class="errors">

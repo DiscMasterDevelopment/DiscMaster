@@ -8,6 +8,9 @@
 /// @group global
 ////
 
+// DISCMASTER DEFINITIONS
+$h1-font: flamaespina2;
+
 /// Font size attribute applied to `<html>` and `<body>`. We use 100% by default so the value is inherited from the user's browser settings.
 /// @type Number
 $global-font-size: 100% !default;
@@ -23,11 +26,12 @@ $global-lineheight: 1.5 !default;
 /// Colors used for buttons, callouts, links, etc. There must always be a color called `primary`.
 /// @type Map
 $foundation-palette: (
-  primary: #2199e8,
+  primary: #fcfcf4,
   secondary: #777,
   success: #3adb76,
   warning: #ffae00,
   alert: #ec5840,
+  primary-blue: #2199e8,
 ) !default;
 
 /// Color used for light gray UI items.
@@ -40,7 +44,8 @@ $medium-gray: #cacaca !default;
 
 /// Color used for dark gray UI items.
 /// @type Color
-$dark-gray: #8a8a8a !default;
+//$dark-gray: #8a8a8a !default;
+$dark-gray: #ea2e2e !default; // this is actually red now, rename this variable please
 
 /// Color used for black ui items.
 /// @type Color
@@ -108,6 +113,7 @@ $secondary-color: map-get($foundation-palette, secondary);
 $success-color: map-get($foundation-palette, success);
 $warning-color: map-get($foundation-palette, warning);
 $alert-color: map-get($foundation-palette, alert);
+$primary-blue-color: map-get($foundation-palette, primary-blue);
 
 // Remove this in 6.3
 $-zf-menu-icon-imported: false;
