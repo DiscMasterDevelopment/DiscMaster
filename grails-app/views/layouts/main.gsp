@@ -66,9 +66,9 @@
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 		--%>
 
-        <script type="text/javascript" src="${resource(dir: 'javascripts/vendor', file: 'jquery.min.js')}"></script>
-        <script type="text/javascript" src="${resource(dir: 'javascripts/vendor', file: 'what-input.min.js')}"></script>
-        <script type="text/javascript" src="${resource(dir: 'javascripts/vendor', file: 'foundation.min.js')}"></script>
+        <asset:javascript src="vendor/jquery.min.js"/>
+        <asset:javascript src="vendor/what-input.min.js"/>
+        <asset:javascript src="foundation.min.js"/>
         <script>
           $(document).foundation();
         </script>

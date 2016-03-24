@@ -109,7 +109,7 @@ $code-font-weight: $global-weight-normal !default;
 
 /// Background color of code samples.
 /// @type Color
-$code-background: $light-gray !default;
+$code-background: $dark-gray !default;
 
 /// Border around code samples.
 /// @type List
@@ -125,7 +125,7 @@ $anchor-color: $primary-color !default;
 
 /// Default color for links on hover.
 /// @type Color
-$anchor-color-hover: scale-color($anchor-color, $lightness: -14%) !default;
+$anchor-color-hover: scale-color($anchor-color, $lightness: +14%) !default;
 
 /// Default text deocration for links.
 /// @type String
@@ -185,7 +185,7 @@ $defnlist-term-margin-bottom: 0.3rem !default;
 
 /// Text color of `<blockquote>` elements.
 /// @type Color
-$blockquote-color: $dark-gray !default;
+$blockquote-color: $light-gray !default;
 
 /// Padding inside a `<blockquote>` element.
 /// @type Number | List
@@ -201,7 +201,7 @@ $cite-font-size: rem-calc(13) !default;
 
 /// Text color for `<cite>` elements.
 /// @type Color
-$cite-color: $dark-gray !default;
+$cite-color: $light-gray !default;
 
 /// Font family for `<kbd>` elements.
 /// @type String | List
@@ -213,7 +213,7 @@ $keystroke-color: $black !default;
 
 /// Background color for `<kbd>` elements.
 /// @type Color
-$keystroke-background: $light-gray !default;
+$keystroke-background: $dark-gray !default;
 
 /// Padding for `<kbd>` elements.
 /// @type Number | List

@@ -32,7 +32,7 @@ $input-background-focus: $white !default;
 
 /// Background color of disabled text inputs.
 /// @type Color
-$input-background-disabled: $light-gray !default;
+$input-background-disabled: $dark-gray !default;
 
 /// Border around text inputs.
 /// @type Border
@@ -40,7 +40,7 @@ $input-border: 1px solid $medium-gray !default;
 
 /// Border around focused text inputs.
 /// @type Color
-$input-border-focus: 1px solid $dark-gray !default;
+$input-border-focus: 1px solid $light-gray !default;
 
 /// Box shadow inside text inputs when not focused.
 /// @type Shadow
