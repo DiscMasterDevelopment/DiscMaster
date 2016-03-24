@@ -5,6 +5,9 @@ target/
 *.iml
 *~
 .asscache
+.sass-cache/
+.sass-work/
+.jruby-container/
 
 # an special hidden file which nobody cares about
 .directory

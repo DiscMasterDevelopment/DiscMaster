@@ -12,13 +12,7 @@
     src: url(../fonts/Flama_Espina_2.TTF);
 }
 
-h1.tipo_1{
-    font-family: flamaespina2;
-    color: white;
-    font-size: 400%;
-}
-
-h1.tipo_2{
+.header-font {
     text-align: center;
     font-family: annapolis3d;
     color: white; 
@@ -31,10 +25,6 @@ h4.next_rel{
     text-align: center;
     margin: 0;
     font-size: 200%;
-}
-
-li{
-    background-color: red
 }
 
 h5.event{
