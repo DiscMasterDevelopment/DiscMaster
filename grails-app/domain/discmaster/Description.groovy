@@ -3,13 +3,18 @@ package discmaster
 class Description {
 
     String description
-    String viceoClip
-    String audioClip
+    byte[] viceoClip
+    byte[] audioClip
 
-    static belongsTo = [product: Product,
-    review: Review, artist: Artist]
+    static belongsTo = [
+            product: Product,
+            review: Review,
+            artist: Artist
+    ]
 
     static constraints = {
         description nullable: false
+        viceoClip nullable: true
+        audioClip nullable: true
     }
 }
