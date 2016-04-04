@@ -12,6 +12,6 @@ class PurchaseOrder {
     static hasMany = [product: Product]
 
     static constraints = {
-        purchaseID nullable: false
+
     }
 }

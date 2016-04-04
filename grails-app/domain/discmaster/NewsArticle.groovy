@@ -10,7 +10,6 @@ class NewsArticle {
     static hasMany = [news: NewsArticle]
 
     static constraints = {
-        id nullable: false
         title nullable: false
     }
 }

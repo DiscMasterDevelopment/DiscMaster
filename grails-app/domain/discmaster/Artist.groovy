@@ -11,6 +11,6 @@ class Artist {
 
 
     static constraints = {
-        id nullable: false
+
     }
 }
