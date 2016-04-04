@@ -2,7 +2,6 @@ package discmaster
 
 class PurchaseOrder {
 
-    String purchaseID
     float paidPrice
     float totalPrice
     int totalIems

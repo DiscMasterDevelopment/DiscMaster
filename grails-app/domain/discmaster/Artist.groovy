@@ -2,7 +2,6 @@ package discmaster
 
 class Artist {
 
-    String id
     String name
     String officialPage
 

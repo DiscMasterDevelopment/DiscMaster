@@ -2,7 +2,6 @@ package discmaster
 
 class NewsArticle {
 
-    String id
     String title
     String shortDescription
     Date date
