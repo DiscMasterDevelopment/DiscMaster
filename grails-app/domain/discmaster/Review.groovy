@@ -3,8 +3,8 @@ package discmaster
 class Review {
 
     float rating
+    Description description
 
-    static hasOne = [description: Description]
     static belongsTo = [artist: Artist]
     static constraints = {
 

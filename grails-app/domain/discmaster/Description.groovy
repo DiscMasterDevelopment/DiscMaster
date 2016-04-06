@@ -6,15 +6,15 @@ class Description {
     byte[] viceoClip
     byte[] audioClip
 
-    static belongsTo = [
-            product: Product,
-            review: Review,
-            artist: Artist
-    ]
+    //static belongsTo = [
+    //        product: Product,
+    //        review: Review,
+    //        artist: Artist
+    //]
 
     static constraints = {
         description nullable: false
-        viceoClip nullable: true
+        viceoClip nullable: true, maxSize: 31457280 // 3MiB
         audioClip nullable: true
     }
 }
