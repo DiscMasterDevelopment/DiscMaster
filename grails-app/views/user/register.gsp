@@ -18,10 +18,10 @@
         <g:textField name="name" value="${user?.name}"></g:textField>
     </label>
     <label for="password">Contraseña:
-        <g:passwordField name="password" value="${user?.password}" type="password"></g:passwordField>
+        <g:passwordField name="password" value="${user?.password}"></g:passwordField>
     </label>
     <label for="confirm">Confirmar contraseña:
-        <g:passwordField name="confirm" value="${params?.confirm}" type="password"></g:passwordField>
+        <g:passwordField name="confirm" value="${params?.confirm}"></g:passwordField>
     </label>
     <label for="realName">Nombre:
         <g:textField name="realName" value="${user?.realName}"></g:textField>

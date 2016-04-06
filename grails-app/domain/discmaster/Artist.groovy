@@ -2,7 +2,6 @@ package discmaster
 
 class Artist {
 
-    String id
     String name
     String officialPage
 
@@ -12,6 +11,6 @@ class Artist {
 
 
     static constraints = {
-        id nullable: false
+
     }
 }
