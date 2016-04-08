@@ -6,8 +6,6 @@ class StoreController {
 
     def catalog() {
         def productList = Product.list()
-        def model = [productList: productList]
-
-        respond productList, model: model
+        [productList: productList]
     }
 }

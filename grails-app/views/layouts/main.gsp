@@ -66,7 +66,7 @@
                 <ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
                     <li><a class="botonMenu" href="#">Home</a></li>
                     <li><a class="botonMenu" href="#">Bandas</a></li>
-                    <li><a class="botonMenu" href="#">Catálogo</a></li>
+                    <li><g:link controller="store" action="catalog" class="botonMenu" title="Catálogo">Catálogo</g:link></li>
                     <li><a class="botonMenu" href="#">Contacto</a></li>
                 </ul>
             </div>
