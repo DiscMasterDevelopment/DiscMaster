@@ -16,6 +16,7 @@
 <body>
 <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
+
         <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
             <div class="row column">
                 <br>
@@ -24,6 +25,7 @@
                 <p>Descrición de producto</p>
             </div>
         </div>
+
         <div class="off-canvas-content" data-off-canvas-content>
             <div class="title-bar hide-for-large">
                 <div class="title-bar-left">
