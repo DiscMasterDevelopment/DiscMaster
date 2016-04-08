@@ -12,7 +12,7 @@ class BootStrap {
             def products = [
                 [
                     description: "The best description",
-                    image: "grails-app/assets/images/ragethedevilstrikes.jpg",
+                    image: "grails-app/developmentData/ragethedevilstrikes.jpg",
                     imageType: 'image/jpeg',
                     product: [
                         name: "Disc 1",
@@ -25,7 +25,7 @@ class BootStrap {
                 ],
                 [
                     description: "The 2nd best description",
-                    image: "grails-app/assets/images/thunderstone-apocalypse-again-portada-400x400.jpg",
+                    image: "grails-app/developmentData/thunderstone-apocalypse-again-portada-400x400.jpg",
                     imageType: 'image/jpeg',
                     product: [
                         name: "Disc 42",
