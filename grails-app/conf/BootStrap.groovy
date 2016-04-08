@@ -1,3 +1,4 @@
+import discmaster.Image
 import discmaster.User
 import discmaster.Product
 import discmaster.Description
@@ -11,6 +12,8 @@ class BootStrap {
             def products = [
                 [
                     description: "The best description",
+                    image: "grails-app/assets/images/ragethedevilstrikes.jpg",
+                    imageType: 'image/jpeg',
                     product: [
                         name: "Disc 1",
                         price: 400,
@@ -22,6 +25,8 @@ class BootStrap {
                 ],
                 [
                     description: "The 2nd best description",
+                    image: "grails-app/assets/images/thunderstone-apocalypse-again-portada-400x400.jpg",
+                    imageType: 'image/jpeg',
                     product: [
                         name: "Disc 42",
                         price: 350,
@@ -67,8 +72,18 @@ class BootStrap {
             ]
 
             products.each { pnd ->
-                def d = new Description(description: pnd["description"])
-                d.save()
+                Description d
+                if(pnd.image) { 
+                    File imageFile = new File(pnd.image)
+                    Image i = new Image(image: imageFile.bytes, type: pnd.imageType)
+                    i.save()
+
+                    d = new Description(description: pnd["description"], image: i)
+                    d.save()
+                } else {
+                    d = new Description(description: pnd["description"])
+                    d.save()
+                }
                 def p = new Product(pnd["product"] + [description: d])
                 p.save()
             }
