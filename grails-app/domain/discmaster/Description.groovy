@@ -3,8 +3,9 @@ package discmaster
 class Description {
 
     String description
-    byte[] viceoClip
-    byte[] audioClip
+    String videoClip
+    String audioClip
+    Image image
 
     //static belongsTo = [
     //        product: Product,
@@ -14,7 +15,8 @@ class Description {
 
     static constraints = {
         description nullable: false
-        viceoClip nullable: true, maxSize: 31457280 // 3MiB
-        audioClip nullable: true
+        videoClip   nullable: true
+        audioClip   nullable: true
+        image       nullable: true
     }
 }
