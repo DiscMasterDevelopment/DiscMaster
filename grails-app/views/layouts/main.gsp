@@ -42,7 +42,9 @@
                             <li><g:link action="register" controller="user" title="Sign In">Registrarse</g:link></li>
                         </g:else>
                         <li><a href="#">Perfil</a></li>
-                        <li><a href="#"><img src="${resource(dir: 'images', file: 'carrito-de-compras.png')}" alt="kart" style="width:30px;height:30px;"></a></li>
+                        <li><g:link controller="carList" action="show" class="botonMenu" title="Carrito de compras">
+                            <a href="/DiscMaster/carList/index"><img src="${resource(dir: 'images', file: 'carrito-de-compras.png')}" alt="kart" style="width:30px;height:30px;"></a></g:link>
+                        </li>
                     </ul>
                 </div>
             </div>
