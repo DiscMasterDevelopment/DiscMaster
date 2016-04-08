@@ -4,10 +4,11 @@ class Product {
 
     String name
     float price
-    int limitPerUser
     float discount
     int totalInStorage
     Description description
+    int limitPerUser
+    Date added
     //int totalInOrder
 
     static hasMany = [tag: Tag]
@@ -17,5 +18,7 @@ class Product {
         price min: 0.0F
         discount min: 0.0F, max: 1.0F // discount percentage
         totalInStorage min: 0
+        limitPerUser nullable: true
+        added nullable: false
     }
 }
