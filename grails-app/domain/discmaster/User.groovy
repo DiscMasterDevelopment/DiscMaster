@@ -16,7 +16,11 @@ class User {
 
     static constraints = {
         email nullable: false, unique:true
-        password blank: false, nullable: false, size: 8..15
+        password blank: false, nullable: false, size: 8..15, validator: {val, obj ->
+            if (val?.equalsIgnoreCase(obj.name)){
+                return false
+            }
+        }
         age min: 18
         phone nullable: true
         realName nullable: true, unique:true
@@ -27,3 +31,7 @@ class User {
     }
 
 }
+
+
+
+

@@ -42,7 +42,9 @@
                             <li><g:link action="register" controller="user" title="Sign In">Registrarse</g:link></li>
                         </g:else>
                         <li><a href="#">Perfil</a></li>
-                        <li><a href="#"><img src="${resource(dir: 'images', file: 'carrito-de-compras.png')}" alt="kart" style="width:30px;height:30px;"></a></li>
+                        <li><g:link controller="CarList" action="aCarList" title="Carrito de compras">
+                            <a href="/DiscMaster/carList/aCarList"><img src="${resource(dir: 'images', file: 'carrito-de-compras.png')}" alt="kart" style="width:30px;height:30px;"></a></g:link>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -66,7 +68,7 @@
                 <ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
                     <li><a class="botonMenu" href="#">Home</a></li>
                     <li><a class="botonMenu" href="#">Bandas</a></li>
-                    <li><a class="botonMenu" href="#">Catálogo</a></li>
+                    <li><g:link controller="store" action="catalog" class="botonMenu" title="Catálogo">Catálogo</g:link></li>
                     <li><a class="botonMenu" href="#">Contacto</a></li>
                 </ul>
             </div>

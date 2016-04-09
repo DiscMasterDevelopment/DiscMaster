@@ -2,7 +2,6 @@ package discmaster
 
 class Address {
 
-    String id
     String city
     String address
     Date lastTimeUsed

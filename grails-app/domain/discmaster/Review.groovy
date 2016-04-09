@@ -2,12 +2,11 @@ package discmaster
 
 class Review {
 
-    String id
     float rating
+    Description description
 
-    static hasOne = [description: Description]
     static belongsTo = [artist: Artist]
     static constraints = {
-        id nullable: false
+
     }
 }

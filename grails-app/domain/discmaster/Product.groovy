@@ -2,21 +2,23 @@ package discmaster
 
 class Product {
 
-    String id
     String name
     float price
-    int limitPerUser
     float discount
     int totalInStorage
-    int totalInOrder
+    Description description
+    int limitPerUser
+    Date added
+    //int totalInOrder
 
-    static hasOne = [description: Description]
-
-    static  hasMany = [tag: Tag]
-
+    static hasMany = [tag: Tag]
 
     static constraints = {
-        id nullable: false
         name nullable: false
+        price min: 0.0F
+        discount min: 0.0F, max: 1.0F // discount percentage
+        totalInStorage min: 0
+        limitPerUser nullable: true
+        added nullable: false
     }
 }
