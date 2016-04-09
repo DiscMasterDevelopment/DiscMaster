@@ -11,3 +11,18 @@ target/
 
 # an special hidden file which nobody cares about
 .directory
+
+*.iws
+*Db.properties
+*Db.script
+.settings
+.classpath
+.project
+eclipse
+stacktrace.log
+target
+/plugins
+/web-app/plugins
+/web-app/WEB-INF/classes
+web-app/WEB-INF/tld/c.tld
+web-app/WEB-INF/tld/fmt.tld
