@@ -1,17 +1,3 @@
-# files which shouldn't be shared between different computers
-.slcache/
-.idea/
-target/
-*.iml
-*~
-.asscache
-.sass-cache/
-.sass-work/
-.jruby-container/
-
-# an special hidden file which nobody cares about
-.directory
-
 *.iws
 *Db.properties
 *Db.script
