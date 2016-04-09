@@ -3,7 +3,9 @@ import discmaster.Image
 import discmaster.User
 import discmaster.Product
 import discmaster.Description
+
 import grails.util.Environment
+import groovy.time.TimeCategory
 
 class BootStrap {
 
@@ -21,7 +23,7 @@ class BootStrap {
                         discount: 0,
                         totalInStorage: 21,
                         limitPerUser: 20,
-                        added: new Date()
+                        added: new Date() // getting the current time
                     ]
                 ],
                 [
@@ -34,7 +36,7 @@ class BootStrap {
                         discount: 0.3,
                         totalInStorage: 21,
                         limitPerUser: 20,
-                        added: new Date()
+                        added: use(TimeCategory) { new Date() + 1.second } // getting the current time and adding one second to it
                     ]
                 ],
                 [
@@ -45,7 +47,7 @@ class BootStrap {
                         discount: 0,
                         totalInStorage: 0,
                         limitPerUser: 20,
-                        added: new Date()
+                        added: use(TimeCategory) { new Date() + 2.second }
                     ]
                 ],
                 [
@@ -56,7 +58,7 @@ class BootStrap {
                         discount: 0.3,
                         totalInStorage: 20,
                         limitPerUser: 20,
-                        added: new Date()
+                        added: use(TimeCategory) { new Date() + 3.second }
                     ]
                 ],
                 [
@@ -67,7 +69,7 @@ class BootStrap {
                         discount: 0.2,
                         totalInStorage: 20,
                         limitPerUser: 20,
-                        added: new Date()
+                        added: use(TimeCategory) { new Date() + 4.second }
                     ]
                 ],
             ]
