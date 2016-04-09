@@ -17,7 +17,7 @@ class DiscmasterTagLib {
         //    // Really ugly hack to create the src attribute for the image :S. It would be better if it was possible to create the src attribute from a controller, action and id attributes as with g:link
             defaultImg = resource(dir: "images", file: "get/${p.description.image.id}")
         } else {
-            defaultImg = resource(dir: "images", file: "300x400.png")
+            defaultImg = resource(dir: "images", file: "sin_imagen.png")
         }
 
         out << """<img src="${defaultImg}" """
