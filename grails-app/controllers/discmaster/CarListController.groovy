@@ -9,6 +9,11 @@ class CarListController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def aCarList(){
+        def CarListList = CarList.list()
+        [CarListList: CarListList]
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond CarList.list(params), model: [carListInstanceCount: CarList.count()]
