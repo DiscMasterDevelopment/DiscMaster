@@ -2,7 +2,9 @@ import discmaster.Image
 import discmaster.User
 import discmaster.Product
 import discmaster.Description
+import discmaster.Administrator
 import grails.util.Environment
+
 
 class BootStrap {
 
@@ -100,6 +102,15 @@ class BootStrap {
             )
 
             user.save(flush: true)
+
+            //Adding admins
+            def admin = new Administrator(
+                name: "DiscMaster_Vengarl",
+                phone: "311111111",
+                password: "holiwis"
+            )
+
+            admin.save(flush: true)
         }
     }
     def destroy = {
