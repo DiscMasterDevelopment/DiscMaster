@@ -109,7 +109,7 @@ class BootStrap {
             def admin = new Administrator(
                 name: "DiscMaster_Vengarl",
                 phone: "311111111",
-                password: "holiwis"
+                password: "holiwish"
             )
 
             admin.save(flush: true)
