@@ -31,6 +31,10 @@
                             <li>Estas logeado como: ${session.user?.name}</li>
                             <li><g:link action="logout" controller="user" title="Logout">Logout</g:link></li>
                         </g:if>
+                        <g:elseif test="${session?.admin}">
+                            <li>Bienvenido administrador: ${session.admin?.name}</li>
+                            <li><g:link action="logout" controller="user" title="Logout">Logout</g:link></li>
+                        </g:elseif>
                         <g:else>
                             <li>
                                 <g:form controller="user" action="login" class="has-form rows large-collapse small-collapse" method="POST">

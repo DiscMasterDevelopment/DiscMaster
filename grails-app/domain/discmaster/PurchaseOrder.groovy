@@ -9,7 +9,7 @@ class PurchaseOrder {
     Date orderDate
     Date shippedDate
 
-    static hasMany = [product: Product]
+    static hasMany = [products: ProductQuantity]
 
     static constraints = {
 

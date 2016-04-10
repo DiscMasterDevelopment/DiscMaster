@@ -11,14 +11,22 @@ class UserController {
     static allowedMethods = [login: "POST", create: "POST", save: "POST", update: "PUT", delete: "DELETE"]
 
     def login() {
-        def u = User.findByName(params.name)
-        if(u?.password == params.password) {
-            session.user = u
+        if( params.name ==~ /DiscMaster_.+/) {
+            def admin = Administrator.findByName(params.name)
+            if (admin?.password == params.password) {
+                session.admin = admin
+            }
+        }else {
+            def u = User.findByName(params.name)
+            if (u?.password == params.password) {
+                session.user = u
+            }
         }
         redirect uri: "/" // TODO: do not redirect to main, return to page from which was called
     }
 
     def logout() {
+        session.admin = null
         session.user = null
         redirect uri: "/"
     }
@@ -36,10 +44,12 @@ class UserController {
 
     def create() {
         def u = new User()
-        def c = new CarList(totalItems: 0, productList: [], user: u)
+        def c = new CarList(user: u)
+        def w = new WishList(user: u)
         u.properties['name', 'phone', 'realName', 'email', 'password'] = params
         u.age = 18 // TODO: modify view so this value is passed from there
         u.car = c
+        u.wishList = w
         if(u.password != params.confirm) {
             u.errors.rejectValue("password", "user.password.dontmatch")
             //render "error passwords dont match" // Lanzar excepcion
@@ -47,10 +57,11 @@ class UserController {
         } else
         if(u.save(failOnError: true)) {
             c.save(failOnError: true)
+            w.save(failOnError: true)
             session.user = u
             redirect uri: "/"
         } else {
-            return [user:u] // Lanzar excepción
+            render u.errors
         }
     }
 

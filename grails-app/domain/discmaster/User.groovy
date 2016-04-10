@@ -8,26 +8,30 @@ class User {
     String email
     String password
     int    age
-    static hasMany = [whishList: WishList,
-    reviews: Review,
-    order: PurchaseOrder]
+    CarList  car
+    WishList wishList
 
-    static hasOne = [car: CarList]
+    static hasMany = [
+        reviews: Review,
+        order:   PurchaseOrder
+    ]
 
     static constraints = {
-        email nullable: false, unique:true
-        password blank: false, nullable: false, size: 8..15, validator: {val, obj ->
+        name  size: 3..20, unique: true
+        email email: true
+        password size: 8..15, validator: {val, obj ->
             if (val?.equalsIgnoreCase(obj.name)){
                 return false
             }
         }
-        age min: 18
-        phone nullable: true
-        realName nullable: true, unique:true
-        whishList nullable: true
-        reviews nullable: true
-        order nullable: true
-        car nullable: true
+        age       min: 18
+        phone     blank: true, matches: /[0-9+ ]+/
+        realName  nullable: true
+        reviews   nullable: true
+        order     nullable: true
+
+        car       nullable: false
+        wishList  nullable: false
     }
 
 }

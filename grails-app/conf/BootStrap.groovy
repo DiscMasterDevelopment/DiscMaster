@@ -2,16 +2,20 @@ import discmaster.CarList
 import discmaster.Image
 import discmaster.User
 import discmaster.Product
+import discmaster.ProductQuantity
 import discmaster.Description
+import discmaster.Administrator
+import discmaster.WishList
 
 import grails.util.Environment
 import groovy.time.TimeCategory
+
 
 class BootStrap {
 
     def init = { servletContext ->
         if(Environment.current == Environment.DEVELOPMENT) {
-            // Adding Products
+            // Defining Products' contents
             def products = [
                 [
                     description: "The best description",
@@ -74,6 +78,8 @@ class BootStrap {
                 ],
             ]
 
+            // creating Products with descriptions and images (optional)
+            def pts = []
             products.each { pnd ->
                 Description d
                 if(pnd.image) { 
@@ -88,12 +94,12 @@ class BootStrap {
                     d.save()
                 }
                 def p = new Product(pnd["product"] + [description: d])
+                pts << p
                 p.save()
             }
             
             // Adding users
-
-            def user = new User(
+            def u = new User(
                 name: "john",
                 phone: "123456789",
                 realName: "John (Kyon) Smith",
@@ -101,25 +107,28 @@ class BootStrap {
                 password: "123456789",
                 age: 18
             )
-
-            user.save(flush: true)
-
             def carList = new CarList(
-                    totdalItems: 1,
-                    productList:
-                    [[
-                    description: "The best description",
-                    image: "grails-app/developmentData/ragethedevilstrikes.jpg",
-                    imageType: 'image/jpeg',
-                    product: [
-                            name: "Disc 1",
-                            price: 400,
-                            discount: 0,
-                            totalInStorage: 21,
-                            limitPerUser: 20,
-                            added: new Date()
-                    ]]])
-            carList.save(flush: true)
+                user: u,
+                productList: [
+                    new ProductQuantity(product: pts[0], quantity: 3, unitaryPrice: pts[0].price, discount: pts[0].discount),
+                    new ProductQuantity(product: pts[1], quantity: 1, unitaryPrice: pts[1].price, discount: pts[1].discount),
+                    new ProductQuantity(product: pts[4], quantity: 1, unitaryPrice: pts[4].price, discount: pts[4].discount),
+                ]
+            )
+            def wishList = new WishList(user: u)
+
+            wishList.save()
+            carList.save()
+            u.save()
+
+            //Adding admins
+            def admin = new Administrator(
+                name: "DiscMaster_Vengarl",
+                phone: "311111111",
+                password: "holiwish"
+            )
+
+            admin.save(flush: true)
         }
     }
     def destroy = {

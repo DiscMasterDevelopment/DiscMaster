@@ -27,4 +27,23 @@ class DiscmasterTagLib {
         }
         out << ">"
     }
+
+    def productPrice = { attr, body ->
+        Product p = attr.product
+        String priceFormat = "\$#,###,###0.##"
+        String price = formatNumber(number: p.price, format: priceFormat)
+
+        if (p.discount == 0) {
+            out << price
+        } else {
+            String newPrice = formatNumber(number: p.price*(1-p.discount), format: priceFormat)
+            String discount = formatNumber(number: p.discount, format: "%#0.##")
+            out << """
+                <s>${price}</s>
+                <span style="float:right">
+                    ${newPrice} - <b>${discount}</b>
+                </span>
+                """
+        }
+    }
 }
