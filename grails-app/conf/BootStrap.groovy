@@ -1,9 +1,11 @@
+import discmaster.CarList
 import discmaster.Image
 import discmaster.User
 import discmaster.Product
 import discmaster.Description
 import discmaster.Administrator
 import grails.util.Environment
+import groovy.time.TimeCategory
 
 
 class BootStrap {
@@ -22,7 +24,7 @@ class BootStrap {
                         discount: 0,
                         totalInStorage: 21,
                         limitPerUser: 20,
-                        added: new Date()
+                        added: new Date() // getting the current time
                     ]
                 ],
                 [
@@ -35,7 +37,7 @@ class BootStrap {
                         discount: 0.3,
                         totalInStorage: 21,
                         limitPerUser: 20,
-                        added: new Date()
+                        added: use(TimeCategory) { new Date() + 1.second } // getting the current time and adding one second to it
                     ]
                 ],
                 [
@@ -46,7 +48,7 @@ class BootStrap {
                         discount: 0,
                         totalInStorage: 0,
                         limitPerUser: 20,
-                        added: new Date()
+                        added: use(TimeCategory) { new Date() + 2.second }
                     ]
                 ],
                 [
@@ -57,7 +59,7 @@ class BootStrap {
                         discount: 0.3,
                         totalInStorage: 20,
                         limitPerUser: 20,
-                        added: new Date()
+                        added: use(TimeCategory) { new Date() + 3.second }
                     ]
                 ],
                 [
@@ -68,7 +70,7 @@ class BootStrap {
                         discount: 0.2,
                         totalInStorage: 20,
                         limitPerUser: 20,
-                        added: new Date()
+                        added: use(TimeCategory) { new Date() + 4.second }
                     ]
                 ],
             ]
@@ -111,6 +113,23 @@ class BootStrap {
             )
 
             admin.save(flush: true)
+
+            def carList = new CarList(
+                    totdalItems: 1,
+                    productList:
+                    [[
+                    description: "The best description",
+                    image: "grails-app/developmentData/ragethedevilstrikes.jpg",
+                    imageType: 'image/jpeg',
+                    product: [
+                            name: "Disc 1",
+                            price: 400,
+                            discount: 0,
+                            totalInStorage: 21,
+                            limitPerUser: 20,
+                            added: new Date()
+                    ]]])
+            carList.save(flush: true)
         }
     }
     def destroy = {

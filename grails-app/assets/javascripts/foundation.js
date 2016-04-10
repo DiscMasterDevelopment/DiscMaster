@@ -8781,6 +8781,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
    * TODO utilize resize event trigger
    */
 
+
+
   // Window exports
   Foundation.plugin(Tooltip, 'Tooltip');
 }(jQuery);
