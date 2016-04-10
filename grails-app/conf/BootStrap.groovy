@@ -2,6 +2,7 @@ import discmaster.CarList
 import discmaster.Image
 import discmaster.User
 import discmaster.Product
+import discmaster.ProductQuantity
 import discmaster.Description
 import discmaster.Administrator
 import discmaster.WishList
@@ -78,6 +79,7 @@ class BootStrap {
             ]
 
             // creating Products with descriptions and images (optional)
+            def pts = []
             products.each { pnd ->
                 Description d
                 if(pnd.image) { 
@@ -92,6 +94,7 @@ class BootStrap {
                     d.save()
                 }
                 def p = new Product(pnd["product"] + [description: d])
+                pts << p
                 p.save()
             }
             
@@ -104,8 +107,15 @@ class BootStrap {
                 password: "123456789",
                 age: 18
             )
+            def carList = new CarList(
+                user: u,
+                productList: [
+                    new ProductQuantity(product: pts[0], quantity: 3, unitaryPrice: pts[0].price, discount: pts[0].discount),
+                    new ProductQuantity(product: pts[1], quantity: 1, unitaryPrice: pts[1].price, discount: pts[1].discount),
+                    new ProductQuantity(product: pts[4], quantity: 1, unitaryPrice: pts[4].price, discount: pts[4].discount),
+                ]
+            )
             def wishList = new WishList(user: u)
-            def carList = new CarList(user: u)
 
             wishList.save()
             carList.save()
