@@ -11,7 +11,7 @@ class UserController {
     static allowedMethods = [login: "POST", create: "POST", save: "POST", update: "PUT", delete: "DELETE"]
 
     def login() {
-        if( params.name == /DiscMaster_.+/) {
+        if( params.name ==~ /DiscMaster_.+/) {
             def admin = Administrator.findByName(params.name)
             if (admin?.password == params.password) {
                 session.admin = admin
