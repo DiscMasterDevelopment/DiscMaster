@@ -1,3 +1,4 @@
+import discmaster.CarList
 import discmaster.Image
 import discmaster.User
 import discmaster.Product
@@ -102,6 +103,23 @@ class BootStrap {
             )
 
             user.save(flush: true)
+
+            def carList = new CarList(
+                    totdalItems: 1,
+                    productList:
+                    [[
+                    description: "The best description",
+                    image: "grails-app/developmentData/ragethedevilstrikes.jpg",
+                    imageType: 'image/jpeg',
+                    product: [
+                            name: "Disc 1",
+                            price: 400,
+                            discount: 0,
+                            totalInStorage: 21,
+                            limitPerUser: 20,
+                            added: new Date()
+                    ]]])
+            carList.save(flush: true)
         }
     }
     def destroy = {
