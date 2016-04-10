@@ -44,10 +44,12 @@ class UserController {
 
     def create() {
         def u = new User()
-        def c = new CarList(totalItems: 0, productList: [], user: u)
+        def c = new CarList(user: u)
+        def w = new WishList(user: u)
         u.properties['name', 'phone', 'realName', 'email', 'password'] = params
         u.age = 18 // TODO: modify view so this value is passed from there
         u.car = c
+        u.wishList = w
         if(u.password != params.confirm) {
             u.errors.rejectValue("password", "user.password.dontmatch")
             //render "error passwords dont match" // Lanzar excepcion
@@ -55,10 +57,11 @@ class UserController {
         } else
         if(u.save(failOnError: true)) {
             c.save(failOnError: true)
+            w.save(failOnError: true)
             session.user = u
             redirect uri: "/"
         } else {
-            return [user:u] // Lanzar excepción
+            render u.errors
         }
     }
 

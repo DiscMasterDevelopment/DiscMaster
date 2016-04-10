@@ -1,9 +1,7 @@
 package discmaster
 
 class CarList {
-    int totalItems
-    Product productList = []
-
+    static hasMany = [productList: Product]
     static belongsTo = [user: User]
 
     static constraints = {
