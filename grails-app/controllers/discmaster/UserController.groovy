@@ -11,14 +11,22 @@ class UserController {
     static allowedMethods = [login: "POST", create: "POST", save: "POST", update: "PUT", delete: "DELETE"]
 
     def login() {
-        def u = User.findByName(params.name)
-        if(u?.password == params.password) {
-            session.user = u
+        if( params.name == /DiscMaster_.+/) {
+            def admin = Administrator.findByName(params.name)
+            if (admin?.password == params.password) {
+                session.admin = admin
+            }
+        }else {
+            def u = User.findByName(params.name)
+            if (u?.password == params.password) {
+                session.user = u
+            }
         }
         redirect uri: "/" // TODO: do not redirect to main, return to page from which was called
     }
 
     def logout() {
+        session.admin = null
         session.user = null
         redirect uri: "/"
     }
