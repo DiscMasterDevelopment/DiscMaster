@@ -4,7 +4,7 @@ package discmaster
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+//@Transactional(readOnly = true)
 class CarListController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
