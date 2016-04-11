@@ -26,6 +26,9 @@
     <label for="realName">Nombre:
         <g:textField name="realName" value="${user?.realName}"></g:textField>
     </label>
+    <label for="age">Edad:
+    <g:textField name="age" value="${user?.age}"></g:textField>
+    </label>
     <label for="email">Correo electrónico:
         <g:textField name="email" value="${user?.email}"></g:textField>
     </label>
