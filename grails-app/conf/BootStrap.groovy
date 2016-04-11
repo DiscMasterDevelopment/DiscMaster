@@ -14,7 +14,9 @@ import groovy.time.TimeCategory
 class BootStrap {
 
     def init = { servletContext ->
-        if(Environment.current == Environment.DEVELOPMENT) {
+        //if(Environment.current == Environment.DEVELOPMENT) {
+        def udb = User.findByName("john")
+        if(!udb) { // trying to detect if john user already exists or not. TODO: change this ad-hoc solution for something more robust like http://www.grails.org/plugin/database-migration
             // Defining Products' contents
             def products = [
                 [

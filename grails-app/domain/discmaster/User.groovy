@@ -1,6 +1,12 @@
 package discmaster
 
 class User {
+    // this is mandatory for postgres, "user" is a reserved keyword in postgres
+    // look at: https://orkus.wordpress.com/2013/03/06/error-postresql-and-spring-secure-core/
+    static mapping = {
+        table 'theuser'
+        password column: '`password`'
+    }
 
     String name
     String phone
