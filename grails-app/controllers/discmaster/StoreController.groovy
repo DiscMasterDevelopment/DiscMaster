@@ -34,4 +34,9 @@ class StoreController {
             randomItems:   randomItems,
         ]
     }
+
+    def 'search-products'() {
+        def products = Product.list(readOnly: true)
+        [products: products]
+    }
 }

@@ -15,13 +15,15 @@
             <div class="top-bar">
                 <div class="top-bar-left">
                     <ul class="menu">
-                        <li><g:link uri="/" title="Site's page">DiscMaster</g:link></li>
+                        <%-- <li><g:link uri="/" title="Site's page">DiscMaster</g:link></li> --%>
 
-                        <li class="has-form"> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
-                            <div class="row collapse"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
-                                <div class="small-9 columns"><input placeholder="Find Stuff" type="text"></div>
-                                <div class="small-3 columns"><a href="#" class="button expand">Search</a></div>
-                            </div>
+                        <li> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
+                            <form class="has-form">
+                                <div class="row collapse"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
+                                    <div class="small-9 columns"><input placeholder="Find Stuff" type="text"></div>
+                                    <div class="small-3 columns"><a href="#" class="button expand">Search</a></div>
+                                </div>
+                            </form>
                         </li>
                     </ul>
                 </div>
@@ -58,10 +60,10 @@
             <div class="row">
                 <div class="medium-4 columns">
                     <h1 class="header-font">DiscMaster</h1>
-                    <!--                    <img src="http://placehold.it/450x183&text=DiscMaster" alt="company logo">-->
+                    <%--                    <img src="http://placehold.it/450x183&text=DiscMaster" alt="company logo"> --%>
                 </div>
                 <div class="medium-7 columns">
-                    <!--                    <img src="http://placehold.it/900x175&text=Responsive Ads - ZURB Playground/333" alt="advertisement for deep fried Twinkies">-->
+                    <%--                    <img src="http://placehold.it/900x175&text=Responsive Ads - ZURB Playground/333" alt="advertisement for deep fried Twinkies"> --%>
                 </div>
             </div>
 
@@ -72,7 +74,7 @@
             </div>
             <div class="top-bar" id="main-menu">
                 <ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
-                    <li><a class="botonMenu" href="#">Home</a></li>
+                    <li><g:link controller="store" action="index" class="botonMenu" title="Home">Home</g:link></li>
                     <li><a class="botonMenu" href="#">Bandas</a></li>
                     <li><g:link controller="store" action="catalog" class="botonMenu" title="Catálogo">Catálogo</g:link></li>
                     <li><a class="botonMenu" href="#">Contacto</a></li>
