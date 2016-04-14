@@ -18,12 +18,10 @@
                         <%-- <li><g:link uri="/" title="Site's page">DiscMaster</g:link></li> --%>
 
                         <li> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
-                            <form class="has-form">
-                                <div class="row collapse"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
-                                    <div class="small-9 columns"><input placeholder="Find Stuff" type="text"></div>
-                                    <div class="small-3 columns"><a href="#" class="button expand">Search</a></div>
-                                </div>
-                            </form>
+                            <g:form controller="store" action="search-products" class="has-form row large-collapse small-collapse" method="GET"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
+                                <div class="large-8 columns"><g:textField name="to-search" placeholder="Busca el 'merchandising'"></g:textField></div>
+                                <div class="large-4 columns"><g:submitButton class="button expand" name="buscar" value="Buscar"></g:submitButton></div>
+                            </g:form>
                         </li>
                     </ul>
                 </div>
@@ -40,9 +38,9 @@
                         <g:else>
                             <li>
                                 <g:form controller="user" action="login" class="has-form rows large-collapse small-collapse" method="POST">
-                                    <div class="large-5 columns"><g:textField name="name" placeholder="user"></g:textField></div>
-                                    <div class="large-5 columns"><g:passwordField name="password" placeholder="password"></g:passwordField></div>
-                                    <div class="large-2 columns"><g:submitButton class="alert button expand" name="login" value="Login"></g:submitButton></div>
+                                    <div class="large-5 columns"><g:textField name="name" placeholder="usuario"></g:textField></div>
+                                    <div class="large-5 columns"><g:passwordField name="password" placeholder="contraseña"></g:passwordField></div>
+                                    <div class="large-2 columns"><g:submitButton class="alert button expand" name="login" value="Loguearse"></g:submitButton></div>
                                 </g:form>
                             </li>
                             <li><g:link action="register" controller="user" title="Sign In">Registrarse</g:link></li>
