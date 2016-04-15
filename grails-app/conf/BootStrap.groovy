@@ -1,5 +1,6 @@
 import discmaster.CarList
 import discmaster.Image
+import discmaster.Tag
 import discmaster.User
 import discmaster.Product
 import discmaster.ProductQuantity
@@ -131,6 +132,18 @@ class BootStrap {
             )
 
             admin.save(flush: true)
+
+            def t1 = new Tag(tag: "Comun")
+            def t2 = new Tag(tag: "Poco Comun")
+            def t3 = new Tag(tag: "Raro")
+            def t4 = new Tag(tag: "Epico")
+            def t5 = new Tag(tag: "Legendario")
+
+            t1.save(flush:true)
+            t2.save(flush:true)
+            t3.save(flush:true)
+            t4.save(flush:true)
+            t5.save(flush:true)
         }
     }
     def destroy = {
