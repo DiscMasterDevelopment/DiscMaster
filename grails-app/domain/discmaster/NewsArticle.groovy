@@ -7,9 +7,8 @@ class NewsArticle {
     Date date
     String content
 
-    static hasMany = [news: NewsArticle]
-
     static constraints = {
-        title nullable: false
+        title nullable: false, maxSize: 80
+        shortDescription maxSize: 300
     }
 }

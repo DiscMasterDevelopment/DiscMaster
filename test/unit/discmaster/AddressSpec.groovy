@@ -43,8 +43,10 @@ class AddressSpec extends Specification {
 
     @Unroll
     void "Creating (invalid) addresses without a field"() {
-        expect: "failure on validation"
+        given: "an Address object which doesn't have all the required fields"
         def address = new Address( TestHelpers.removeAField(fields, fieldToRemove) )
+
+        expect: "failure on validation"
         !address.validate()
 
         where: "each field to be removed is passed one at the time"

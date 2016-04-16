@@ -13,8 +13,7 @@ class DiscmasterTagLib {
         Product p = attr.product
         String defaultImg
 
-        if (p.description?.image) {
-        //    // Really ugly hack to create the src attribute for the image :S. It would be better if it was possible to create the src attribute from a controller, action and id attributes as with g:link
+        if (p?.description?.image) {
             defaultImg = resource(dir: "images", file: "get/${p.description.image.id}")
         } else {
             defaultImg = resource(dir: "images", file: "sin_imagen.png")

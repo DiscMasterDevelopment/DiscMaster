@@ -3,10 +3,10 @@ package discmaster
 class Review {
 
     float rating
-    Description description
+    String description
 
-    static belongsTo = [artist: Artist]
+    static belongsTo = [user: User]
     static constraints = {
-
+        description minSize: 80
     }
 }

@@ -40,8 +40,10 @@ class AdministratorSpec extends Specification {
 
     @Unroll
     void "Creating (invalid) Admins without a field"() {
-        expect: "failure on validation"
+        given: "an Administrator object which doesn't have all the required fields"
         def admin = new Administrator( TestHelpers.removeAField(fields, fieldToRemove) )
+
+        expect: "failure on validation"
         !admin.validate()
 
         where: "each field to be removed is passed one at the time"
