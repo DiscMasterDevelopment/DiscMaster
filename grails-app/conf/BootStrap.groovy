@@ -131,19 +131,20 @@ class BootStrap {
                 password: "holiwish"
             )
 
-            admin.save(flush: true)
+            admin.save()
 
-            def t1 = new Tag(tag: "Comun")
-            def t2 = new Tag(tag: "Poco Comun")
+            def t1 = new Tag(tag: "Común")
+            def t2 = new Tag(tag: "Poco Común")
             def t3 = new Tag(tag: "Raro")
-            def t4 = new Tag(tag: "Epico")
+            def t4 = new Tag(tag: "Épico")
             def t5 = new Tag(tag: "Legendario")
 
-            t1.save(flush:true)
-            t2.save(flush:true)
-            t3.save(flush:true)
-            t4.save(flush:true)
+            t1.save()
+            t2.save()
+            t3.save()
+            t4.save()
             t5.save(flush:true)
+            // NOTE: Flush only once, only in the last save
         }
     }
     def destroy = {
