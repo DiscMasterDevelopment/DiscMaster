@@ -15,13 +15,13 @@
             <div class="top-bar">
                 <div class="top-bar-left">
                     <ul class="menu">
-                        <li><g:link uri="/" title="Site's page">DiscMaster</g:link></li>
+                        <%-- <li><g:link uri="/" title="Site's page">DiscMaster</g:link></li> --%>
 
-                        <li class="has-form"> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
-                            <div class="row collapse"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
-                                <div class="small-9 columns"><input placeholder="Find Stuff" type="text"></div>
-                                <div class="small-3 columns"><a href="#" class="button expand">Search</a></div>
-                            </div>
+                        <li> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
+                            <g:form controller="store" action="search-products" class="has-form row large-collapse small-collapse" method="GET"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
+                                <div class="large-8 columns"><g:textField name="to-search" placeholder="Busca el 'merchandising'"></g:textField></div>
+                                <div class="large-4 columns"><g:submitButton class="button expand" name="buscar" value="Buscar"></g:submitButton></div>
+                            </g:form>
                         </li>
                     </ul>
                 </div>
@@ -38,16 +38,18 @@
                         <g:else>
                             <li>
                                 <g:form controller="user" action="login" class="has-form rows large-collapse small-collapse" method="POST">
-                                    <div class="large-5 columns"><g:textField name="name" placeholder="user"></g:textField></div>
-                                    <div class="large-5 columns"><g:passwordField name="password" placeholder="password"></g:passwordField></div>
-                                    <div class="large-2 columns"><g:submitButton class="alert button expand" name="login" value="Login"></g:submitButton></div>
+                                    <div class="large-5 columns"><g:textField name="name" placeholder="usuario"></g:textField></div>
+                                    <div class="large-5 columns"><g:passwordField name="password" placeholder="contraseña"></g:passwordField></div>
+                                    <div class="large-2 columns"><g:submitButton class="alert button expand" name="login" value="Loguearse"></g:submitButton></div>
                                 </g:form>
                             </li>
                             <li><g:link action="register" controller="user" title="Sign In">Registrarse</g:link></li>
                         </g:else>
                         <li><a href="#">Perfil</a></li>
-                        <li><g:link controller="CarList" action="aCarList" title="Carrito de compras">
-                            <a href="/DiscMaster/carList/aCarList"><img src="${resource(dir: 'images', file: 'carrito-de-compras.png')}" alt="kart" style="width:30px;height:30px;"></a></g:link>
+                        <li>
+                            <g:link controller="CarList" action="aCarList" title="Carrito de compras">
+                                <img src="${resource(dir: 'images', file: 'carrito-de-compras.png')}" alt="kart" style="width:30px;height:30px;">
+                            </g:link>
                         </li>
                     </ul>
                 </div>
@@ -56,10 +58,10 @@
             <div class="row">
                 <div class="medium-4 columns">
                     <h1 class="header-font">DiscMaster</h1>
-                    <!--                    <img src="http://placehold.it/450x183&text=DiscMaster" alt="company logo">-->
+                    <%--                    <img src="http://placehold.it/450x183&text=DiscMaster" alt="company logo"> --%>
                 </div>
                 <div class="medium-7 columns">
-                    <!--                    <img src="http://placehold.it/900x175&text=Responsive Ads - ZURB Playground/333" alt="advertisement for deep fried Twinkies">-->
+                    <%--                    <img src="http://placehold.it/900x175&text=Responsive Ads - ZURB Playground/333" alt="advertisement for deep fried Twinkies"> --%>
                 </div>
             </div>
 
@@ -70,7 +72,7 @@
             </div>
             <div class="top-bar" id="main-menu">
                 <ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
-                    <li><a class="botonMenu" href="#">Home</a></li>
+                    <li><g:link controller="store" action="index" class="botonMenu" title="Home">Home</g:link></li>
                     <li><a class="botonMenu" href="#">Bandas</a></li>
                     <li><g:link controller="store" action="catalog" class="botonMenu" title="Catálogo">Catálogo</g:link></li>
                     <li><a class="botonMenu" href="#">Contacto</a></li>

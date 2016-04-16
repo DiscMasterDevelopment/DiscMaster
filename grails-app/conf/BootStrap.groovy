@@ -1,5 +1,6 @@
 import discmaster.CarList
 import discmaster.Image
+import discmaster.Tag
 import discmaster.User
 import discmaster.Product
 import discmaster.ProductQuantity
@@ -14,7 +15,9 @@ import groovy.time.TimeCategory
 class BootStrap {
 
     def init = { servletContext ->
-        if(Environment.current == Environment.DEVELOPMENT) {
+        //if(Environment.current == Environment.DEVELOPMENT) {
+        def udb = User.findByName("john")
+        if(!udb) { // trying to detect if john user already exists or not. TODO: change this ad-hoc solution for something more robust like http://www.grails.org/plugin/database-migration
             // Defining Products' contents
             def products = [
                 [
@@ -129,6 +132,18 @@ class BootStrap {
             )
 
             admin.save(flush: true)
+
+            def t1 = new Tag(tag: "Comun")
+            def t2 = new Tag(tag: "Poco Comun")
+            def t3 = new Tag(tag: "Raro")
+            def t4 = new Tag(tag: "Epico")
+            def t5 = new Tag(tag: "Legendario")
+
+            t1.save(flush:true)
+            t2.save(flush:true)
+            t3.save(flush:true)
+            t4.save(flush:true)
+            t5.save(flush:true)
         }
     }
     def destroy = {
