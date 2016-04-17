@@ -16,7 +16,7 @@ class AddressSpec extends Specification {
         lastTimeUsed: new Date(),
         contactPhone: "34212345678",
         contactName: "John Smithiests",
-        postalCode: 43523
+        postalCode: 53523
     ]
 
     def setup() {
