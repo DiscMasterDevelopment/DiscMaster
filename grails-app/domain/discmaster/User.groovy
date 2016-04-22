@@ -18,8 +18,9 @@ class User {
     WishList wishList
 
     static hasMany = [
-        reviews: Review,
-        order:   PurchaseOrder
+            reviews: Review,
+            order:   PurchaseOrder,
+            address: Address
     ]
 
     static constraints = {

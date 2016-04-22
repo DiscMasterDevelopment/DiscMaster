@@ -15,6 +15,19 @@ class TagSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "Creating a Tag"() {
+        given: "creating Tag from valid parameters"
+        def tag = new Tag(tag: 'awesomeness')
+
+        expect: "validating object without a problem without any problem"
+        tag.validate()
+    }
+
+    void "Creating an (invalid) empty Tag"() {
+        given: "creating Tag with no parameters"
+        def tag = new Tag()
+
+        expect: "a failure while saving"
+        !tag.validate()
     }
 }

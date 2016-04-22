@@ -30,15 +30,9 @@
         </div>
         --%>
 
+        <hr>
         <div class="off-canvas-content" data-off-canvas-content>
-            <div class="title-bar hide-for-large">
-                <div class="title-bar-left">
-                    <button class="menu-icon" type="button" data-open="my-info"></button>
-                    <span class="title-bar-title">Carrito de compra</span>
-                </div>
-            </div>
             <div class="row small-up-2 medium-up-3 large-up-4">
-
                 <g:each in="${carList.productList}" var="productQuantity">
                     <g:set var="product" value="${productQuantity.product}" />
                     <div class="column">
@@ -48,7 +42,6 @@
                     </div>
                 </g:each>
             </div>
-            <hr>
         </div>
     </div>
 </div>

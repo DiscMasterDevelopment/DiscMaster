@@ -1,11 +1,9 @@
 package discmaster
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+//@Transactional(readOnly = true) // getting problems with postgresql TODO: search how to use this library
 class UserController {
 
     static allowedMethods = [login: "POST", create: "POST", save: "POST", update: "PUT", delete: "DELETE"]
@@ -46,8 +44,7 @@ class UserController {
         def u = new User()
         def c = new CarList(user: u)
         def w = new WishList(user: u)
-        u.properties['name', 'phone', 'realName', 'email', 'password'] = params
-        u.age = 18 // TODO: modify view so this value is passed from there
+        u.properties['name', 'phone', 'realName', 'email', 'password', 'age'] = params
         u.car = c
         u.wishList = w
         if(u.password != params.confirm) {

@@ -1,0 +1,22 @@
+language: groovy
+
+jdk:
+  - oraclejdk7
+
+env:
+  - GRAILS_VERSION=2.5.2
+
+branches:
+  only:
+    - develop
+
+before_install:
+  - rm -rf ~/.sdkman
+  - curl -s http://get.sdkman.io > ~/sdkman_install.sh
+  - chmod +x ~/sdkman_install.sh
+  - ~/sdkman_install.sh
+  - sed -i 's/auto_answer=false/auto_answer=true/' ~/.sdkman/etc/config
+  - source ~/.sdkman/bin/sdkman-init.sh
+  - sdk install grails $GRAILS_VERSION || true
+
+script: grails clean && grails test-app --non-interactive --stacktrace

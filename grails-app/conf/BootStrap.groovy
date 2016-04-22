@@ -1,5 +1,6 @@
 import discmaster.CarList
 import discmaster.Image
+import discmaster.Tag
 import discmaster.User
 import discmaster.Product
 import discmaster.ProductQuantity
@@ -130,7 +131,20 @@ class BootStrap {
                 password: "holiwish"
             )
 
-            admin.save(flush: true)
+            admin.save()
+
+            def t1 = new Tag(tag: "Común")
+            def t2 = new Tag(tag: "Poco Común")
+            def t3 = new Tag(tag: "Raro")
+            def t4 = new Tag(tag: "Épico")
+            def t5 = new Tag(tag: "Legendario")
+
+            t1.save()
+            t2.save()
+            t3.save()
+            t4.save()
+            t5.save(flush:true)
+            // NOTE: Flush only once, only in the last save
         }
     }
     def destroy = {
