@@ -39,7 +39,7 @@ class UserController {
     }
 
     def register() {}
-
+    def profile() {}
     def create() {
         def u = new User()
         def c = new CarList(user: u)
