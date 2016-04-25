@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
 	    <link rel="stylesheet" type="text/css" href="${resource(dir: 'stylesheets', file: 'stylefont.css')}">
-        <asset:stylesheet src="foundation/foundation.css"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'stylesheets', file: 'foundation.css')}">
 		<g:layoutHead/>
 	</head>
 	<body>
@@ -20,7 +20,7 @@
                         <li> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
                             <g:form controller="store" action="search-products" class="has-form row large-collapse small-collapse" method="GET"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
                                 <div class="large-8 columns"><g:textField name="to-search" placeholder="Busca el 'merchandising'"></g:textField></div>
-                                <div class="large-4 columns"><g:submitButton class="button expand" name="buscar" value="Buscar"></g:submitButton></div>
+                                <div class="large-4 columns"><g:submitButton class="button alert expand" name="buscar" value="Buscar"></g:submitButton></div>
                             </g:form>
                         </li>
                     </ul>
