@@ -1,16 +1,11 @@
 
 package discmaster
-
-
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
-
 //@Transactional(readOnly = true)
 class CarListController {
 
     //static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def aCarList(){
+    def show(){
         if(session.user) {
             // this is necessary because the hibernate session close itself really quickly, so we need to make a query again
             def u = User.get(session.user.id) // TODO: use sql join to improve querying times
@@ -37,21 +32,25 @@ class CarListController {
 
     def deleteProduct(CarList carListInstance) {
 
-        //def c = new  CarList(user: carListInstance)
-        if (carListInstance == null) {
-            render "go fuck yourself"
-            return
+        if(session.user) {
+            CarList c = CarList.get(carListInstance.id)
+            ProductQuantity pq = ProductQuantity.get(params.idToDelete)
+            c.removeFromProductList(pq)
+            pq.delete()
+            pq.save()
+            c.save()
+
+            redirect action: "show"
+        } else {
+            redirect controller: "user", action: "register"
         }
 
-        carListInstance.productList.remove(params)
-        //carListInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'CarList.label', default: 'CarList'), carListInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
-        }
+        //request.withFormat {
+        //    form multipartForm {
+        //        flash.message = message(code: 'default.deleted.message', args: [message(code: 'CarList.label', default: 'CarList'), carListInstance.id])
+        //        redirect action:"index", method:"GET"
+        //    }
+        //    '*'{ render status: NO_CONTENT }
+        //}
     }
 }
