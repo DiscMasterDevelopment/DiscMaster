@@ -4236,7 +4236,7 @@ body {
   display: hidden;
   width: 40px;
   height: 40px;
-  background: url(../images/menu_icon.png) center;
+  background: url(../images/search_icon.png) center;
 }
 
 #menu-icon{
@@ -5291,6 +5291,16 @@ table.hover tr:nth-of-type(even):hover {
   }
   nav:hover ul{
     display: block;
+  }
+
+  .header-font {
+    font-size: 500%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header-font {
+    font-size: 250%;
   }
 }
 
