@@ -39,6 +39,7 @@
                         <discmaster:productImg product="${product}" class="thumbnail"></discmaster:productImg>
                         <h5>${product.name}</h5>
                         <p><discmaster:productPrice product="${product}"/></p>
+                        <g:link action="deleteProduct" id="${carList.id}" params="${[idToDelete: productQuantity.id]}" class="button expanded alert" title="Eliminar del carrito">Eliminar del carrito</g:link>
                     </div>
                 </g:each>
             </div>
