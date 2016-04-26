@@ -3,6 +3,7 @@ package discmaster
 class Description {
 
     String description
+    String shortDescription
     String videoClip
     String audioClip
     Image image
@@ -15,6 +16,7 @@ class Description {
 
     static constraints = {
         description nullable: false
+        shortDescription nullable: false
         videoClip   nullable: true
         audioClip   nullable: true
         image       nullable: true

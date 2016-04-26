@@ -23,6 +23,7 @@ target/
 .sass-cache/
 .sass-work/
 .jruby-container/
+classes/
 
 # an special hidden file which nobody cares about
 .directory

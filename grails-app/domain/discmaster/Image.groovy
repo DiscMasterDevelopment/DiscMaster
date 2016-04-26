@@ -5,7 +5,7 @@ class Image {
     String type
 
     static constraints = {
-        image nullable: false, maxSize: 31457280 // 3MiB
-        type  nullable: false
+        image nullable: false, maxSize: 3145728 // 3MiB
+        type  inList: ['image/jpg', 'image/jpeg', 'image/png', 'image/gif']
     }
 }

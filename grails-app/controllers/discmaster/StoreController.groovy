@@ -34,4 +34,13 @@ class StoreController {
             randomItems:   randomItems,
         ]
     }
+
+    def 'search-products'() {
+        String toSearch = "%${params["to-search"]}%"
+        // TODO: It's searching only by product name, change it so it searches also in the description
+        def products = Product.withCriteria {
+            like('name', toSearch)
+        }
+        [products: products]
+    }
 }

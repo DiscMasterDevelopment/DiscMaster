@@ -1,5 +1,6 @@
 import discmaster.CarList
 import discmaster.Image
+import discmaster.Tag
 import discmaster.User
 import discmaster.Product
 import discmaster.ProductQuantity
@@ -17,65 +18,101 @@ class BootStrap {
         //if(Environment.current == Environment.DEVELOPMENT) {
         def udb = User.findByName("john")
         if(!udb) { // trying to detect if john user already exists or not. TODO: change this ad-hoc solution for something more robust like http://www.grails.org/plugin/database-migration
+
+            //Defining tags
+            def t1 = new Tag(tag: "Común")
+            def t2 = new Tag(tag: "Poco Común")
+            def t3 = new Tag(tag: "Raro")
+            def t4 = new Tag(tag: "Épico")
+            def t5 = new Tag(tag: "Legendario")
+
+            t1.save()
+            t2.save()
+            t3.save()
+            t4.save()
+            t5.save(flush:true)
+            // NOTE: Flush only once, only in the last save
+
             // Defining Products' contents
             def products = [
                 [
-                    description: "The best description",
+                    shortDescription: "Rage llega desde Alemania....",
+                    description: "Formados hace 31 años en la ciudad alemana Herne, RAGE se bautizaron inicialmente como AVENGER, nombre con el que únicamente publicarían un LP, Prayers of Steel, además del EP Depraved to Black, y que no les convencería del todo.",
                     image: "grails-app/developmentData/ragethedevilstrikes.jpg",
                     imageType: 'image/jpeg',
+                    videoid: "LzbMjGOjleM",
                     product: [
-                        name: "Disc 1",
+                        name: "Rage - The Devil Strikes Again",
                         price: 400,
                         discount: 0,
                         totalInStorage: 21,
                         limitPerUser: 20,
-                        added: new Date() // getting the current time
+                        added: new Date(), // getting the current time
+                        tag: [t3, t1,t5]
                     ]
                 ],
                 [
-                    description: "The 2nd best description",
+                    shortDescription: "Thunderstone regresa.",
+                    description: "Thunderstone regresa tras un hiatus de casi 7 años tras su produccion Dirte Metal en 2009. Esta vez de la mano de su nuevo album Apocalyse Again, una pieza de power metal sin igual que encantra a los mas exigentes del genero",
                     image: "grails-app/developmentData/thunderstone-apocalypse-again-portada-400x400.jpg",
+                    videoid: "_UXprCAsqTU",
                     imageType: 'image/jpeg',
                     product: [
-                        name: "Disc 42",
+                        name: "Thunderstone - Apocalypse Again",
                         price: 350,
                         discount: 0.3,
                         totalInStorage: 21,
                         limitPerUser: 20,
-                        added: use(TimeCategory) { new Date() + 1.second } // getting the current time and adding one second to it
+                        added: use(TimeCategory) { new Date() + 1.second }, // getting the current time and adding one second to it
+                        tag: t5
                     ]
                 ],
                 [
-                    description: "A good description",
+                    shortDescription: "Preparen sus hachas señores!!!",
+                    description: "La leyenda del melodeath regresa con Jomsviking, una produccion epica de gran calidad y potencia.",
+                    image: "grails-app/developmentData/AmonAmarthJomsviking.jpg",
+                    imageType: 'image/jpeg',
+                    videoid: "h6-krHfdmGg",
                     product: [
-                        name: "Disc 13",
+                        name: "Amon Amarth - Jomsviking",
                         price: 200,
                         discount: 0,
                         totalInStorage: 0,
                         limitPerUser: 20,
-                        added: use(TimeCategory) { new Date() + 2.second }
+                        added: use(TimeCategory) { new Date() + 2.second },
+                        tag: t1
                     ]
                 ],
                 [
-                    description: "Description of a product",
+                    shortDescription: "La hora triste....",
+                    description: "Katatonia, banda de Depressive Metal de Suecia, se presenta tras 20 años de carrera continuada con The Fall of Hearts, una propuesta oscura que pondra a prueba tus sentidos.",
+                    image: "grails-app/developmentData/katatoniafallcdbigger.jpg",
+                    imageType: 'image/jpeg',
+                    videoid: "bKjQduLxALM",
                     product: [
-                        name: "XXI Disc",
+                        name: "Katatonia - The Fall of Hearts",
                         price: 10,
                         discount: 0.3,
                         totalInStorage: 20,
                         limitPerUser: 20,
-                        added: use(TimeCategory) { new Date() + 3.second }
+                        added: use(TimeCategory) { new Date() + 3.second },
+                        tag: t2
                     ]
                 ],
                 [
-                    description: "Üsing this things üäë",
+                    shortDescription: "Pwwnn in ya face!!!",
+                    description: "Sylosis, la revelacion del Thrash Metal ingles, ataca de nuevo con este contundente sencillo que pondra en extasis a cualquiera que se predisponga a disfrutar de este poderoso material, .... si se atrave.",
+                    image: "grails-app/developmentData/DMOTSF.jpg",
+                    imageType: 'image/jpeg',
+                    videoid: "SshPjukHAXM",
                     product: [
-                        name: "Disc pi^2",
+                        name: "Sylosis - Different Masks on the Same Face",
                         price: 27.2,
                         discount: 0.2,
                         totalInStorage: 20,
                         limitPerUser: 20,
-                        added: use(TimeCategory) { new Date() + 4.second }
+                        added: use(TimeCategory) { new Date() + 4.second },
+                        tag: [t3, t2]
                     ]
                 ],
             ]
@@ -89,10 +126,10 @@ class BootStrap {
                     Image i = new Image(image: imageFile.bytes, type: pnd.imageType)
                     i.save()
 
-                    d = new Description(description: pnd["description"], image: i)
+                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], videoClip: pnd["videoid"],  image: i)
                     d.save()
                 } else {
-                    d = new Description(description: pnd["description"])
+                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], videoClip: pnd["videoid"])
                     d.save()
                 }
                 def p = new Product(pnd["product"] + [description: d])
@@ -130,7 +167,8 @@ class BootStrap {
                 password: "holiwish"
             )
 
-            admin.save(flush: true)
+            admin.save()
+
         }
     }
     def destroy = {

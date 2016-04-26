@@ -1,15 +1,11 @@
+
 package discmaster
-
-
-import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
-
 //@Transactional(readOnly = true)
 class CarListController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    //static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def aCarList(){
+    def show(){
         if(session.user) {
             // this is necessary because the hibernate session close itself really quickly, so we need to make a query again
             def u = User.get(session.user.id) // TODO: use sql join to improve querying times
@@ -19,95 +15,61 @@ class CarListController {
         }
     }
 
-    def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond CarList.list(params), model: [carListInstanceCount: CarList.count()]
-    }
+/*    def delete()
+    {
+        if(session.user)
+        {
+            try {
 
-    def show(CarList carListInstance) {
-        respond carListInstance
-    }
-
-    def create() {
-        respond new CarList(params)
-    }
-
-    @Transactional
-    def save(CarList carListInstance) {
-        if (carListInstance == null) {
-            notFound()
-            return
-        }
-
-        if (carListInstance.hasErrors()) {
-            respond carListInstance.errors, view: 'create'
-            return
-        }
-
-        carListInstance.save flush: true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'carList.label', default: 'CarList'), carListInstance.id])
-                redirect carListInstance
+                def u = User.get(session.user.id)
+                u.car.productList.remove(session)
             }
-            '*' { respond carListInstance, [status: CREATED] }
-        }
-    }
-
-    def edit(CarList carListInstance) {
-        respond carListInstance
-    }
-
-    @Transactional
-    def update(CarList carListInstance) {
-        if (carListInstance == null) {
-            notFound()
-            return
-        }
-
-        if (carListInstance.hasErrors()) {
-            respond carListInstance.errors, view: 'edit'
-            return
-        }
-
-        carListInstance.save flush: true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'CarList.label', default: 'CarList'), carListInstance.id])
-                redirect carListInstance
+            catch (Exception e){
+                render "go fuck yourself"
             }
-            '*' { respond carListInstance, [status: OK] }
         }
+    }*/
+
+    def deleteProduct(CarList carListInstance) {
+
+        if(session.user) {
+            CarList c = CarList.get(carListInstance.id)
+            ProductQuantity pq = ProductQuantity.get(params.idToDelete)
+            c.removeFromProductList(pq)
+            pq.delete()
+            c.save(flush: true)
+
+            redirect action: "show"
+        } else {
+            redirect controller: "user", action: "register"
+        }
+
+        //request.withFormat {
+        //    form multipartForm {
+        //        flash.message = message(code: 'default.deleted.message', args: [message(code: 'CarList.label', default: 'CarList'), carListInstance.id])
+        //        redirect action:"index", method:"GET"
+        //    }
+        //    '*'{ render status: NO_CONTENT }
+        //}
     }
 
-    @Transactional
-    def delete(CarList carListInstance) {
+    def addProduct(Product p) {
+        if(session.user) {
+            def carList = User.get(session.user.id).car
 
-        if (carListInstance == null) {
-            notFound()
-            return
-        }
+            if(! carList.productList.find { it.product == p } ) {
+                int n = params.quantity ? params.quantity.toInteger() : 1
+                def pq = new ProductQuantity(product: p, quantity: n, unitaryPrice: p.price, discount: p.discount)
 
-        carListInstance.delete flush: true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'CarList.label', default: 'CarList'), carListInstance.id])
-                redirect action: "index", method: "GET"
+                carList.addToProductList(pq)
+                pq.save()
+                carList.save(flush: true)
             }
-            '*' { render status: NO_CONTENT }
-        }
-    }
 
-    protected void notFound() {
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'carList.label', default: 'CarList'), params.id])
-                redirect action: "index", method: "GET"
-            }
-            '*' { render status: NOT_FOUND }
+            redirect action: "show"
+            
+        } else {
+            redirect controller: "user", action: "register"
         }
     }
 }
