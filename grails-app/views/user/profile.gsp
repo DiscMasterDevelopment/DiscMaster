@@ -7,16 +7,50 @@
     <title>Perfil</title>
 </head>
 <body>
-<h1>Bienvenido(a)</h1>
+<h1>Bienvenido(a) ${session?.user.name}</h1>
 <g:hasErrors bean="${User}">
     <div class="errors">
         <g:renderErrors bean="${user}"></g:renderErrors>
     </div>
 </g:hasErrors>
-<g:submitButton class="button" name="create" value="Informacion  Personal" action="profile"></g:submitButton> 
-<g:submitButton class="button" name="create" value="Cambiar Contraseña"></g:submitButton>
- 
-<g:submitButton class="button" name="create" value="Mis compras"></g:submitButton> 
+
+<div class="row small-up-1 large-up-2">
+  <div class="medium-1 columns">
+    <h2>Tus datos personales</h2>
+
+    <div class="row small-up-1 large-up-3">
+        <div class="small-1 medium-1 columns"> <b>Nombre:</b> </div>
+        <div class="small-1 medium-2 columns"> ${session.user?.realName} </div>
+    </div>
+    
+    <div class="row small-up-1 large-up-3">
+        <div class="small-1 medium-1 columns"> <b>Teléfono:</b> </div>
+        <div class="small-1 medium-2 columns"> ${session.user?.phone} </div>
+    </div>
+    
+    <div class="row small-up-1 large-up-3">
+        <div class="small-1 medium-1 columns"> <b>E-mail:</b> </div>
+        <div class="small-1 medium-2 columns"> ${session.user?.email} </div>
+    </div>
+    
+    <div class="row small-up-1 large-up-3">
+        <div class="small-1 medium-1 columns"> <b>Age:</b> </div>
+        <div class="small-1 medium-2 columns"> ${session.user?.age} </div>
+    </div>
+    
+    <a class="button" href="#">Modificar cuenta</a>
+    <a class="button" href="#">Borrar cuenta</a>
+  </div>
+  
+  <div class="medium-1 columns">
+    <a class="button alert" href="#">Informacion  Personal</a> 
+    <a class="button" href="#">Cambiar Contraseña</a>
+    <a class="button" href="#">Mis compras</a> 
+  </div>
+</div>
+
+<%--
+
 <g:form action="create">
     
   
@@ -34,9 +68,8 @@
     <label for="email">Correo electrónico:
         <g:textField name="email" value="${user?.email}"></g:textField>
     </label>
-    <g:submitButton class="button" name="create" value="Guardar"></g:submitButton>
-    <g:submitButton class="button" name="create" value="Borrar cuenta"></g:submitButton>
 
 </g:form>
+--%>
 </body>
 </html>
