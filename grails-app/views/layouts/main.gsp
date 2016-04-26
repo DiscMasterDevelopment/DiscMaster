@@ -7,20 +7,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" href="${assetPath(src: 'favicon.ico')}" type="image/x-icon">
 	    <link rel="stylesheet" type="text/css" href="${resource(dir: 'stylesheets', file: 'stylefont.css')}">
-        <asset:stylesheet src="foundation/foundation.css"/>
+        <link rel="stylesheet" type="text/css" href="${resource(dir: 'stylesheets', file: 'foundation.css')}">
 		<g:layoutHead/>
 	</head>
 	<body>
         <header>
-            <div class="top-bar">
+            <div class="principal-bar">
                 <div class="top-bar-left">
                     <ul class="menu">
                         <%-- <li><g:link uri="/" title="Site's page">DiscMaster</g:link></li> --%>
 
                         <li> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
                             <g:form controller="store" action="search-products" class="has-form row large-collapse small-collapse" method="GET"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
-                                <div class="large-8 columns"><g:textField name="to-search" placeholder="Busca el 'merchandising'"></g:textField></div>
-                                <div class="large-4 columns"><g:submitButton class="button expand" name="buscar" value="Buscar"></g:submitButton></div>
+                                <div class="large-9 columns"><g:textField name="to-search" placeholder="Busca el 'merchandising'"></g:textField></div>
+                                <div class="large-3 columns"><g:submitButton class="button alert expand" name="buscar" value="Buscar"></g:submitButton></div>
                             </g:form>
                         </li>
                     </ul>
@@ -46,9 +46,9 @@
                             <li><g:link action="register" controller="user" title="Sign In">Registrarse</g:link></li>
                         </g:else>
                                           	 
-                         <li><g:link action="profile" controller="user" title="Profile">Perfil</g:link></li>
+                        <li><g:link action="profile" controller="user" title="Profile">Perfil</g:link></li>
                         
-<li>
+                        <li>
                             <g:link controller="CarList" action="aCarList" title="Carrito de compras">
                                 <img src="${resource(dir: 'images', file: 'carrito-de-compras.png')}" alt="kart" style="width:30px;height:30px;">
                             </g:link>
@@ -57,17 +57,12 @@
                 </div>
             </div>
             <br>
+            <br>
+            <br>
             <div class="row">
-                <div class="medium-4 columns">
-                    <h1 class="header-font">DiscMaster</h1>
-                    <%--                    <img src="http://placehold.it/450x183&text=DiscMaster" alt="company logo"> --%>
-                </div>
-                <div class="medium-7 columns">
-                    <%--                    <img src="http://placehold.it/900x175&text=Responsive Ads - ZURB Playground/333" alt="advertisement for deep fried Twinkies"> --%>
-                </div>
+                <h1 class="header-font">DiscMaster</h1>
             </div>
 
-            <br>
             <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium" style="background-color:red">
                 <button class="menu-icon" type="button" data-toggle></button>
                 <div class="title-bar-title">Menu</div>

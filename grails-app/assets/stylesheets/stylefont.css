@@ -6,6 +6,13 @@
 }
 
 @font-face{
+    font-family: OptimusPrinceps;
+    font-style: normal;
+    font-weight: normal;
+    src: url(../fonts/OptimusPrinceps.ttf);
+}
+
+@font-face{
     font-family: flamaespina2;
     font-style: normal;
     font-weight: normal;
@@ -14,9 +21,9 @@
 
 .header-font {
     text-align: center;
-    font-family: annapolis3d;
+    font-family: OptimusPrinceps;
     color: white; 
-    font-size: 800%;
+    font-size: 1000%;
 }
 
 h4.next_rel{
