@@ -22,8 +22,16 @@ class ProductController {
     def register(){}
 
     def create() {
-        def d = new Description(description: params.description, shortDescription: params.shortDescription)
-        d.save(failOnError: true)
+        Description d
+        if (params.videoClip) {
+            d = new Description(description: params.description, shortDescription: params.shortDescription, videoClip: params.videoClip)
+            d.save(failOnError: true)
+        }
+        else{
+            d = new Description(description: params.description, shortDescription: params.shortDescription)
+            d.save(failOnError: true)
+        }
+
         def p = new Product(name: params.name, price: params.price,totalInStorage: params.totalInStorage, discount: params.discount, limitPerUser: params.limitPerUser, added: new Date(), description: d, tag: params.tag)
         p.save(failOnError: true)
         redirect uri: "/"
