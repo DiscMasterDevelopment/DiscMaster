@@ -60,16 +60,9 @@
             <br>
             <br>
             <div class="row">
-                <div class="medium-4 columns">
-                    <h1 class="header-font">DiscMaster</h1>
-                    <%--                    <img src="http://placehold.it/450x183&text=DiscMaster" alt="company logo"> --%>
-                </div>
-                <div class="medium-7 columns">
-                    <%--                    <img src="http://placehold.it/900x175&text=Responsive Ads - ZURB Playground/333" alt="advertisement for deep fried Twinkies"> --%>
-                </div>
+                <h1 class="header-font">DiscMaster</h1>
             </div>
 
-            <br>
             <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium" style="background-color:red">
                 <button class="menu-icon" type="button" data-toggle></button>
                 <div class="title-bar-title">Menu</div>
