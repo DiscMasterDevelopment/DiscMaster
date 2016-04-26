@@ -38,9 +38,9 @@ class DiscmasterTagLib {
             String newPrice = formatNumber(number: p.price*(1-p.discount), format: priceFormat)
             String discount = formatNumber(number: p.discount, format: "%#0.##")
             out << """
-                <s>${price}</s>
+                <s style="float:left">${price} COP</s>
                 <span style="float:right">
-                    ${newPrice} - <b>${discount}</b>
+                    ${newPrice} COP - <b>${discount}</b>
                 </span>
                 """
         }

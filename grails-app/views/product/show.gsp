@@ -15,13 +15,9 @@
             <discmaster:productImg product="${productInstance}" class="thumbnail"/>
 		</div>
 		<div class="medium-1 columns" style="text-align: center">
-			<g:if test="${productInstance?.price}">
-				<div class="row">
-					<span id="price-label" class="property-label"><g:message code="product.price.label" default="COP " /></span>
-
-					<span class="property-value" aria-labelledby="price-label"><discmaster:productPrice product="${productInstance}"/></span>
-				</div>
-			</g:if>
+            <div>
+                <span class="property-value" aria-labelledby="price-label"><discmaster:productPrice product="${productInstance}"/></span>
+            </div>
 
 			<g:if test="${productInstance?.totalInStorage}">
 				<div class="row">
