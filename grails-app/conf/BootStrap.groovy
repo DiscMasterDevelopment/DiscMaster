@@ -18,6 +18,21 @@ class BootStrap {
         //if(Environment.current == Environment.DEVELOPMENT) {
         def udb = User.findByName("john")
         if(!udb) { // trying to detect if john user already exists or not. TODO: change this ad-hoc solution for something more robust like http://www.grails.org/plugin/database-migration
+
+            //Defining tags
+            def t1 = new Tag(tag: "Común")
+            def t2 = new Tag(tag: "Poco Común")
+            def t3 = new Tag(tag: "Raro")
+            def t4 = new Tag(tag: "Épico")
+            def t5 = new Tag(tag: "Legendario")
+
+            t1.save()
+            t2.save()
+            t3.save()
+            t4.save()
+            t5.save(flush:true)
+            // NOTE: Flush only once, only in the last save
+
             // Defining Products' contents
             def products = [
                 [
@@ -31,7 +46,8 @@ class BootStrap {
                         discount: 0,
                         totalInStorage: 21,
                         limitPerUser: 20,
-                        added: new Date() // getting the current time
+                        added: new Date(), // getting the current time
+                        tag: t5
                     ]
                 ],
                 [
@@ -45,7 +61,8 @@ class BootStrap {
                         discount: 0.3,
                         totalInStorage: 21,
                         limitPerUser: 20,
-                        added: use(TimeCategory) { new Date() + 1.second } // getting the current time and adding one second to it
+                        added: use(TimeCategory) { new Date() + 1.second }, // getting the current time and adding one second to it
+                        tag: t5
                     ]
                 ],
                 [
@@ -57,7 +74,8 @@ class BootStrap {
                         discount: 0,
                         totalInStorage: 0,
                         limitPerUser: 20,
-                        added: use(TimeCategory) { new Date() + 2.second }
+                        added: use(TimeCategory) { new Date() + 2.second },
+                        tag: t1
                     ]
                 ],
                 [
@@ -69,7 +87,8 @@ class BootStrap {
                         discount: 0.3,
                         totalInStorage: 20,
                         limitPerUser: 20,
-                        added: use(TimeCategory) { new Date() + 3.second }
+                        added: use(TimeCategory) { new Date() + 3.second },
+                        tag: t2
                     ]
                 ],
                 [
@@ -81,7 +100,8 @@ class BootStrap {
                         discount: 0.2,
                         totalInStorage: 20,
                         limitPerUser: 20,
-                        added: use(TimeCategory) { new Date() + 4.second }
+                        added: use(TimeCategory) { new Date() + 4.second },
+                        tag: t3
                     ]
                 ],
             ]
@@ -138,18 +158,6 @@ class BootStrap {
 
             admin.save()
 
-            def t1 = new Tag(tag: "Común")
-            def t2 = new Tag(tag: "Poco Común")
-            def t3 = new Tag(tag: "Raro")
-            def t4 = new Tag(tag: "Épico")
-            def t5 = new Tag(tag: "Legendario")
-
-            t1.save()
-            t2.save()
-            t3.save()
-            t4.save()
-            t5.save(flush:true)
-            // NOTE: Flush only once, only in the last save
         }
     }
     def destroy = {
