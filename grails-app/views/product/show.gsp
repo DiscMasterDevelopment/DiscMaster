@@ -15,6 +15,9 @@
             <discmaster:productImg product="${productInstance}" class="thumbnail" width="360px"/>
 		</div>
 		<div class="medium-1 columns" style="text-align: center">
+			<g:if test="${productInstance?.description?.videoClip}">
+				<iframe width="640" height="360" src="${"https://www.youtube.com/embed/"+ productInstance?.description?.videoClip}" frameborder="0" allowfullscreen></iframe>
+            </g:if>
             <div>
                 <span class="property-value" aria-labelledby="price-label"><discmaster:productPrice product="${productInstance}"/></span>
             </div>
@@ -42,9 +45,6 @@
 					<g:each in="${productInstance.tag}" var="t">
 						<span class="label" aria-labelledby="tag-label"><g:fieldValue bean="${t}" field="tag"/></span>
 					</g:each>
-					<span class="label">casa</span>
-					<span class="label">cfsf</span>
-					<span class="label">cfsfsf</span>
 
 				</div>
 
@@ -59,16 +59,15 @@
 					</div>
 				</g:if>
 
-
-
-            <%--
-			<g:form url="[resource:productInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="button" action="edit" resource="${productInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="button" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
-            --%>
+        <%--<g:if test="${!session?.admin}">
+            <g:form url="[resource:productInstance, action:'delete']" method="DELETE">
+            <fieldset class="buttons">
+            <g:link class="button" action="edit" resource="${productInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+            <g:actionSubmit class="button" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+            </fieldset>
+            </g:form>
+            </g:if>
+        --%>
 
 	</body>
 </html>

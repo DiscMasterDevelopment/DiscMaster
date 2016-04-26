@@ -37,9 +37,10 @@ class BootStrap {
             def products = [
                 [
                     shortDescription: "The best description",
-                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+                    description: "Formados hace 31 años en la ciudad alemana Herne, RAGE se bautizaron inicialmente como AVENGER, nombre con el que únicamente publicarían un LP, Prayers of Steel, además del EP Depraved to Black, y que no les convencería del todo.",
                     image: "grails-app/developmentData/ragethedevilstrikes.jpg",
                     imageType: 'image/jpeg',
+                    videoid: "LzbMjGOjleM",
                     product: [
                         name: "Disc 1",
                         price: 400,
@@ -47,13 +48,14 @@ class BootStrap {
                         totalInStorage: 21,
                         limitPerUser: 20,
                         added: new Date(), // getting the current time
-                        tag: t5
+                        tag: [t3, t1,t5]
                     ]
                 ],
                 [
                     shortDescription: "The second best description",
-                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+                    description: "Wikinomics anuncia un cambio de paradigma en la colaboración entre grupos humanos. Gracias a internet, individuos que están más allá de las fronteras de las jerarquías tradicionales pueden innovar para producir contenidos.",
                     image: "grails-app/developmentData/thunderstone-apocalypse-again-portada-400x400.jpg",
+                    videoid: "e4aW5WMkdfc",
                     imageType: 'image/jpeg',
                     product: [
                         name: "Disc 42",
@@ -67,7 +69,8 @@ class BootStrap {
                 ],
                 [
                     shortDescription: "insert description here",
-                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+                    description: "Formados hace 31 años en la ciudad alemana Herne, RAGE se bautizaron inicialmente como AVENGER, nombre con el que únicamente publicarían un LP, Prayers of Steel, además del EP Depraved to Black, y que no les convencería del todo.",
+                    videoid: "e4aW5WMkdfc",
                     product: [
                         name: "Disc 13",
                         price: 200,
@@ -80,7 +83,8 @@ class BootStrap {
                 ],
                 [
                     shortDescription: "Description...",
-                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+                    description: "Wikinomics anuncia un cambio de paradigma en la colaboración entre grupos humanos. Gracias a internet, individuos que están más allá de las fronteras de las jerarquías tradicionales pueden innovar para producir contenidos.",
+                    videoid: "e4aW5WMkdfc",
                     product: [
                         name: "XXI Disc",
                         price: 10,
@@ -93,7 +97,8 @@ class BootStrap {
                 ],
                 [
                     shortDescription: "This thing is used to...",
-                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
+                    description: "Wikinomics anuncia un cambio de paradigma en la colaboración entre grupos humanos. Gracias a internet, individuos que están más allá de las fronteras de las jerarquías tradicionales pueden innovar para producir contenidos.",
+                    videoid: "e4aW5WMkdfc",
                     product: [
                         name: "Disc pi^2",
                         price: 27.2,
@@ -101,7 +106,7 @@ class BootStrap {
                         totalInStorage: 20,
                         limitPerUser: 20,
                         added: use(TimeCategory) { new Date() + 4.second },
-                        tag: t3
+                        tag: [t3, t2]
                     ]
                 ],
             ]
@@ -115,10 +120,10 @@ class BootStrap {
                     Image i = new Image(image: imageFile.bytes, type: pnd.imageType)
                     i.save()
 
-                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], image: i)
+                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], videoClip: pnd["videoid"],  image: i)
                     d.save()
                 } else {
-                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"])
+                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], videoClip: pnd["videoid"])
                     d.save()
                 }
                 def p = new Product(pnd["product"] + [description: d])
