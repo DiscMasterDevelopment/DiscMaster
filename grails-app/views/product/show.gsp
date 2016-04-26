@@ -16,7 +16,9 @@
 		</div>
 		<div class="medium-1 columns" style="text-align: center">
 			<g:if test="${productInstance?.description?.videoClip}">
-				<iframe width="640" height="360" src="${"https://www.youtube.com/embed/"+ productInstance?.description?.videoClip}" frameborder="0" allowfullscreen></iframe>
+                <div class="videoWrapper">
+                    <iframe width="640" height="360" src="${"https://www.youtube.com/embed/"+ productInstance?.description?.videoClip}" frameborder="0" allowfullscreen></iframe>
+                </div>
             </g:if>
             <div>
                 <span class="property-value" aria-labelledby="price-label"><discmaster:productPrice product="${productInstance}"/></span>
