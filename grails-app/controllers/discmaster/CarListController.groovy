@@ -37,8 +37,7 @@ class CarListController {
             ProductQuantity pq = ProductQuantity.get(params.idToDelete)
             c.removeFromProductList(pq)
             pq.delete()
-            pq.save()
-            c.save()
+            c.save(flush: true)
 
             redirect action: "show"
         } else {
@@ -52,5 +51,24 @@ class CarListController {
         //    }
         //    '*'{ render status: NO_CONTENT }
         //}
+    }
+
+    def addProduct(Product p) {
+        if(session.user) {
+            def carList = User.get(session.user.id).car
+
+            if(! carList.productList.find { it.product == p } ) {
+                def pq = new ProductQuantity(product: p, quantity: 1, unitaryPrice: p.price, discount: p.discount)
+
+                carList.addToProductList(pq)
+                pq.save()
+                carList.save(flush: true)
+            }
+
+            redirect action: "show"
+            
+        } else {
+            redirect controller: "user", action: "register"
+        }
     }
 }
