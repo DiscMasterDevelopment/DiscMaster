@@ -36,7 +36,7 @@ class BootStrap {
             // Defining Products' contents
             def products = [
                 [
-                    shortDescription: "The best description",
+                    shortDescription: "Rage llega desde Alemania....",
                     description: "Formados hace 31 años en la ciudad alemana Herne, RAGE se bautizaron inicialmente como AVENGER, nombre con el que únicamente publicarían un LP, Prayers of Steel, además del EP Depraved to Black, y que no les convencería del todo.",
                     image: "grails-app/developmentData/ragethedevilstrikes.jpg",
                     imageType: 'image/jpeg',
@@ -52,7 +52,7 @@ class BootStrap {
                     ]
                 ],
                 [
-                    shortDescription: "The second best description",
+                    shortDescription: "Thunderstone regresa.",
                     description: "Thunderstone regresa tras un hiatus de casi 7 años tras su produccion Dirte Metal en 2009. Esta vez de la mano de su nuevo album Apocalyse Again, una pieza de power metal sin igual que encantra a los mas exigentes del genero",
                     image: "grails-app/developmentData/thunderstone-apocalypse-again-portada-400x400.jpg",
                     videoid: "_UXprCAsqTU",
@@ -68,7 +68,7 @@ class BootStrap {
                     ]
                 ],
                 [
-                    shortDescription: "insert description here",
+                    shortDescription: "Preparen sus hachas señores!!!",
                     description: "La leyenda del melodeath regresa con Jomsviking, una produccion epica de gran calidad y potencia.",
                     image: "grails-app/developmentData/AmonAmarthJomsviking.jpg",
                     imageType: 'image/jpeg',
@@ -84,7 +84,7 @@ class BootStrap {
                     ]
                 ],
                 [
-                    shortDescription: "Description...",
+                    shortDescription: "La hora triste....",
                     description: "Katatonia, banda de Depressive Metal de Suecia, se presenta tras 20 años de carrera continuada con The Fall of Hearts, una propuesta oscura que pondra a prueba tus sentidos.",
                     image: "grails-app/developmentData/katatoniafallcdbigger.jpg",
                     imageType: 'image/jpeg',
@@ -100,7 +100,7 @@ class BootStrap {
                     ]
                 ],
                 [
-                    shortDescription: "This thing is used to...",
+                    shortDescription: "Pwwnn in ya face!!!",
                     description: "Sylosis, la revelacion del Thrash Metal ingles, ataca de nuevo con este contundente sencillo que pondra en extasis a cualquiera que se predisponga a disfrutar de este poderoso material, .... si se atrave.",
                     image: "grails-app/developmentData/DMOTSF.jpg",
                     imageType: 'image/jpeg',
