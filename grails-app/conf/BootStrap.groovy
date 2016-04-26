@@ -42,7 +42,7 @@ class BootStrap {
                     imageType: 'image/jpeg',
                     videoid: "LzbMjGOjleM",
                     product: [
-                        name: "Disc 1",
+                        name: "Rage - The Devil Strikes Again",
                         price: 400,
                         discount: 0,
                         totalInStorage: 21,
@@ -53,12 +53,12 @@ class BootStrap {
                 ],
                 [
                     shortDescription: "The second best description",
-                    description: "Wikinomics anuncia un cambio de paradigma en la colaboración entre grupos humanos. Gracias a internet, individuos que están más allá de las fronteras de las jerarquías tradicionales pueden innovar para producir contenidos.",
+                    description: "Thunderstone regresa tras un hiatus de casi 7 años tras su produccion Dirte Metal en 2009. Esta vez de la mano de su nuevo album Apocalyse Again, una pieza de power metal sin igual que encantra a los mas exigentes del genero",
                     image: "grails-app/developmentData/thunderstone-apocalypse-again-portada-400x400.jpg",
-                    videoid: "e4aW5WMkdfc",
+                    videoid: "_UXprCAsqTU",
                     imageType: 'image/jpeg',
                     product: [
-                        name: "Disc 42",
+                        name: "Thunderstone - Apocalypse Again",
                         price: 350,
                         discount: 0.3,
                         totalInStorage: 21,
@@ -69,10 +69,12 @@ class BootStrap {
                 ],
                 [
                     shortDescription: "insert description here",
-                    description: "Formados hace 31 años en la ciudad alemana Herne, RAGE se bautizaron inicialmente como AVENGER, nombre con el que únicamente publicarían un LP, Prayers of Steel, además del EP Depraved to Black, y que no les convencería del todo.",
-                    videoid: "e4aW5WMkdfc",
+                    description: "La leyenda del melodeath regresa con Jomsviking, una produccion epica de gran calidad y potencia.",
+                    image: "grails-app/developmentData/AmonAmarthJomsviking.jpg",
+                    imageType: 'image/jpeg',
+                    videoid: "h6-krHfdmGg",
                     product: [
-                        name: "Disc 13",
+                        name: "Amon Amarth - Jomsviking",
                         price: 200,
                         discount: 0,
                         totalInStorage: 0,
@@ -83,10 +85,12 @@ class BootStrap {
                 ],
                 [
                     shortDescription: "Description...",
-                    description: "Wikinomics anuncia un cambio de paradigma en la colaboración entre grupos humanos. Gracias a internet, individuos que están más allá de las fronteras de las jerarquías tradicionales pueden innovar para producir contenidos.",
-                    videoid: "e4aW5WMkdfc",
+                    description: "Katatonia, banda de Depressive Metal de Suecia, se presenta tras 20 años de carrera continuada con The Fall of Hearts, una propuesta oscura que pondra a prueba tus sentidos.",
+                    image: "grails-app/developmentData/katatoniafallcdbigger.jpg",
+                    imageType: 'image/jpeg',
+                    videoid: "bKjQduLxALM",
                     product: [
-                        name: "XXI Disc",
+                        name: "Katatonia - The Fall of Hearts",
                         price: 10,
                         discount: 0.3,
                         totalInStorage: 20,
@@ -97,10 +101,12 @@ class BootStrap {
                 ],
                 [
                     shortDescription: "This thing is used to...",
-                    description: "Wikinomics anuncia un cambio de paradigma en la colaboración entre grupos humanos. Gracias a internet, individuos que están más allá de las fronteras de las jerarquías tradicionales pueden innovar para producir contenidos.",
-                    videoid: "e4aW5WMkdfc",
+                    description: "Sylosis, la revelacion del Thrash Metal ingles, ataca de nuevo con este contundente sencillo que pondra en extasis a cualquiera que se predisponga a disfrutar de este poderoso material, .... si se atrave.",
+                    image: "grails-app/developmentData/DMOTSF.jpg",
+                    imageType: 'image/jpeg',
+                    videoid: "SshPjukHAXM",
                     product: [
-                        name: "Disc pi^2",
+                        name: "Sylosis - Different Masks on the Same Face",
                         price: 27.2,
                         discount: 0.2,
                         totalInStorage: 20,
