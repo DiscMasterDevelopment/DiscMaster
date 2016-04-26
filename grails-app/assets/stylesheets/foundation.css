@@ -5292,6 +5292,16 @@ table.hover tr:nth-of-type(even):hover {
   nav:hover ul{
     display: block;
   }
+
+  .header-font {
+    font-size: 500%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header-font {
+    font-size: 250%;
+  }
 }
 
 @media screen and (max-width: 39.9375em) {
