@@ -25,7 +25,7 @@
 
 
             <div class="medium-7 large-6 columns">
-                <h3>${product.name}</h3>
+                <h3><g:link controller="product" action="show" id="${product.id}">${fieldValue(bean: product, field: "name")}</g:link></h3>
                 <div class="row"><div class="small- column">
                     <span id="price-label" class="property-label"><g:message code="product.price.label" default="COP " /></span>
                     <span class="property-value" aria-labelledby="price-label"><discmaster:productPrice product="${product}"/></span>

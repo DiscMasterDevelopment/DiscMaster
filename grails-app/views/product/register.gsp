@@ -35,6 +35,11 @@
 	<label for="description">Descripcion larga:
 		<g:textArea name="description" required="" value="${params?.description}"></g:textArea>
 	</label>
+
+	<label for="videoClip">ID del video de youtube:
+		<g:textField name="videoClip" value="${params?.videoClip}"></g:textField>
+	</label>
+
 	<label for="tag">Tag:
 		<g:select required="" name="tag" from="${discmaster.Tag.list()}" multiple="multiple" optionKey="id" size="5" value="${productInstance?.tag*.id}" class="many-to-many"/>
 	</label>
