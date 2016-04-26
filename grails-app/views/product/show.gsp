@@ -46,7 +46,20 @@
 				<span class="property-value" aria-labelledby="quantity-label"><g:select name="quantity" from="${1..99}" noSelection="['':'0']" value="$quantity}"></g:select></span>
 
 			</div>
-			<a href="#" class="button large expanded">Añadir al carrito</a></div>
+			<a href="#" class="button large expanded">Añadir al carrito</a>
+
+			<g:if test="${productInstance?.tag}">
+				<div class="row" style="text-align: center">
+					<g:each in="${productInstance.tag}" var="t">
+						<span class="label" aria-labelledby="tag-label"><g:fieldValue bean="${t}" field="tag"/></span>
+					</g:each>
+					<span class="label">casa</span>
+					<span class="label">cfsf</span>
+					<span class="label">cfsfsf</span>
+
+				</div>
+
+			</g:if>
 		</div>
 	</div>
 
@@ -57,13 +70,7 @@
 					</div>
 				</g:if>
 
-				<g:if test="${productInstance?.tag}">
-					<div class="row" style="text-align: center">
-						<g:each in="${productInstance.tag}" var="t">
-						<span class="property-value" aria-labelledby="tag-label"><g:fieldValue bean="${t}" field="tag"/></span>
-						</g:each>
-					</div>
-				</g:if>
+
 
 			<g:form url="[resource:productInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
