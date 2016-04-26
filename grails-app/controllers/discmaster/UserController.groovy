@@ -39,7 +39,11 @@ class UserController {
     }
 
     def register() {}
-    def profile() {}
+
+    def profile() {
+        if(!session?.user)
+            redirect action: "register"
+    }
     def create() {
         def u = new User()
         def c = new CarList(user: u)
