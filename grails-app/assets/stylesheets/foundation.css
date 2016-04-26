@@ -4231,6 +4231,21 @@ body {
 [data-whatinput='mouse'] .orbit-bullets {
   outline: 0;
 }
+
+#search-icon{
+  display: hidden;
+  width: 40px;
+  height: 40px;
+  background: url(../images/menu_icon.png) center;
+}
+
+#menu-icon{
+  display: hidden;
+  width: 40px;
+  height: 40px;
+  background: url(../images/menu_icon.png) center;
+}
+
 /* line 134, foundation/components/_orbit.scss */
 .orbit-bullets button {
   width: 1.2rem;
@@ -5132,7 +5147,6 @@ table.hover tr:nth-of-type(even):hover {
 .principal-bar{
   background: #ea2e2e;
   width: 100%;
-  height: 86px;
   position: fixed;
   top: 0;
   left: 0;
@@ -5234,6 +5248,50 @@ table.hover tr:nth-of-type(even):hover {
 /* line 66, foundation/components/_visibility.scss */
 .invisible {
   visibility: hidden;
+}
+
+@media screen and (max-width: 750px){
+  #search-icon{
+    display: inline-block;
+  }
+  #menu-icon{
+    display: inline-block;
+  }
+  nav ul, nav:active ul{
+    display: none;
+    position: absolute;
+    padding: 0;
+    background: #ea2e2e;
+    border: 1px solid black;
+    right: 20px;
+    top: 20px;
+    width: 50%;
+    border-radius: 2px 0 2px 2px;
+    float:left
+  }
+
+  nav.searching ul, nav:active ul{
+    display: none;
+    position: absolute;
+    padding: 0;
+    background: #ea2e2e;
+    border: 1px solid black;
+    left: 20px;
+    top: 20px;
+    width: 50%;
+    border-radius: 2px 0 2px 2px;
+    float:left
+  }
+
+  nav li{
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+    margin: 0;
+  }
+  nav:hover ul{
+    display: block;
+  }
 }
 
 @media screen and (max-width: 39.9375em) {
