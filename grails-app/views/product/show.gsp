@@ -8,30 +8,19 @@
 		<title><g:message code="${productInstance?.name}" /></title>
 	</head>
 	<body>
-	<div class="row">
+	<div class="row small-up-1 large-up-2">
 
 		<h1 style="text-align: center"><g:message code="${productInstance?.name}" /></h1>
-		<div class="medium-5 columns" style="text-align: center">
-			<div class="row">
-				<g:if test="${productInstance?.description?.image}">
-					<span class="property-value" aria-labelledby="name-label"><discmaster:productImg product="${product}" class="thumbnail"/> </span>
-				</g:if>
-			</div>
+		<div class="medium-1 columns" style="text-align: center">
+            <discmaster:productImg product="${productInstance}" class="thumbnail"/>
 		</div>
-		<div class="medium-5 columns" style="text-align: center">
+		<div class="medium-1 columns" style="text-align: center">
 			<g:if test="${productInstance?.price}">
 				<div class="row">
 					<span id="price-label" class="property-label"><g:message code="product.price.label" default="COP " /></span>
 
 					<span class="property-value" aria-labelledby="price-label"><discmaster:productPrice product="${productInstance}"/></span>
 				</div>
-			</g:if>
-
-			<g:if test="${productInstance?.discount}">
-				<span id="discount-label" class="property-label"><g:message code="product.discount.label" default="Discount:" /></span>
-
-				<span class="property-value" aria-labelledby="discount-label"><g:fieldValue bean="${productInstance}" field="discount"/></span>
-
 			</g:if>
 
 			<g:if test="${productInstance?.totalInStorage}">
@@ -72,12 +61,14 @@
 
 
 
+            <%--
 			<g:form url="[resource:productInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">
 					<g:link class="button" action="edit" resource="${productInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="button" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
+            --%>
 
 	</body>
 </html>
