@@ -28,7 +28,7 @@
                 <h3>${product.name}</h3>
                 <div class="row"><div class="small-6"><discmaster:productPrice product="${product}"/></div></div>
 
-                <p>${product.description.description}</p>
+                <p>${product.description.shortDescription}</p>
 
                 <g:if test="${!session?.admin}">
                 <div class="row">

@@ -21,7 +21,8 @@ class BootStrap {
             // Defining Products' contents
             def products = [
                 [
-                    description: "The best description",
+                    shortDescription: "The best description",
+                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
                     image: "grails-app/developmentData/ragethedevilstrikes.jpg",
                     imageType: 'image/jpeg',
                     product: [
@@ -34,7 +35,8 @@ class BootStrap {
                     ]
                 ],
                 [
-                    description: "The 2nd best description",
+                    shortDescription: "The second best description",
+                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
                     image: "grails-app/developmentData/thunderstone-apocalypse-again-portada-400x400.jpg",
                     imageType: 'image/jpeg',
                     product: [
@@ -47,7 +49,8 @@ class BootStrap {
                     ]
                 ],
                 [
-                    description: "A good description",
+                    shortDescription: "insert description here",
+                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
                     product: [
                         name: "Disc 13",
                         price: 200,
@@ -58,7 +61,8 @@ class BootStrap {
                     ]
                 ],
                 [
-                    description: "Description of a product",
+                    shortDescription: "Description...",
+                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
                     product: [
                         name: "XXI Disc",
                         price: 10,
@@ -69,7 +73,8 @@ class BootStrap {
                     ]
                 ],
                 [
-                    description: "Üsing this things üäë",
+                    shortDescription: "This thing is used to...",
+                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
                     product: [
                         name: "Disc pi^2",
                         price: 27.2,
@@ -90,10 +95,10 @@ class BootStrap {
                     Image i = new Image(image: imageFile.bytes, type: pnd.imageType)
                     i.save()
 
-                    d = new Description(description: pnd["description"], image: i)
+                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], image: i)
                     d.save()
                 } else {
-                    d = new Description(description: pnd["description"])
+                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"])
                     d.save()
                 }
                 def p = new Product(pnd["product"] + [description: d])
