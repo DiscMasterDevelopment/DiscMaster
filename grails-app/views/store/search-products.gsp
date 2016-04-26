@@ -34,11 +34,14 @@
                 <p>${product.description.shortDescription}</p>
 
                 <g:if test="${!session?.admin}">
-                <div class="row">
-                    <div class="small-3 columns"> <label for="middle-label" class="middle">Cantidad</label> </div>
-                    <div class="small-9 columns"> <input id="middle-label" placeholder="One fish two fish" type="text"> </div>
-                </div>
-                <a href="#" class="button large expanded">Añadir al carrito</a>
+                <g:form action="addProduct" controller="carList" id="${product?.id}">
+                    <div class="row">
+                        <span id="quantity-label" class="property-label"><g:message code="quantity.label" default="Cantidad:" /></span>
+                        <span class="property-value" aria-labelledby="quantity-label"><g:select name="quantity" from="${1..99}" value="${quantity}"></g:select></span>
+
+                    </div>
+                    <g:submitButton class="button expanded" name="addProduct" required="" value="Añadir al carrito" title="Agregar al carrito" ></g:submitButton>
+                </g:form>
 
                 <div class="small secondary expanded button-group">
                     <a class="button">Facebook</a>
