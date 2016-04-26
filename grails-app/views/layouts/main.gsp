@@ -12,15 +12,15 @@
 	</head>
 	<body>
         <header>
-            <div class="top-bar">
+            <div class="principal-bar">
                 <div class="top-bar-left">
                     <ul class="menu">
                         <%-- <li><g:link uri="/" title="Site's page">DiscMaster</g:link></li> --%>
 
                         <li> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
                             <g:form controller="store" action="search-products" class="has-form row large-collapse small-collapse" method="GET"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
-                                <div class="large-8 columns"><g:textField name="to-search" placeholder="Busca el 'merchandising'"></g:textField></div>
-                                <div class="large-4 columns"><g:submitButton class="button alert expand" name="buscar" value="Buscar"></g:submitButton></div>
+                                <div class="large-9 columns"><g:textField name="to-search" placeholder="Busca el 'merchandising'"></g:textField></div>
+                                <div class="large-3 columns"><g:submitButton class="button alert expand" name="buscar" value="Buscar"></g:submitButton></div>
                             </g:form>
                         </li>
                     </ul>
@@ -46,9 +46,9 @@
                             <li><g:link action="register" controller="user" title="Sign In">Registrarse</g:link></li>
                         </g:else>
                                           	 
-                         <li><g:link action="profile" controller="user" title="Profile">Perfil</g:link></li>
+                        <li><g:link action="profile" controller="user" title="Profile">Perfil</g:link></li>
                         
-<li>
+                        <li>
                             <g:link controller="CarList" action="aCarList" title="Carrito de compras">
                                 <img src="${resource(dir: 'images', file: 'carrito-de-compras.png')}" alt="kart" style="width:30px;height:30px;">
                             </g:link>
@@ -56,6 +56,8 @@
                     </ul>
                 </div>
             </div>
+            <br>
+            <br>
             <br>
             <div class="row">
                 <div class="medium-4 columns">
