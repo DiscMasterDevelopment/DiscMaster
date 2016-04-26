@@ -12,7 +12,7 @@
 
 		<h1 style="text-align: center"><g:message code="${productInstance?.name}" /></h1>
 		<div class="medium-1 columns" style="text-align: center">
-            <discmaster:productImg product="${productInstance}" class="thumbnail"/>
+            <discmaster:productImg product="${productInstance}" class="thumbnail" width="360px"/>
 		</div>
 		<div class="medium-1 columns" style="text-align: center">
             <div>
@@ -26,12 +26,16 @@
 					<span class="property-value" aria-labelledby="totalInStorage-label"><g:fieldValue bean="${productInstance}" field="totalInStorage"/></span>
 				</div>
 			</g:if>
-			<div class="row">
-				<span id="quantity-label" class="property-label"><g:message code="quantity.label" default="Cantidad:" /></span>
-				<span class="property-value" aria-labelledby="quantity-label"><g:select name="quantity" from="${1..99}" noSelection="['':'0']" value="$quantity}"></g:select></span>
 
-			</div>
-			<a href="#" class="button large expanded">Añadir al carrito</a>
+            <g:form action="addProduct" controller="carList" id="${productInstance?.id}">
+                <div class="row">
+                    <span id="quantity-label" class="property-label"><g:message code="quantity.label" default="Cantidad:" /></span>
+                    <span class="property-value" aria-labelledby="quantity-label"><g:select name="quantity" from="${1..99}" value="${quantity}"></g:select></span>
+
+                </div>
+
+            <g:submitButton class="button expanded" name="addProduct" required="" value="Añadir al carrito" title="Agregar al carrito" ></g:submitButton>
+            </g:form>
 
 			<g:if test="${productInstance?.tag}">
 				<div class="row" style="text-align: center">

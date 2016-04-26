@@ -58,7 +58,8 @@ class CarListController {
             def carList = User.get(session.user.id).car
 
             if(! carList.productList.find { it.product == p } ) {
-                def pq = new ProductQuantity(product: p, quantity: 1, unitaryPrice: p.price, discount: p.discount)
+                int n = params.quantity ? params.quantity.toInteger() : 1
+                def pq = new ProductQuantity(product: p, quantity: n, unitaryPrice: p.price, discount: p.discount)
 
                 carList.addToProductList(pq)
                 pq.save()
