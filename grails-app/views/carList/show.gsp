@@ -32,7 +32,14 @@
 
         <hr>
         <div class="off-canvas-content" data-off-canvas-content>
-            <div class="row small-up-2 medium-up-3 large-up-4">
+        <div class="row small-up-2 medium-up-3 large-up-4">
+                <g:set var="quantity" value="${carList.productList.size()}" />
+                <g:if test = "${quantity == 0}">
+                    <div class="row small-up-1 large-up-2">
+                        <h1 style="text-align: center">Tu carrito de compras esta vacio</h1>
+                    </div>
+                </g:if>
+                <g:else>
                 <g:each in="${carList.productList}" var="productQuantity">
                     <g:set var="product" value="${productQuantity.product}" />
                     <div class="column">
@@ -40,11 +47,12 @@
                             <discmaster:productImg product="${product}" class="thumbnail"></discmaster:productImg>
                             <h5>${product.name}</h5>
                             <p><discmaster:productPrice product="${product}"/></p>
-                            <p>Total en el carrito: ${productQuantity.quantity}</ñ>
+                            <p>Total en el carrito: ${productQuantity.quantity}</p>
                         </g:link>
                         <g:link action="deleteProduct" id="${carList.id}" params="${[idToDelete: productQuantity.id]}" class="button expanded alert" title="Eliminar del carrito">Eliminar del carrito</g:link>
                     </div>
                 </g:each>
+                    </g:else>
             </div>
         </div>
     </div>

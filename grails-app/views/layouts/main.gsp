@@ -54,7 +54,7 @@
                             <li><g:link action="profile" controller="user" title="Profile">Perfil</g:link></li>
 
                             <li>
-                                <g:link controller="CarList" action="aCarList" title="Carrito de compras">
+                                <g:link controller="CarList" action="show" title="Carrito de compras">
                                     <img src="${resource(dir: 'images', file: 'carrito-de-compras.png')}" alt="kart" style="width:30px;height:30px;">
                                 </g:link>
                             </li>
