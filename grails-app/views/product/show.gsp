@@ -8,59 +8,57 @@
 		<title><g:message code="${productInstance?.name}" /></title>
 	</head>
 	<body>
-		<div id="show-product" class="content scaffold-show" role="main">
-			<h1><g:message code="${productInstance?.name}" /></h1>
+	<div class="row">
 
-				<div class="column">
-					<div class="row small-up-2 collapse">
-						<div class="column">
-							<g:if test="${productInstance?.description?.image}">
-									<span class="property-value" aria-labelledby="name-label"><discmaster:productImg product="${product}" class="thumbnail"/> </span>
-							</g:if>
-						</div>
-						<div class="column">
+		<h1 style="text-align: center"><g:message code="${productInstance?.name}" /></h1>
+		<div class="medium-5 columns" style="text-align: center">
+			<div class="row">
+				<g:if test="${productInstance?.description?.image}">
+					<span class="property-value" aria-labelledby="name-label"><discmaster:productImg product="${product}" class="thumbnail"/> </span>
+				</g:if>
+			</div>
+		</div>
+		<div class="medium-5 columns" style="text-align: center">
+			<g:if test="${productInstance?.price}">
+				<div class="row">
+					<span id="price-label" class="property-label"><g:message code="product.price.label" default="COP " /></span>
 
-					<g:if test="${productInstance?.price}">
-						<div class="row">
-						<span id="price-label" class="property-label"><g:message code="product.price.label" default="COP " /></span>
-
-							<span class="property-value" aria-labelledby="price-label"><discmaster:productPrice product="${productInstance}"/></span>
-						</div>
-					</g:if>
-
-					<g:if test="${productInstance?.discount}">
-						<span id="discount-label" class="property-label"><g:message code="product.discount.label" default="Discount:" /></span>
-
-							<span class="property-value" aria-labelledby="discount-label"><g:fieldValue bean="${productInstance}" field="discount"/></span>
-
-					</g:if>
-
-					<g:if test="${productInstance?.totalInStorage}">
-						<div class="row">
-						<span id="totalInStorage-label" class="property-label"><g:message code="product.totalInStorage.label" default="Stock:" /></span>
-
-							<span class="property-value" aria-labelledby="totalInStorage-label"><g:fieldValue bean="${productInstance}" field="totalInStorage"/></span>
-						</div>
-					</g:if>
-							<div class="row">
-								<span id="quantity-label" class="property-label"><g:message code="quantity.label" default="Cantidad:" /></span>
-								<span class="property-value" aria-labelledby="quantity-label"><g:select name="quantity" from="${1..99}" noSelection="['':'0']" value="$quantity}"></g:select></span>
-
-							</div>
-							<a href="#" class="button large expanded">Añadir al carrito</a></div>
-						</div>
+					<span class="property-value" aria-labelledby="price-label"><discmaster:productPrice product="${productInstance}"/></span>
 				</div>
+			</g:if>
+
+			<g:if test="${productInstance?.discount}">
+				<span id="discount-label" class="property-label"><g:message code="product.discount.label" default="Discount:" /></span>
+
+				<span class="property-value" aria-labelledby="discount-label"><g:fieldValue bean="${productInstance}" field="discount"/></span>
+
+			</g:if>
+
+			<g:if test="${productInstance?.totalInStorage}">
+				<div class="row">
+					<span id="totalInStorage-label" class="property-label"><g:message code="product.totalInStorage.label" default="Stock:" /></span>
+
+					<span class="property-value" aria-labelledby="totalInStorage-label"><g:fieldValue bean="${productInstance}" field="totalInStorage"/></span>
+				</div>
+			</g:if>
+			<div class="row">
+				<span id="quantity-label" class="property-label"><g:message code="quantity.label" default="Cantidad:" /></span>
+				<span class="property-value" aria-labelledby="quantity-label"><g:select name="quantity" from="${1..99}" noSelection="['':'0']" value="$quantity}"></g:select></span>
+
+			</div>
+			<a href="#" class="button large expanded">Añadir al carrito</a></div>
+		</div>
+	</div>
+
 
 				<g:if test="${productInstance?.description?.description}">
-					<div class="row">
+					<div class="row" style="text-align: center">
 					<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${productInstance.description}" field="description"/></span>
 					</div>
 				</g:if>
 
 				<g:if test="${productInstance?.tag}">
-					<div class="row">
-					<span id="tag-label" class="property-label"><g:message code="product.tag.label" default="Tags:" /></span>
-
+					<div class="row" style="text-align: center">
 						<g:each in="${productInstance.tag}" var="t">
 						<span class="property-value" aria-labelledby="tag-label"><g:fieldValue bean="${t}" field="tag"/></span>
 						</g:each>
@@ -74,6 +72,5 @@
 				</fieldset>
 			</g:form>
 
-		</div>
 	</body>
 </html>
