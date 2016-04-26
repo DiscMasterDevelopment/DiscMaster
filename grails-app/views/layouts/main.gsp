@@ -69,7 +69,7 @@
                 <h1 class="header-font">DiscMaster</h1>
             </div>
 
-            <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium" style="background-color:red">
+            <div class="title-bar" data-responsive-toggle="main-menu" data-hide-for="medium" style="background-color:#ea2e2e">
                 <button class="menu-icon" type="button" data-toggle></button>
                 <div class="title-bar-title">Menu</div>
             </div>

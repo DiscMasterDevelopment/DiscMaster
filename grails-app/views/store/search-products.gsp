@@ -26,9 +26,12 @@
 
             <div class="medium-7 large-6 columns">
                 <h3>${product.name}</h3>
-                <div class="row"><div class="small-6"><discmaster:productPrice product="${product}"/></div></div>
+                <div class="row"><div class="small- column">
+                    <span id="price-label" class="property-label"><g:message code="product.price.label" default="COP " /></span>
+                    <span class="property-value" aria-labelledby="price-label"><discmaster:productPrice product="${product}"/></span>
+                </div></div>
 
-                <p>${product.description.description}</p>
+                <p>${product.description.shortDescription}</p>
 
                 <g:if test="${!session?.admin}">
                 <div class="row">

@@ -18,10 +18,26 @@ class BootStrap {
         //if(Environment.current == Environment.DEVELOPMENT) {
         def udb = User.findByName("john")
         if(!udb) { // trying to detect if john user already exists or not. TODO: change this ad-hoc solution for something more robust like http://www.grails.org/plugin/database-migration
+
+            //Defining tags
+            def t1 = new Tag(tag: "Común")
+            def t2 = new Tag(tag: "Poco Común")
+            def t3 = new Tag(tag: "Raro")
+            def t4 = new Tag(tag: "Épico")
+            def t5 = new Tag(tag: "Legendario")
+
+            t1.save()
+            t2.save()
+            t3.save()
+            t4.save()
+            t5.save(flush:true)
+            // NOTE: Flush only once, only in the last save
+
             // Defining Products' contents
             def products = [
                 [
-                    description: "The best description",
+                    shortDescription: "The best description",
+                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
                     image: "grails-app/developmentData/ragethedevilstrikes.jpg",
                     imageType: 'image/jpeg',
                     product: [
@@ -30,11 +46,13 @@ class BootStrap {
                         discount: 0,
                         totalInStorage: 21,
                         limitPerUser: 20,
-                        added: new Date() // getting the current time
+                        added: new Date(), // getting the current time
+                        tag: t5
                     ]
                 ],
                 [
-                    description: "The 2nd best description",
+                    shortDescription: "The second best description",
+                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
                     image: "grails-app/developmentData/thunderstone-apocalypse-again-portada-400x400.jpg",
                     imageType: 'image/jpeg',
                     product: [
@@ -43,40 +61,47 @@ class BootStrap {
                         discount: 0.3,
                         totalInStorage: 21,
                         limitPerUser: 20,
-                        added: use(TimeCategory) { new Date() + 1.second } // getting the current time and adding one second to it
+                        added: use(TimeCategory) { new Date() + 1.second }, // getting the current time and adding one second to it
+                        tag: t5
                     ]
                 ],
                 [
-                    description: "A good description",
+                    shortDescription: "insert description here",
+                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
                     product: [
                         name: "Disc 13",
                         price: 200,
                         discount: 0,
                         totalInStorage: 0,
                         limitPerUser: 20,
-                        added: use(TimeCategory) { new Date() + 2.second }
+                        added: use(TimeCategory) { new Date() + 2.second },
+                        tag: t1
                     ]
                 ],
                 [
-                    description: "Description of a product",
+                    shortDescription: "Description...",
+                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
                     product: [
                         name: "XXI Disc",
                         price: 10,
                         discount: 0.3,
                         totalInStorage: 20,
                         limitPerUser: 20,
-                        added: use(TimeCategory) { new Date() + 3.second }
+                        added: use(TimeCategory) { new Date() + 3.second },
+                        tag: t2
                     ]
                 ],
                 [
-                    description: "Üsing this things üäë",
+                    shortDescription: "This thing is used to...",
+                    description: "bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla",
                     product: [
                         name: "Disc pi^2",
                         price: 27.2,
                         discount: 0.2,
                         totalInStorage: 20,
                         limitPerUser: 20,
-                        added: use(TimeCategory) { new Date() + 4.second }
+                        added: use(TimeCategory) { new Date() + 4.second },
+                        tag: t3
                     ]
                 ],
             ]
@@ -90,10 +115,10 @@ class BootStrap {
                     Image i = new Image(image: imageFile.bytes, type: pnd.imageType)
                     i.save()
 
-                    d = new Description(description: pnd["description"], image: i)
+                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], image: i)
                     d.save()
                 } else {
-                    d = new Description(description: pnd["description"])
+                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"])
                     d.save()
                 }
                 def p = new Product(pnd["product"] + [description: d])
@@ -133,18 +158,6 @@ class BootStrap {
 
             admin.save()
 
-            def t1 = new Tag(tag: "Común")
-            def t2 = new Tag(tag: "Poco Común")
-            def t3 = new Tag(tag: "Raro")
-            def t4 = new Tag(tag: "Épico")
-            def t5 = new Tag(tag: "Legendario")
-
-            t1.save()
-            t2.save()
-            t3.save()
-            t4.save()
-            t5.save(flush:true)
-            // NOTE: Flush only once, only in the last save
         }
     }
     def destroy = {

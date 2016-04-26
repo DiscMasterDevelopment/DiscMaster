@@ -36,9 +36,12 @@
                 <g:each in="${carList.productList}" var="productQuantity">
                     <g:set var="product" value="${productQuantity.product}" />
                     <div class="column">
-                        <discmaster:productImg product="${product}" class="thumbnail"></discmaster:productImg>
-                        <h5>${product.name}</h5>
-                        <p><discmaster:productPrice product="${product}"/></p>
+                        <g:link controller="product" action="show" id="${product.id}" title="Ver producto">
+                            <discmaster:productImg product="${product}" class="thumbnail"></discmaster:productImg>
+                            <h5>${product.name}</h5>
+                            <p><discmaster:productPrice product="${product}"/></p>
+                            <p>Total en el carrito: ${productQuantity.quantity}</ñ>
+                        </g:link>
                         <g:link action="deleteProduct" id="${carList.id}" params="${[idToDelete: productQuantity.id]}" class="button expanded alert" title="Eliminar del carrito">Eliminar del carrito</g:link>
                     </div>
                 </g:each>

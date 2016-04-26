@@ -41,7 +41,7 @@
                     <g:link controller="product" action="show" id="${product.id}" class="button expanded" title="Ver producto">Ver</g:link>
                 </div>
                 <div class="column">
-                    <g:link controller="product" action="addToCar" id="${product.id}" class="button expanded alert" title="Agregar al carrito">Carrito [+]</g:link>
+                    <g:link controller="carList" action="addProduct" id="${product.id}" class="button expanded alert" title="Agregar al carrito">Carrito [+]</g:link>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
                 <h5>${product.name}</h5>
                 <p><discmaster:productPrice product="${product}"/></p>
             </g:link>
-            <g:link controller="product" action="addToCar" id="${product.id}" title="Agregar al carrito" class="button expanded">Carrito [+]</g:link>
+            <g:link controller="carList" action="addProduct" id="${product.id}" title="Agregar al carrito" class="button expanded">Carrito [+]</g:link>
         </div>
     </g:each>
 </div>
@@ -89,7 +89,7 @@
                     </div>
                     <div class="media-object-section">
                         <h5>${product.name}</h5>
-                        <p>${product.description.description}</p>
+                        <p>${product.description.shortDescription}</p>
                         <p>${product.totalInStorage} en Bodega</p>
                     </div>
                 </g:link>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="media-object-section">
                         <h5>${product.name}</h5>
-                        <p>${product.description.description}</p>
+                        <p>${product.description.shortDescription}</p>
                         <p><discmaster:productPrice product="${product}"/></p>
                     </div>
                 </g:link>
@@ -127,7 +127,7 @@
                     </div>
                     <div class="media-object-section">
                         <h5>${product.name}</h5>
-                        <p>${product.description.description}</p>
+                        <p>${product.description.shortDescription}</p>
                     </div>
                 </g:link>
             </div>
