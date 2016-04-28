@@ -61,15 +61,15 @@
 					</div>
 				</g:if>
 
-        <%--<g:if test="${!session?.admin}">
-            <g:form url="[resource:productInstance, action:'delete']" method="DELETE">
-            <fieldset class="buttons">
-            <g:link class="button" action="edit" resource="${productInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-            <g:actionSubmit class="button" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-            </fieldset>
-            </g:form>
+        <g:if test="${session?.admin}">
+				<g:form url="[resource:productInstance, action:'delete']" method="DELETE">
+					<fieldset class="buttons">
+						<g:link class="button" action="edit" resource="${productInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:actionSubmit class="button" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</fieldset>
+				</g:form>
             </g:if>
-        --%>
+
 
 	</body>
 </html>
