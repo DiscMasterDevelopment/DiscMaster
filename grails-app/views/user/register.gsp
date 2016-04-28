@@ -35,6 +35,10 @@
     <label for="phone">Telefono:
         <g:textField name="phone" pattern="[0-9]{10}" required="" value="${user?.phone}"></g:textField>
     </label>
+    <div class="fieldcontain">
+        <g:checkBox name="myCheckbox" value="${false}" required=""  ></g:checkBox> Acepto los <g:link controller="user" action="therms">Terminos y condiciones.</g:link>
+    </div>
+
     <g:submitButton class="button" name="create" required="" value="Register"></g:submitButton>
 </g:form>
 </body>
