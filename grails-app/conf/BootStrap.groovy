@@ -41,6 +41,7 @@ class BootStrap {
                     image: "grails-app/developmentData/ragethedevilstrikes.jpg",
                     imageType: 'image/jpeg',
                     videoid: "LzbMjGOjleM",
+                    audioid: "https://soundcloud.com/iuploadshitfortabletops/up-the-fucking-ass-tony-orr",
                     product: [
                         name: "Rage - The Devil Strikes Again",
                         price: 400,
@@ -56,6 +57,7 @@ class BootStrap {
                     description: "Thunderstone regresa tras un hiatus de casi 7 años tras su produccion Dirte Metal en 2009. Esta vez de la mano de su nuevo album Apocalyse Again, una pieza de power metal sin igual que encantra a los mas exigentes del genero",
                     image: "grails-app/developmentData/thunderstone-apocalypse-again-portada-400x400.jpg",
                     videoid: "_UXprCAsqTU",
+                    audioid: "https://soundcloud.com/nuclearblastrecords/rage-my-way",
                     imageType: 'image/jpeg',
                     product: [
                         name: "Thunderstone - Apocalypse Again",
@@ -73,6 +75,7 @@ class BootStrap {
                     image: "grails-app/developmentData/AmonAmarthJomsviking.jpg",
                     imageType: 'image/jpeg',
                     videoid: "h6-krHfdmGg",
+                    audioid: "https://soundcloud.com/nuclearblastrecords/rage-my-way",
                     product: [
                         name: "Amon Amarth - Jomsviking",
                         price: 200,
@@ -89,6 +92,7 @@ class BootStrap {
                     image: "grails-app/developmentData/katatoniafallcdbigger.jpg",
                     imageType: 'image/jpeg',
                     videoid: "bKjQduLxALM",
+                    audioid: "https://soundcloud.com/nuclearblastrecords/rage-my-way",
                     product: [
                         name: "Katatonia - The Fall of Hearts",
                         price: 10,
@@ -105,6 +109,7 @@ class BootStrap {
                     image: "grails-app/developmentData/DMOTSF.jpg",
                     imageType: 'image/jpeg',
                     videoid: "SshPjukHAXM",
+                    audioid: "https://soundcloud.com/nuclearblastrecords/rage-my-way",
                     product: [
                         name: "Sylosis - Different Masks on the Same Face",
                         price: 27.2,
@@ -126,10 +131,10 @@ class BootStrap {
                     Image i = new Image(image: imageFile.bytes, type: pnd.imageType)
                     i.save()
 
-                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], videoClip: pnd["videoid"],  image: i)
+                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], videoClip: pnd["videoid"], audioClip: pnd["audioid"], image: i)
                     d.save()
                 } else {
-                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], videoClip: pnd["videoid"])
+                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], videoClip: pnd["videoid"],audioClip: pnd["audioid"])
                     d.save()
                 }
                 def p = new Product(pnd["product"] + [description: d])
