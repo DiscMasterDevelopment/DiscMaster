@@ -15,7 +15,9 @@
 <body>
 <h1>Terminos y condiciones DiscMaster</h1>
 
-<div class="text">
+<div class="row">
+<div class="twelve columns text-center">
+<p>ajnfkjasbfjasnfinaskofasfnoasnfioansofinasiofnasoifnasnfasnfaosinfsai</p>
 ajnfkjasbfjasnfinaskofasfnoasnfioansofinasiofnasoifnasnfasnfaosinfsai
 ajnfkjasbfjasnfinaskofasfnoasnfioansofinasiofnasoifnasnfasnfaosinfsai
 ajnfkjasbfjasnfinaskofasfnoasnfioansofinasiofnasoifnasnfasnfaosinfsai
@@ -23,8 +25,8 @@ ajnfkjasbfjasnfinaskofasfnoasnfioansofinasiofnasoifnasnfasnfaosinfsai
 ajnfkjasbfjasnfinaskofasfnoasnfioansofinasiofnasoifnasnfasnfaosinfsai
 ajnfkjasbfjasnfinaskofasfnoasnfioansofinasiofnasoifnasnfasnfaosinfsai
 ajnfkjasbfjasnfinaskofasfnoasnfioansofinasiofnasoifnasnfasnfaosinfsai
-ajnfkjasbfjasnfinaskofasfnoasnfioansofinasiofnasoifnasnfasnfaosinfsai
-ajnfkjasbfjasnfinaskofasfnoasnfioansofinasiofnasoifnasnfasnfaosinfsai
+<p>ajnfkjasbfjasnfinaskofasfnoasnfioansofinasiofnasoifnasnfasnfaosinfsai</p>
+</div>
 </div>
 </body>
 </html>
