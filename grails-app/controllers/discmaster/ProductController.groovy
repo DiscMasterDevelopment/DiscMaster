@@ -24,7 +24,7 @@ class ProductController {
     def create() {
         Description d
         if (params.videoClip) {
-            d = new Description(description: params.description, shortDescription: params.shortDescription, videoClip: params.videoClip)
+            d = new Description(description: params.description, shortDescription: params.shortDescription, videoClip: params.videoClip, audioClip: params.audioClip)
             d.save(failOnError: true)
         }
         else{

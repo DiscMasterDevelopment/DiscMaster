@@ -40,6 +40,10 @@
 		<g:textField name="videoClip" value="${params?.videoClip}"></g:textField>
 	</label>
 
+	<label for="audioClip">URL souncloud del audio:
+		<g:textField name="audioClip" value="${params?.audioClip}"></g:textField>
+	</label>
+
 	<label for="tag">Tag:
 		<g:select required="" name="tag" from="${discmaster.Tag.list()}" multiple="multiple" optionKey="id" size="5" value="${productInstance?.tag*.id}" class="many-to-many"/>
 	</label>

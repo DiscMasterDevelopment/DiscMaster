@@ -20,6 +20,9 @@
                     <iframe width="640" height="360" src="${"https://www.youtube.com/embed/"+ productInstance?.description?.videoClip}" frameborder="0" allowfullscreen></iframe>
                 </div>
             </g:if>
+            <g:if test="${productInstance?.description?.audioClip}">
+                <iframe width="100%" height="166" scrolling="no" frameborder="no" src= "${"https://w.soundcloud.com/player/?url="+ productInstance?.description?.audioClip + "&amp;color=000000&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"}"></iframe>
+            </g:if>
             <div>
                 <span class="property-value" aria-labelledby="price-label"><discmaster:productPrice product="${productInstance}"/></span>
             </div>
