@@ -1,5 +1,4 @@
 <%@ page import="discmaster.Product" %>
-<%@ page import="discmaster.Description" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -68,15 +67,15 @@
 
 					</div>
 
-					<div class="fieldcontain">
-						<label for="shortDescription">
+					<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'description', 'error')} required">
+						<label for="description">
 							<g:message code="description.description.label" default="Descripcion corta" />
 							<span class="required-indicator">*</span>
 						</label>
 						<g:textField name="shortDescription" required="" value="${productInstance?.description?.shortDescription}"/>
 					</div>
 
-					<div class="fieldcontain">
+					<div class="fieldcontain ${hasErrors(bean: productInstance, field: 'description', 'error')} required">
 						<label for="description">
 							<g:message code="description.description.label" default="Descripcion" />
 							<span class="required-indicator">*</span>
