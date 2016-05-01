@@ -36,13 +36,13 @@ class BootStrap {
             // Defining Products' contents
             def products = [
                 [
-                    shortDescription: "Rage llega desde Alemania....",
-                    description: "Formados hace 31 años en la ciudad alemana Herne, RAGE se bautizaron inicialmente como AVENGER, nombre con el que únicamente publicarían un LP, Prayers of Steel, además del EP Depraved to Black, y que no les convencería del todo.",
                     image: "grails-app/developmentData/ragethedevilstrikes.jpg",
                     imageType: 'image/jpeg',
-                    videoid: "LzbMjGOjleM",
-                    audioid: "https://soundcloud.com/iuploadshitfortabletops/up-the-fucking-ass-tony-orr",
                     product: [
+                        shortDescription: "Rage llega desde Alemania....",
+                        description: "Formados hace 31 años en la ciudad alemana Herne, RAGE se bautizaron inicialmente como AVENGER, nombre con el que únicamente publicarían un LP, Prayers of Steel, además del EP Depraved to Black, y que no les convencería del todo.",
+                        videoClip: "LzbMjGOjleM",
+                        audioClip: "https://soundcloud.com/iuploadshitfortabletops/up-the-fucking-ass-tony-orr",
                         name: "Rage - The Devil Strikes Again",
                         price: 400,
                         discount: 0,
@@ -53,13 +53,13 @@ class BootStrap {
                     ]
                 ],
                 [
-                    shortDescription: "Thunderstone regresa.",
-                    description: "Thunderstone regresa tras un hiatus de casi 7 años tras su produccion Dirte Metal en 2009. Esta vez de la mano de su nuevo album Apocalyse Again, una pieza de power metal sin igual que encantra a los mas exigentes del genero",
                     image: "grails-app/developmentData/thunderstone-apocalypse-again-portada-400x400.jpg",
-                    videoid: "_UXprCAsqTU",
-                    audioid: "https://soundcloud.com/nuclearblastrecords/rage-my-way",
                     imageType: 'image/jpeg',
                     product: [
+                        shortDescription: "Thunderstone regresa.",
+                        description: "Thunderstone regresa tras un hiatus de casi 7 años tras su produccion Dirte Metal en 2009. Esta vez de la mano de su nuevo album Apocalyse Again, una pieza de power metal sin igual que encantra a los mas exigentes del genero",
+                        videoClip: "_UXprCAsqTU",
+                        audioClip: "https://soundcloud.com/nuclearblastrecords/rage-my-way",
                         name: "Thunderstone - Apocalypse Again",
                         price: 350,
                         discount: 0.3,
@@ -70,13 +70,14 @@ class BootStrap {
                     ]
                 ],
                 [
-                    shortDescription: "Preparen sus hachas señores!!!",
-                    description: "La leyenda del melodeath regresa con Jomsviking, una produccion epica de gran calidad y potencia.",
                     image: "grails-app/developmentData/AmonAmarthJomsviking.jpg",
                     imageType: 'image/jpeg',
-                    videoid: "h6-krHfdmGg",
-                    audioid: "https://soundcloud.com/nuclearblastrecords/rage-my-way",
+
                     product: [
+                        shortDescription: "Preparen sus hachas señores!!!",
+                        description: "La leyenda del melodeath regresa con Jomsviking, una produccion epica de gran calidad y potencia.",
+                        videoClip: "h6-krHfdmGg",
+                        audioClip: "https://soundcloud.com/nuclearblastrecords/rage-my-way",
                         name: "Amon Amarth - Jomsviking",
                         price: 200,
                         discount: 0,
@@ -87,13 +88,13 @@ class BootStrap {
                     ]
                 ],
                 [
-                    shortDescription: "La hora triste....",
-                    description: "Katatonia, banda de Depressive Metal de Suecia, se presenta tras 20 años de carrera continuada con The Fall of Hearts, una propuesta oscura que pondra a prueba tus sentidos.",
                     image: "grails-app/developmentData/katatoniafallcdbigger.jpg",
                     imageType: 'image/jpeg',
-                    videoid: "bKjQduLxALM",
-                    audioid: "https://soundcloud.com/nuclearblastrecords/rage-my-way",
                     product: [
+                        shortDescription: "La hora triste....",
+                        description: "Katatonia, banda de Depressive Metal de Suecia, se presenta tras 20 años de carrera continuada con The Fall of Hearts, una propuesta oscura que pondra a prueba tus sentidos.",
+                        videoClip: "bKjQduLxALM",
+                        audioClip: "https://soundcloud.com/nuclearblastrecords/rage-my-way",
                         name: "Katatonia - The Fall of Hearts",
                         price: 10,
                         discount: 0.3,
@@ -104,13 +105,13 @@ class BootStrap {
                     ]
                 ],
                 [
-                    shortDescription: "Pwwnn in ya face!!!",
-                    description: "Sylosis, la revelacion del Thrash Metal ingles, ataca de nuevo con este contundente sencillo que pondra en extasis a cualquiera que se predisponga a disfrutar de este poderoso material, .... si se atrave.",
                     image: "grails-app/developmentData/DMOTSF.jpg",
                     imageType: 'image/jpeg',
-                    videoid: "SshPjukHAXM",
-                    audioid: "https://soundcloud.com/nuclearblastrecords/rage-my-way",
                     product: [
+                        shortDescription: "Pwwnn in ya face!!!",
+                        description: "Sylosis, la revelacion del Thrash Metal ingles, ataca de nuevo con este contundente sencillo que pondra en extasis a cualquiera que se predisponga a disfrutar de este poderoso material, .... si se atrave.",
+                        videoClip:  "SshPjukHAXM",
+                        audioClip: "https://soundcloud.com/nuclearblastrecords/rage-my-way",
                         name: "Sylosis - Different Masks on the Same Face",
                         price: 27.2,
                         discount: 0.2,
@@ -124,20 +125,16 @@ class BootStrap {
 
             // creating Products with descriptions and images (optional)
             def pts = []
+            def Product p
             products.each { pnd ->
-                Description d
                 if(pnd.image) { 
                     File imageFile = new File(pnd.image)
                     Image i = new Image(image: imageFile.bytes, type: pnd.imageType)
                     i.save()
-
-                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], videoClip: pnd["videoid"], audioClip: pnd["audioid"], image: i)
-                    d.save()
+                    p = new Product(pnd["product"] + [image: i])
                 } else {
-                    d = new Description(description: pnd["description"], shortDescription: pnd["shortDescription"], videoClip: pnd["videoid"],audioClip: pnd["audioid"])
-                    d.save()
+                    p = new Product(pnd["product"])
                 }
-                def p = new Product(pnd["product"] + [description: d])
                 pts << p
                 p.save()
             }
