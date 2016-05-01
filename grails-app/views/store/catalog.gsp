@@ -89,7 +89,7 @@
                     </div>
                     <div class="media-object-section">
                         <h5>${product.name}</h5>
-                        <p>${product.description.shortDescription}</p>
+                        <p>${product.shortDescription}</p>
                         <p>${product.totalInStorage} en Bodega</p>
                     </div>
                 </g:link>
@@ -108,7 +108,7 @@
                     </div>
                     <div class="media-object-section">
                         <h5>${product.name}</h5>
-                        <p>${product.description.shortDescription}</p>
+                        <p>${product.shortDescription}</p>
                         <p><discmaster:productPrice product="${product}"/></p>
                     </div>
                 </g:link>
@@ -127,7 +127,7 @@
                     </div>
                     <div class="media-object-section">
                         <h5>${product.name}</h5>
-                        <p>${product.description.shortDescription}</p>
+                        <p>${product.shortDescription}</p>
                     </div>
                 </g:link>
             </div>

@@ -83,9 +83,7 @@
             </div>
         </header>
 
-        <div class="row">
 		<g:layoutBody/>
-        </div>
 
         <footer>
             <hr>

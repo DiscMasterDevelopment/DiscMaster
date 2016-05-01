@@ -7,12 +7,17 @@
     <title>Perfil</title>
 </head>
 <body>
-<h1>Bienvenido(a) ${session?.user.name}</h1>
 <g:hasErrors bean="${User}">
     <div class="errors">
         <g:renderErrors bean="${user}"></g:renderErrors>
     </div>
 </g:hasErrors>
+
+<div class="row small-up-1 large-up-1">
+  <div class="small-1 large-1 columns">
+    <h1>Bienvenido(a) ${session?.user.name}</h1>
+  </div>
+</div>
 
 <div class="row small-up-1 large-up-2">
   <div class="medium-1 columns">

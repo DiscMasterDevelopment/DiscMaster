@@ -93,6 +93,8 @@ class UserController {
         respond userInstance
     }
 
+    def therms(){}
+
     @Transactional
     def update(User userInstance) {
         if (userInstance == null) {

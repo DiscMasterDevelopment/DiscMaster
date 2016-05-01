@@ -8,7 +8,6 @@
 <body>
 <h1>Cambiar contraseña</h1>
 
-</g:hasErrors>
 <g:form action="cambiar">
     <label for="password">Contraseña:
         <g:passwordField name="password" value="${user?.password}"></g:passwordField>
