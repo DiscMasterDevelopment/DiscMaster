@@ -118,7 +118,7 @@
 							<g:message code="product.tag.label" default="Tag" />
 
 						</label>
-						<g:select name="tag" from="${discmaster.Tag.list()}" multiple="multiple" optionKey="id" size="5" value="${productInstance?.tag*.id}" class="many-to-many"/>
+						<g:select name="tag" from="${discmaster.Tag.list()}" multiple="multiple" optionKey="id" size="5" optionValue="tag" value="${productInstance?.tag*.id}" class="many-to-many"/>
 
 					</div>
 
