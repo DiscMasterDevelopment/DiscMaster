@@ -14,10 +14,10 @@ class DiscmasterTagLibSpec extends Specification {
     Product productWithImage
     Image i
     def setup() {
-        Description d = new Description(description: "The best description")
         product = new Product(
                 name: "Disc 1",
-                description: d,
+                description: "The best description",
+                shortDescription: "a short thingy",
                 price: 400,
                 discount: 0,
                 totalInStorage: 21,
@@ -27,15 +27,16 @@ class DiscmasterTagLibSpec extends Specification {
 
         File imageFile = new File("grails-app/developmentData/ragethedevilstrikes.jpg")
         i = new Image(image: imageFile.bytes, type: 'image/jpeg')
-        Description d2 = new Description(description: "The best description", image: i)
         productWithImage = new Product(
                 name: "Disc 1",
-                description: d2,
+                description: "Whoa, I'm funny funny, don't you think",
+                shortDescription: "a short thingy",
                 price: 120,
                 discount: 0.4,
                 totalInStorage: 32,
                 limitPerUser: 20,
-                added: new Date() // current time
+                added: new Date(), // current time
+                image: i
         )
     }
 
@@ -86,12 +87,7 @@ class DiscmasterTagLibSpec extends Specification {
 
         // Product with a disccount
         (
-        new String("""
-                <s>\$120</s>
-                <span style="float:right">
-                    \$72 - <b>%40</b>
-                </span>
-                """)
+        new String("<s>\$120 COP</s> &nbsp;&nbsp;&nbsp; \$72 COP - <b>%40</b>")
         == applyTemplate('<discmaster:productPrice product="${product}" />', [product: productWithImage])
         )
     }
