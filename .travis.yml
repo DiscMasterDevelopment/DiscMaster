@@ -6,10 +6,6 @@ jdk:
 env:
   - GRAILS_VERSION=2.5.2
 
-matrix:
-  include:
-    - env: ONLY_GSP=true
-
 branches:
   only:
     - master
@@ -27,3 +23,9 @@ before_install:
 script: 
     - grails clean && grails test-app --non-interactive --stacktrace
     - grails compile --gsp
+
+deploy:
+    provider: heroku
+    api_key:
+        secure: "010678e9-15f5-42aa-bd46-5e00b28db268"
+    app: discmaster
