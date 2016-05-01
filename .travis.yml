@@ -6,6 +6,10 @@ jdk:
 env:
   - GRAILS_VERSION=2.5.2
 
+matrix:
+  include:
+    - env: ONLY_GSP=true
+
 branches:
   only:
     - master
@@ -20,4 +24,6 @@ before_install:
   - source ~/.sdkman/bin/sdkman-init.sh
   - sdk install grails $GRAILS_VERSION || true
 
-script: grails clean && grails test-app --non-interactive --stacktrace
+script: 
+    - grails clean && grails test-app --non-interactive --stacktrace
+    - grails compile --gsp
