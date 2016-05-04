@@ -13,8 +13,8 @@ class DiscmasterTagLib {
         Product p = attr.product
         String defaultImg
 
-        if (p?.description?.image) {
-            defaultImg = resource(dir: "images", file: "get/${p.description.image.id}")
+        if (p?.image) {
+            defaultImg = resource(dir: "images", file: "get/${p?.image.id}")
         } else {
             defaultImg = resource(dir: "images", file: "sin_imagen.png")
         }

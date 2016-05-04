@@ -8,6 +8,7 @@ env:
 
 branches:
   only:
+    - master
     - develop
 
 before_install:
@@ -19,4 +20,12 @@ before_install:
   - source ~/.sdkman/bin/sdkman-init.sh
   - sdk install grails $GRAILS_VERSION || true
 
-script: grails clean && grails test-app --non-interactive --stacktrace
+script: 
+    - grails clean && grails test-app --non-interactive --stacktrace
+    - grails compile --gsp
+
+deploy:
+    provider: heroku
+    api_key:
+        secure: "010678e9-15f5-42aa-bd46-5e00b28db268"
+    app: discmaster

@@ -15,7 +15,8 @@ class ProductSpec extends Specification {
             price: 400,
             discount: 0,
             totalInStorage: 21,
-            description: new Description(description: "The best description"),
+            description: "This is a description",
+            shortDescription: "This is a shorter description ;)",
             limitPerUser: 20,
             added: new Date() // current time
     ]

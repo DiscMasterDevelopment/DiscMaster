@@ -6,9 +6,13 @@ class Product {
     float price
     float discount
     int totalInStorage
-    Description description
     int limitPerUser
     Date added
+    String description
+    String shortDescription
+    String videoClip
+    String audioClip
+    Image image
     //int totalInOrder
 
     static hasMany = [tag: Tag]
@@ -20,5 +24,10 @@ class Product {
         totalInStorage min: 0
         limitPerUser nullable: true
         added nullable: false
+        description nullable: false
+        shortDescription nullable: false
+        videoClip   nullable: true
+        audioClip   nullable: true
+        image       nullable: true
     }
 }

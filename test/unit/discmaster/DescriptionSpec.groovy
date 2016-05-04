@@ -12,7 +12,8 @@ class DescriptionSpec extends Specification {
 
     static Map<String, Object> fields = [
             description: "A really realistic wordy word used in many restricted broad contexts",
-            videoclip: "https://youtu.be/YesImAREALLURI",
+            shortDescription: "not so wordy after all",
+            videoclip: "YesImAREALLURI",
             audioclip: "https://soundcloud.com/?isthisforrealz=YesImAREALLURI",
     ]
 
@@ -22,7 +23,7 @@ class DescriptionSpec extends Specification {
     def cleanup() {
     }
 
-    void "Creating an Description"() {
+    void "Creating a Description"() {
         given: "creating Description from valid parameters"
         def description = new Description(fields)
 

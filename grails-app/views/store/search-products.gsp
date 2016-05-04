@@ -31,7 +31,7 @@
                     <span class="property-value" aria-labelledby="price-label"><discmaster:productPrice product="${product}"/></span>
                 </div></div>
 
-                <p>${product.description.shortDescription}</p>
+                <p>${product.shortDescription}</p>
 
                 <g:if test="${!session?.admin}">
                 <g:form action="addProduct" controller="carList" id="${product?.id}">
