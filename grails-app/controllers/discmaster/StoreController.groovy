@@ -8,19 +8,19 @@ class StoreController {
 
     def catalog() {
         //def productList   = Product.list() // the whole list of products
-        def newest        = Product.withCriteria {
+        def newest = Product.withCriteria {
             gt('totalInStorage', 0) // with at least one exemplar in storage
             order('added', 'desc')
             maxResults(4)
         }
 
-        def promotions    = Product.withCriteria {
+        def promotions = Product.withCriteria {
             gt('totalInStorage', 0) // with at least one exemplar in storage
             order('discount', 'desc')
             maxResults(12)
         }
 
-        def cheapest      = Product.withCriteria {
+        def cheapest = Product.withCriteria {
             gt('totalInStorage', 0) // with at least one exemplar in storage
             order('price', 'asc')
             maxResults(3)
@@ -33,12 +33,11 @@ class StoreController {
         }
 
         def randomItems = Product.withCriteria {
-            def in_production = Environment.current == Environment.PRODUCTION // alias: if current_database == postgresql then true
+            gt('totalInStorage', 0) // with at least one exemplar in storage
 
             // https://stackoverflow.com/a/26492424
             // postgresql rand function is called random()
-            sqlRestriction( " 1=1 order by " + ( in_production ? "random()" : "rand()") )
-            gt('totalInStorage', 0) // with at least one exemplar in storage
+            sqlRestriction(" 1=1 order by random()")
             maxResults(3)
         }
 
