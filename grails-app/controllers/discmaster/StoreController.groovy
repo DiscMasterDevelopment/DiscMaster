@@ -57,6 +57,7 @@ class StoreController {
                 def dir = params.direction
                 if (params.sortBy.equals("price")) dir = dir?.equals("desc") ? "desc" : "asc"
                 else                               dir = dir?.equals("asc")  ? "asc"  : "desc"
+                params.direction = dir
 
                 order(params.sortBy, dir)
             }

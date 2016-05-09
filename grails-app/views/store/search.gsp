@@ -6,6 +6,29 @@
 </head>
 
 <body>
+
+    <hr/>
+    <g:form controller="store" action="search" class="has-form row small-collapse small-up-4" method="GET">
+        <g:each in="${params.subMap(['string', 'sortBy']).keySet()}"> <%-- Keeping info about the search in hidden fields --%>
+            <g:hiddenField name="${it}" value="${params[it]}"/>
+        </g:each>
+
+        <div class="column"><g:textField name="artist"   value="${params.artist}" placeholder="Artista"/></div>
+        <div class="column"><g:textField name="minPrice" value="${params.minPrice}" placeholder="Precio mínimo"/></div>
+        <div class="column"><g:textField name="maxPrice" value="${params.maxPrice}" placeholder="Precio máximo"/></div>
+        <div class="column"><g:submitButton class="button alert expand" name="referer" value="Refinar búsqueda"/></div>
+    </g:form>
+
+    <hr/>
+    <div class="row small-up-4">
+      <g:set var="translations" value="[price: 'Precio', discount: 'Descuento', totalInStorage: 'Total en bodega', added: 'Fecha de Publicación']"/>
+      <g:each in="['price', 'discount', 'totalInStorage', 'added']">
+        <div class="column">
+            <g:if test="${params.sortBy.equals(it)}"> <% params.direction = params.direction.equals('asc') ? 'desc' : 'asc' %> </g:if>
+            <g:link action="search" params="${params + [sortBy: it]}"> Ordenar por ${translations[it]} ${params.sortBy.equals(it) ? (params.direction.equals("desc") ? "⬆" : "⬇") : "" }</g:link>
+        </div>
+      </g:each>
+    </div>
     
     <g:each in="${products}" status="i" var="product">
         <hr/>
