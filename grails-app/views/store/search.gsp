@@ -63,7 +63,14 @@
                         <span class="property-value" aria-labelledby="quantity-label"><g:select name="quantity" from="${1..99}" value="${quantity}"></g:select></span>
 
                     </div>
-                    <g:submitButton class="button expanded" name="addProduct" required="" value="Añadir al carrito" title="Agregar al carrito" ></g:submitButton>
+                    <div class="row small-up-2 collapse">
+                        <div class="column">
+                            <g:submitButton class="button expanded" name="addProduct" required="" value="Añadir al carrito" title="Agregar al carrito" ></g:submitButton>
+                        </div>
+                        <div class="column">
+                            <g:link controller="wishList" action="addProduct" id="${product?.id}" class="button expanded" title="Añadir a la lista de deseos">Añadir a la lista de deseos</g:link>
+                        </div>
+                    </div>
                 </g:form>
 
                 <div class="small secondary expanded button-group">
