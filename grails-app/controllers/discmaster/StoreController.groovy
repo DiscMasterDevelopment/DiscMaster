@@ -8,21 +8,39 @@ class StoreController {
 
     def catalog() {
         //def productList   = Product.list() // the whole list of products
-        def newest        = Product.list(max: 4, sort: 'added', order: 'desc', readOnly: true)
-        def promotions    = Product.list(max: 12, sort: 'discount', order: 'desc', readOnly: true)
-        def cheapest      = Product.list(max: 3, sort: 'price', order: 'asc', readOnly: true)
-        def lastInStorage = Product.list(max: 3, sort: 'totalInStorage', order: 'asc', readOnly: true)
+        def newest        = Product.withCriteria {
+            gt('totalInStorage', 0) // with at least one exemplar in storage
+            order('added', 'desc')
+            maxResults(4)
+        }
 
-        String orderByRandom = {
-            if(Environment.current != Environment.PRODUCTION)
-                " 1=1 order by rand()" // https://stackoverflow.com/a/26492424
-            else
-                " 1=1 order by random()" // postgresql rand function is called random()
-        }()
-        def randomItems   = Product.withCriteria {
-                                sqlRestriction orderByRandom
-                                maxResults 3
-                            }
+        def promotions    = Product.withCriteria {
+            gt('totalInStorage', 0) // with at least one exemplar in storage
+            order('discount', 'desc')
+            maxResults(12)
+        }
+
+        def cheapest      = Product.withCriteria {
+            gt('totalInStorage', 0) // with at least one exemplar in storage
+            order('price', 'asc')
+            maxResults(3)
+        }
+
+        def lastInStorage = Product.withCriteria {
+            gt('totalInStorage', 0) // with at least one exemplar in storage
+            order('totalInStorage', 'asc')
+            maxResults(3)
+        }
+
+        def randomItems = Product.withCriteria {
+            def in_production = Environment.current == Environment.PRODUCTION // alias: if current_database == postgresql then true
+
+            // https://stackoverflow.com/a/26492424
+            // postgresql rand function is called random()
+            sqlRestriction( " 1=1 order by " + ( in_production ? "random()" : "rand()") )
+            gt('totalInStorage', 0) // with at least one exemplar in storage
+            maxResults(3)
+        }
 
 
         [
