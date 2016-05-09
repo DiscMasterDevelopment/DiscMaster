@@ -20,9 +20,9 @@
                             <%-- <li><g:link uri="/" title="Site's page">DiscMaster</g:link></li> --%>
 
                             <li> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
-                                <g:form controller="store" action="search-products" class="has-form row large-collapse small-collapse" method="GET"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
-                                    <div class="large-9 columns"><g:textField name="to-search" placeholder="Busca el 'merchandising'"></g:textField></div>
-                                    <div class="large-3 columns"><g:submitButton class="button alert expand" name="buscar" value="Buscar"></g:submitButton></div>
+                                <g:form controller="store" action="search" class="has-form row large-collapse small-collapse" method="GET"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
+                                    <div class="large-9 columns"><g:textField name="string" placeholder="Busca el 'merchandising'"></g:textField></div>
+                                    <div class="large-3 columns"><g:submitButton class="button alert expand" name="referer" value="search_box"></g:submitButton></div>
                                 </g:form>
                             </li>
                         </ul>

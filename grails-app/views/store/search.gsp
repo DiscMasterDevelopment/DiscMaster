@@ -2,7 +2,7 @@
 <!doctype html>
 <head>
     <meta name="layout" content="main">
-    <title>Productos - search - DiscMaster</title>
+    <title>Productos - Búsqueda - DiscMaster</title>
 </head>
 
 <body>

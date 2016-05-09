@@ -35,11 +35,40 @@ class StoreController {
         ]
     }
 
-    def 'search-products'() {
-        String toSearch = "%${params["to-search"]}%"
-        // TODO: It's searching only by product name, change it so it searches also in the description
-        def products = Product.withCriteria {
-            like('name', toSearch)
+    def search() {
+        String toSearch = "%${params.string}%"
+        
+        def products = Product.withCriteria(max: 10, offset: 10) {
+            // search on any name, description, or shortDescription the passed string
+            or {
+                ilike('name', toSearch)
+                ilike('description', toSearch)
+                ilike('shortDescription', toSearch)
+            }
+
+            // Search by artist if the field artist was filled
+            if( params.artist ) {
+                artist { ilike('name', "%${params.artist}%") }
+            }
+
+            // Sort by "price", "discount", "totalInStorage", "added"
+            if ( params.sortBy?.matches("price|discount|totalInStorage|added") ) {
+                // getting sorting direction "desc" or "asc"
+                def dir = params.direction
+                if (params.sortBy.equals("price")) dir = dir?.equals("desc") ? "desc" : "asc"
+                else                               dir = dir?.equals("asc")  ? "asc"  : "desc"
+
+                order(params.sortBy, dir)
+            }
+
+            // Price ranges
+            if ( params.minPrice ) ge("price", params.float("minPrice"))
+            if ( params.maxPrice ) le("price", params.float("maxPrice"))
+
+            // Search only products since "params.date"
+            if ( params.since ) {
+               ge("added", Date.parse("yyyy/MM/dd", params.since))
+            }
         }
         [products: products]
     }
