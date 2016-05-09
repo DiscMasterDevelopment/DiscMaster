@@ -7,6 +7,7 @@ import discmaster.ProductQuantity
 import discmaster.Description
 import discmaster.Administrator
 import discmaster.WishList
+import discmaster.Artist
 
 import grails.util.Environment
 import groovy.time.TimeCategory
@@ -19,25 +20,41 @@ class BootStrap {
         def udb = User.findByName("john")
         if(!udb) { // trying to detect if john user already exists or not. TODO: change this ad-hoc solution for something more robust like http://www.grails.org/plugin/database-migration
 
-            //Defining tags
-            def t1 = new Tag(tag: "Común")
-            def t2 = new Tag(tag: "Poco Común")
-            def t3 = new Tag(tag: "Raro")
-            def t4 = new Tag(tag: "Épico")
-            def t5 = new Tag(tag: "Legendario")
+            // Defining Tags
+            def tagsNames = ["Común", "Poco Común", "Raro", "Épico", "Legendario"]
+            def tagList = []
+            tagsNames.each {
+                Tag t = new Tag(tag: it)
+                t.save()
+                tagList << t
+            }
 
-            t1.save()
-            t2.save()
-            t3.save()
-            t4.save()
-            t5.save(flush:true)
-            // NOTE: Flush only once, only in the last save
+            // Defining Artists
+            def artists = [
+                [
+                    artist: [name: "A somebody", officialPage: "http://www.exampel.ple"],
+                    description: [description: "A band/artist description", shortDescription: "A band/artist description"],
+                ],
+            ]
 
-            // Defining Products' contents
+            def artistList = []
+            artists.each { artist ->
+                Description d = new Description(artist["description"])
+                d.save()
+
+                Artist a = new Artist(artist["artist"] + [description: d, product: [], news: []])
+                //a.save(failOnError: true)
+                a.save()
+
+                artistList << a
+            }
+
+            // Defining Products
             def products = [
                 [
                     image: "grails-app/developmentData/ragethedevilstrikes.jpg",
                     imageType: 'image/jpeg',
+                    artist: artistList[0],
                     product: [
                         shortDescription: "Rage llega desde Alemania....",
                         description: "Formados hace 31 años en la ciudad alemana Herne, RAGE se bautizaron inicialmente como AVENGER, nombre con el que únicamente publicarían un LP, Prayers of Steel, además del EP Depraved to Black, y que no les convencería del todo.",
@@ -49,7 +66,7 @@ class BootStrap {
                         totalInStorage: 21,
                         limitPerUser: 20,
                         added: new Date(), // getting the current time
-                        tag: [t3, t1,t5]
+                        tag: [tagList[2], tagList[0], tagList[4]]
                     ]
                 ],
                 [
@@ -66,7 +83,7 @@ class BootStrap {
                         totalInStorage: 21,
                         limitPerUser: 20,
                         added: use(TimeCategory) { new Date() + 1.second }, // getting the current time and adding one second to it
-                        tag: t5
+                        tag: [tagList[4]]
                     ]
                 ],
                 [
@@ -84,7 +101,7 @@ class BootStrap {
                         totalInStorage: 0,
                         limitPerUser: 20,
                         added: use(TimeCategory) { new Date() + 2.second },
-                        tag: t1
+                        tag: [tagList[0]]
                     ]
                 ],
                 [
@@ -101,7 +118,7 @@ class BootStrap {
                         totalInStorage: 20,
                         limitPerUser: 20,
                         added: use(TimeCategory) { new Date() + 3.second },
-                        tag: t2
+                        tag: [tagList[1]]
                     ]
                 ],
                 [
@@ -118,7 +135,7 @@ class BootStrap {
                         totalInStorage: 20,
                         limitPerUser: 20,
                         added: use(TimeCategory) { new Date() + 4.second },
-                        tag: [t3, t2]
+                        tag: [tagList[2], tagList[3]]
                     ]
                 ],
             ]
@@ -127,19 +144,22 @@ class BootStrap {
             def pts = []
             def Product p
             products.each { pnd ->
+                p = new Product(pnd["product"])
                 if(pnd.image) { 
                     File imageFile = new File(pnd.image)
                     Image i = new Image(image: imageFile.bytes, type: pnd.imageType)
                     i.save()
-                    p = new Product(pnd["product"] + [image: i])
-                } else {
-                    p = new Product(pnd["product"])
+                    p.image = i
+                }
+                if(pnd.artist) { 
+                    p.artist = pnd.artist       // setting artist as the artist from the product
+                    pnd.artist.addToProducts(p) // adding product to the list of products of the artist
                 }
                 pts << p
                 p.save()
             }
             
-            // Adding users
+            // Creating a User (John)
             def u = new User(
                 name: "john",
                 phone: "123456789",
@@ -148,6 +168,7 @@ class BootStrap {
                 password: "123456789",
                 age: 18
             )
+
             def carList = new CarList(
                 user: u,
                 productList: [
@@ -156,20 +177,21 @@ class BootStrap {
                     new ProductQuantity(product: pts[4], quantity: 1, unitaryPrice: pts[4].price, discount: pts[4].discount),
                 ]
             )
+
             def wishList = new WishList(user: u)
 
             wishList.save()
             carList.save()
             u.save()
 
-            //Adding admins
+            // Creating and admin
             def admin = new Administrator(
                 name: "DiscMaster_Vengarl",
                 phone: "311111111",
                 password: "holiwish"
             )
 
-            admin.save()
+            admin.save(flush: true)
 
         }
     }
