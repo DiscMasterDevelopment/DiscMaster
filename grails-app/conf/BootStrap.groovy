@@ -178,7 +178,7 @@ class BootStrap {
                 ]
             )
 
-            def wishList = new WishList(user: u)
+            def wishList = new WishList(user: u, productList: [pts[3], pts[2]])
 
             wishList.save()
             carList.save()
