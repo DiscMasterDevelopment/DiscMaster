@@ -22,7 +22,7 @@
                             <li> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
                                 <g:form controller="store" action="search" class="has-form row large-collapse small-collapse" method="GET"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
                                     <div class="large-9 columns"><g:textField name="string" placeholder="Busca el 'merchandising'"></g:textField></div>
-                                    <div class="large-3 columns"><g:submitButton class="button alert expand" name="referer" value="search_box"></g:submitButton></div>
+                                    <div class="large-3 columns"><g:submitButton class="button alert expand" name="referer" value="Buscar producto"></g:submitButton></div>
                                 </g:form>
                             </li>
                         </ul>
@@ -35,6 +35,7 @@
                             <g:if test="${session?.user}">
                                 <li>Estas logeado como: ${session.user?.name}</li>
                                 <li><g:link action="logout" controller="user" title="Logout">Logout</g:link></li>
+                                <li><g:link action="profile" controller="user" title="Profile">Perfil</g:link></li>
                             </g:if>
                             <g:elseif test="${session?.admin}">
                                 <li>Bienvenido administrador: ${session.admin?.name}</li>
@@ -51,7 +52,7 @@
                                 <li><g:link action="register" controller="user" title="Sign In">Registrarse</g:link></li>
                             </g:else>
 
-                            <li><g:link action="profile" controller="user" title="Profile">Perfil</g:link></li>
+                            <li><g:link controller="WishList" action="show" title="Deseos">Deseos</g:link></li>
 
                             <li>
                                 <g:link controller="CarList" action="show" title="Carrito de compras">
