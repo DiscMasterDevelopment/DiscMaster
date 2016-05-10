@@ -37,11 +37,16 @@
                 <p><discmaster:productPrice product="${product}"/></p>
             </g:link>
             <div class="row small-up-2 collapse">
+                <%--
                 <div class="column">
                     <g:link controller="product" action="show" id="${product.id}" class="button expanded" title="Ver producto">Ver</g:link>
                 </div>
+                --%>
                 <div class="column">
                     <g:link controller="carList" action="addProduct" id="${product.id}" class="button expanded alert" title="Agregar al carrito">Carrito [+]</g:link>
+                </div>
+                <div class="column">
+                    <g:link controller="wishList" action="addProduct" id="${product?.id}" class="button expanded" title="Añadir a la lista de deseos">Añadir a la lista de deseos</g:link>
                 </div>
             </div>
         </div>

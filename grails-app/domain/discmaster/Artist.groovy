@@ -7,7 +7,7 @@ class Artist {
     Description description
 
     static hasMany = [
-        product: Product,
+        products: Product,
         news: NewsArticle
     ]
 
