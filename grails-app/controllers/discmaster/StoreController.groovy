@@ -87,6 +87,11 @@ class StoreController {
             if ( params.since ) {
                ge("added", Date.parse("yyyy/MM/dd", params.since))
             }
+
+            // Search by an specific tag
+            if( params.tag ) {
+                tag { like('tag', params.tag) }
+            }
         }
         [products: products]
     }
