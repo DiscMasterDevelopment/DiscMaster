@@ -8,20 +8,21 @@
 <%@ page import="discmaster.Artist" %>
 <!DOCTYPE html>
 
+<html>
 <head>
     <meta name="layout" content="main">
 </head>
 <body>
 
-<div class="row small-up-1 large-up-2">
+<div class="row small-up-2 large-up-1">
     <g:each in="${Artist.list()}" status="i" var="artist">
         <div class="column">
             <g:link controller="artist" action="show" id="${artist.id}" title="Ver artista">
 
-                <h5>${artist.name}</h5>
+                <h3>${artist.name}</h3>
             </g:link>
 
         </div>
     </g:each>
 </body>
-
+</html>>
