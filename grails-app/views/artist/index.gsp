@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<div class="row small-up-2 large-up-4">
+<div class="row small-up-1 large-up-2">
     <g:each in="${Artist.list()}" status="i" var="artist">
         <div class="column">
             <g:link controller="artist" action="show" id="${artist.id}" title="Ver artista">
