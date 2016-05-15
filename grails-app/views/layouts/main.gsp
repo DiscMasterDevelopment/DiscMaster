@@ -33,12 +33,12 @@
                         <a href="#" id="menu-icon"></a>
                         <ul class="menu">
                             <g:if test="${session?.user}">
-                                <li>Estas logeado como: ${session.user?.name}</li>
+                                <li class="logged">Estas logeado como: ${session.user?.name}</li>
                                 <li><g:link action="logout" controller="user" title="Logout">Logout</g:link></li>
                                 <li><g:link action="profile" controller="user" title="Profile">Perfil</g:link></li>
                             </g:if>
                             <g:elseif test="${session?.admin}">
-                                <li>Bienvenido administrador: ${session.admin?.name}</li>
+                                <li class="logged">Bienvenido administrador: ${session.admin?.name}</li>
                                 <li><g:link action="logout" controller="user" title="Logout">Logout</g:link></li>
                             </g:elseif>
                             <g:else>
