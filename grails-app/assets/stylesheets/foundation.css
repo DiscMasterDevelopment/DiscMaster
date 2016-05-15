@@ -3297,6 +3297,11 @@ select[multiple] {
 .menu > li > a {
   display: block;
   padding: 0.7rem 1rem;
+}
+
+.menu > li.logged {
+  display: block;
+  padding: 25px 10px;
   line-height: 1;
 }
 /* line 66, foundation/components/_menu.scss */
@@ -5160,6 +5165,11 @@ table.hover tr:nth-of-type(even):hover {
   padding: 10px;
 }
 
+.logged {
+  display: block;
+  padding: 0.7rem 1rem;
+  line-height: 1;
+}
 .top-bar {
   padding: 0.5rem;
 }
