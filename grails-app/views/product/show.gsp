@@ -51,7 +51,9 @@
 			<g:if test="${productInstance?.tag}">
 				<div class="row" style="text-align: center">
 					<g:each in="${productInstance.tag}" var="t">
-						<span class="label" aria-labelledby="tag-label"><g:fieldValue bean="${t}" field="tag"/></span>
+						<g:link controller="store" action="search" params="${[string:'', tag: t.tag]}" >
+                            <span class="label" aria-labelledby="tag-label"><g:fieldValue bean="${t}" field="tag"/></span>
+                        </g:link>
 					</g:each>
 
 				</div>
