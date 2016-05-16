@@ -5,14 +5,15 @@ class Artist {
     String name
     String officialPage
     Description description
+    Image image
 
     static hasMany = [
-        product: Product,
+        products: Product,
         news: NewsArticle
     ]
 
 
     static constraints = {
-
+        image             nullable: true
     }
 }
