@@ -1,15 +1,10 @@
 package discmaster
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
-import grails.plugin.facebooksdk.FacebookContext
-import grails.plugin.facebooksdk.FacebookGraphClient
-import com.restfb.exception.FacebookOAuthException
 
 //@Transactional(readOnly = true) // getting problems with postgresql TODO: search how to use this library
 class UserController {
-
-    FacebookContext facebookContext
-    //static defaultAction = 'register'
 
     static allowedMethods = [login: "POST", create: "POST", save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -43,33 +38,7 @@ class UserController {
         respond userInstance
     }
 
-    def register() {
-        def user
-        List permissions = []
-        List userFriends = []
-        if (facebookContext.authenticated) {
-            String token = facebookContext.user.token
-            if (token) {
-                FacebookGraphClient facebookGraphClient = new FacebookGraphClient(token)
-                try {
-                    user = facebookGraphClient.fetchObject(facebookContext.user.id.toString())
-                    permissions = facebookGraphClient.fetchConnection("${facebookContext.user.id}/permissions")
-                    if (permissions.find { it.permission == 'user_friends' && it.permission == 'granted' } ) {
-                        userFriends = facebookGraphClient.fetchConnection("${facebookContext.user.id}/friends", [limit:10])
-                    }
-                } catch (FacebookOAuthException exception) {
-                    facebookContext.user.invalidate()
-                }
-            }
-        }
-
-        [
-                facebookContext: facebookContext,
-                permissions: permissions,
-                user: user,
-                userFriends: userFriends
-        ]
-    }
+    def register() {}
 
     def profile() {
         if(!session?.user)
@@ -123,6 +92,8 @@ class UserController {
     def edit(User userInstance) {
         respond userInstance
     }
+    
+    def terms() {}
 
     @Transactional
     def update(User userInstance) {

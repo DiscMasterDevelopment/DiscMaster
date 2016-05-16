@@ -72,8 +72,6 @@ grails.project.dependency.resolution = {
 
         // Uncomment these to enable additional asset-pipeline capabilities
         compile ":sass-asset-pipeline:2.7.2"
-        runtime ':facebook-sdk:2.5.0'
-
         //compile ":less-asset-pipeline:1.10.0"
         //compile ":coffee-asset-pipeline:1.8.0"
         //compile ":handlebars-asset-pipeline:1.3.0.3"
