@@ -32,8 +32,13 @@ class BootStrap {
             // Defining Artists
             def artists = [
                 [
-                    artist: [name: "A somebody", officialPage: "http://www.exampel.ple"],
-                    description: [description: "A band/artist description", shortDescription: "A band/artist description"],
+                    image: "grails-app/developmentData/Sylosis-band.jpg",
+                    imageType: 'image/jpeg',
+                    artist: [name: "Sylosis", officialPage: "http://www.sylosis.com/"],
+                    description: [description: "Formada en 2000 por Josh Middleton y Alex Bailey, Sylosis se levanta " +
+                            "como la revelación del thrash moderno. Su estilo integra la velocidad del thrash, la " +
+                            "brutalidad del death y algunos retoques vocales del metalcore. Una combinacion ganadora al " +
+                            "momento de presentarse en tarima.", shortDescription: "La leyenda de Inglaterra"],
                 ],
             ]
 
@@ -42,11 +47,19 @@ class BootStrap {
                 Description d = new Description(artist["description"])
                 d.save()
 
-                Artist a = new Artist(artist["artist"] + [description: d, product: [], news: []])
-                //a.save(failOnError: true)
-                a.save()
+                Artist ar = new Artist(artist["artist"] + ["description": d, product: [], news: []])
+                if(artist.image) {
+                    File imageFile = new File(artist.image)
+                    Image im = new Image(image: imageFile.bytes, type: artist.imageType)
+                    im.save(failOnError: true)
+                    ar.image = im
+                }
 
-                artistList << a
+               // Artist a = new Artist(artist["artist"] + [description: d, product: [], news: []])
+                ar.save(failOnError: true)
+                //ar.save()
+
+                artistList << ar
             }
 
             // Defining Products

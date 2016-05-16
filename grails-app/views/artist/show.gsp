@@ -18,7 +18,6 @@
                 <g:fieldValue bean="${artistInstance}" field="name"/>
             </g:if>
         </h1>
-        <hr/>
     </div>
 </div>
 
@@ -41,7 +40,7 @@
                     </g:if>
                 </div>
                 <div class="large-6 columns">
-                    <img src="http://placehold.it/400x240&text=[img]"/>
+                    <discmaster:artistImg artist="${artistInstance}" class="image" width="360px"/>
                 </div>
             </div>
             <g:if test="${artistInstance?.officialPage}">
@@ -58,19 +57,15 @@
         </ul>
         <div class="panel">
             <h5>Featured</h5>
-            <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
+            <g:if test="${artistInstance?.name}">
+                <p>No olvidez consultar nuestra tienda por productos de <g:fieldValue bean="${artistInstance}" field="name"/></p>
+            </g:if>
             <a href="#">Read More &rarr;</a>
         </div>
     </aside>
 
 </div>
 
-
-<footer class="row">
-    <div class="large-12 columns">
-        <hr/>
-    </div>
-</footer>
 <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
 <script>

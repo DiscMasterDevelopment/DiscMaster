@@ -5,6 +5,7 @@ class Artist {
     String name
     String officialPage
     Description description
+    Image image
 
     static hasMany = [
         products: Product,
@@ -13,6 +14,6 @@ class Artist {
 
 
     static constraints = {
-
+        image             nullable: true
     }
 }
