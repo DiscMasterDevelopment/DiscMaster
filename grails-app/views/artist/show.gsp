@@ -44,7 +44,7 @@
                 </div>
             </div>
             <g:if test="${artistInstance?.officialPage}">
-                <p>Mira el <a href=<g:fieldValue bean="${artistInstance}" field="officialPage"/>>sitio oficial </a> de la banda.</p>
+                <p>Visita el <a href=<g:fieldValue bean="${artistInstance}" field="officialPage"/>><font color=blue>sitio oficial </font></a> del artista.</p>
             </g:if>
         </article>
     </div>
@@ -58,7 +58,7 @@
         <div class="panel">
             <h5>Featured</h5>
             <g:if test="${artistInstance?.name}">
-                <p>No olvidez consultar nuestra tienda por productos de <g:fieldValue bean="${artistInstance}" field="name"/></p>
+                <p>No olvidez consultar en nuestra tienda productos de <g:fieldValue bean="${artistInstance}" field="name"/></p>
             </g:if>
             <a href="#">Read More &rarr;</a>
         </div>
