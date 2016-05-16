@@ -40,6 +40,58 @@
     </div>
 
     <g:submitButton class="button" name="create" required="" value="Register"></g:submitButton>
+
+    <div class="page-header">
+        <h1>Login on Facebook </h1>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <g:if test="${!facebookContext.app.id}">
+
+                <g:render template="/website/configError" />
+
+            </g:if>
+            <g:else>
+
+                <facebook:initJS appId="${facebookContext.app.id}">
+                    // Put here any JS code to be executed after Facebook JS initialization
+                </facebook:initJS>
+
+                <g:if test="${!facebookContext.authenticated}">
+
+                    <p>
+                        <facebook:loginLink appPermissions="${facebookContext.app.permissions}" elementClass="large primary btn">Login</facebook:loginLink>
+                    </p>
+                </g:if>
+                <g:else>
+                    <h2 class="tab">Permissions</h2>
+                    <ul class="permissions">
+                        <g:each in="${permissions}" var="permission">
+                            <li>
+                                ${permission.permission} (${permission.status})
+                            </li>
+                        </g:each>
+                    </ul>
+
+                </g:else>
+                <p>&nbsp;</p>
+            </g:else>
+            <p>&nbsp;</p>
+            <h2 class="tab">Facebook Dialogs</h2>
+            <script type="text/javascript">
+
+                function publish_callback(response) {if (response && response.success) alert('Published successfully')};
+                function send_callback(response) {if (response && response.success) alert('Sent successfully')};
+                function share_callback(response) {if (response && response.success) alert('Shared successfully')};
+            </script>
+
+            <facebook:publishLink callback="publish_callback" elementClass="btn">Publicar </facebook:publishLink>
+            <facebook:shareLink callback="share_callback" elementClass="btn" href="https://discmaster.herokuapp.com/ ">Compartir con mis amigos</facebook:shareLink>
+            <facebook:sendLink callback="send_callback" elementClass="btn" link="https://discmaster.herokuapp.com/ " to= "100000749042528">Enviar Link a un amigo</facebook:sendLink>
+
+
+        </div>
+    </div>
 </g:form>
 </body>
 </html>

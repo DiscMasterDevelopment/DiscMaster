@@ -39,7 +39,7 @@ grails.views.default.codec = "html"
 
 // The default scope for controllers. May be prototype, session or singleton.
 // If unspecified, controllers are prototype scoped.
-grails.controllers.defaultScope = 'singleton'
+//grails.controllers.defaultScope = 'singleton'
 
 // GSP settings
 grails {
@@ -118,4 +118,18 @@ log4j.main = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+}
+
+grails {
+    plugin {
+        facebooksdk {
+            // For single app config
+            app = [
+                    id: 784748638328261,
+                    secret: '2339f02ed11950be5df03095e98e7f29',
+                    permissions: ['email']
+            ]
+
+        }
+    }
 }
