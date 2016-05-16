@@ -15,7 +15,7 @@ class Description {
     //]
 
     static constraints = {
-        description nullable: false
+        description nullable: false, maxSize: 9999
         shortDescription nullable: false
         videoClip   nullable: true
         audioClip   nullable: true
