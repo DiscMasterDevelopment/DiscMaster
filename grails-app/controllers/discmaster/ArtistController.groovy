@@ -3,7 +3,9 @@ package discmaster
 
 
 import static org.springframework.http.HttpStatus.*
+import grails.transaction.Transactional
 
+@Transactional(readOnly = true)
 class ArtistController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -17,11 +19,12 @@ class ArtistController {
         respond artistInstance
     }
 
-    /*def create() {
+    def create() {
         respond new Artist(params)
-    }*/
+    }
 
-    /*def save(Artist artistInstance) {
+    @Transactional
+    def save(Artist artistInstance) {
         if (artistInstance == null) {
             notFound()
             return
@@ -41,13 +44,14 @@ class ArtistController {
             }
             '*' { respond artistInstance, [status: CREATED] }
         }
-    }*/
+    }
 
-    /*def edit(Artist artistInstance) {
+    def edit(Artist artistInstance) {
         respond artistInstance
-    }*/
+    }
 
-    /*def update(Artist artistInstance) {
+    @Transactional
+    def update(Artist artistInstance) {
         if (artistInstance == null) {
             notFound()
             return
@@ -67,9 +71,9 @@ class ArtistController {
             }
             '*'{ respond artistInstance, [status: OK] }
         }
-    }*/
+    }
 
-/*
+    @Transactional
     def delete(Artist artistInstance) {
 
         if (artistInstance == null) {
@@ -96,5 +100,5 @@ class ArtistController {
             }
             '*'{ render status: NOT_FOUND }
         }
-    }*/
+    }
 }
