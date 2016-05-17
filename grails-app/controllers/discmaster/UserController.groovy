@@ -41,8 +41,16 @@ class UserController {
     def register() {}
 
     def profile() {
-        if(!session?.user)
+        def userInstance
+        if(session?.user || session?.admin){
+            userInstance = User.findByName(session.user.name)
+            respond userInstance
+
+        }
+        else{
             redirect action: "register"
+
+        }
     }
     def create() {
         def u = new User()
@@ -112,7 +120,7 @@ class UserController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
-                redirect userInstance
+                redirect action: "profile"
             }
             '*'{ respond userInstance, [status: OK] }
         }
