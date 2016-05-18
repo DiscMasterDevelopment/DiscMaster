@@ -5260,13 +5260,14 @@ table.hover tr:nth-of-type(even):hover {
   visibility: hidden;
 }
 
-@media screen and (max-width: 750px){
+@media screen and (max-width: 1300px){
   #search-icon{
     display: inline-block;
   }
   #menu-icon{
     display: inline-block;
   }
+
   nav ul, nav:active ul{
     display: none;
     position: absolute;
