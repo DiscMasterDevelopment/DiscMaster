@@ -13,33 +13,56 @@
 		<g:renderErrors bean="${user}"></g:renderErrors>
 	</div>
 </g:hasErrors>
-<g:form action="create">
-    <label for="name">Nick:
+%{------------------------}%
+<div class="center row">
+    <div>
+    <g:form action="create">
+        <label for="name">Nick:
         <g:textField name="name" minlength="3" maxlength="20" required="" value="${user?.name}"></g:textField>
-    </label>
-    <label for="password">Contraseña:
+        </label>
+        <label for="password">Contraseña:
         <g:passwordField name="password" minlength="8" maxlength="15" required="" value="${user?.password}"></g:passwordField>
-    </label>
-    <label for="confirm">Confirmar contraseña:
+        </label>
+        <label for="confirm">Confirmar contraseña:
         <g:passwordField name="confirm" required="" value="${params?.confirm}"></g:passwordField>
-    </label>
-    <label for="realName">Nombre:
+        </label>
+        <label for="realName">Nombre:
         <g:textField name="realName" required="" value="${user?.realName}"></g:textField>
-    </label>
-    <label for="age">Edad:
-    <g:select name="age" from="${18..99}" noSelection="['':'Elige tu edad']" required="" value="${user?.age}"></g:select>
-    </label>
-    <label for="email">Correo electrónico:
+        </label>
+        <label for="age">Edad:
+        <g:select name="age" from="${18..99}" noSelection="['':'Elige tu edad']" required="" value="${user?.age}"></g:select>
+        </label>
+        <label for="email">Correo electrónico:
         <g:textField name="email" required="" value="${user?.email}"></g:textField>
-    </label>
-    <label for="phone">Telefono:
+        </label>
+        <label for="phone">Telefono:
         <g:textField name="phone" pattern="[0-9]{10}" required="" value="${user?.phone}"></g:textField>
-    </label>
-    <div class="fieldcontain">
-        <g:checkBox name="myCheckbox" value="${false}" required=""  ></g:checkBox> Acepto los <g:link controller="user" action="therms">Terminos y condiciones.</g:link>
-    </div>
+        </label>
+        <div class="fieldcontain">
+            <g:checkBox name="myCheckbox" value="${false}" required=""  ></g:checkBox> Acepto los <g:link controller="user" action="therms">Terminos y condiciones.</g:link>
+        </div>
 
-    <g:submitButton class="button" name="create" required="" value="Register"></g:submitButton>
-</g:form>
+        <g:submitButton class="button" name="create" required="" value="Register"></g:submitButton>
+    </g:form>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+%{--Toca con machete mientras :(--}%
+%{-----------------------------------------------}%
+
 </body>
 </html>
