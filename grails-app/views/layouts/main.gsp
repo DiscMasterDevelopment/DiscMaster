@@ -40,6 +40,7 @@
                             <g:elseif test="${session?.admin}">
                                 <li class="logged">Bienvenido administrador: ${session.admin?.name}</li>
                                 <li><g:link action="logout" controller="user" title="Logout">Logout</g:link></li>
+                                <li><g:link action="profile" controller="user" title="Profile">Perfil</g:link></li>
                             </g:elseif>
                             <g:else>
                                 <li>
