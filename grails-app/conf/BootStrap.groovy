@@ -65,6 +65,40 @@ class BootStrap {
             // Defining Products
             def products = [
                 [
+                    image: "grails-app/developmentData/Stabbing_The_Drama.jpg",
+                    imageType: 'image/jpeg',
+                    product: [
+                        shortDescription: "Soilwork llega desde Suecia.",
+                        description: "Stabbing the Drama es el sexto álbum de Soilwork, el primer trabajo sin contar en su alineación al guitarrista Peter Wichers",
+                        videoClip: "Z83vu-TRF6Y",
+                        audioClip: "https://soundcloud.com/nuclearblastrecords/soilwork-stabbing-the-drama",
+                        name: "Nightwish - Endless Forms Most Beautiful",
+                        price: 420,
+                        discount: 0.4,
+                        totalInStorage: 60,
+                        limitPerUser: 20,
+                        added: new Date(), // getting the current time
+                        tag: [tagList[1], tagList[4], tagList[3]]
+                     ]
+                ],
+                [
+                    image: "grails-app/developmentData/Endless_Forms_Most_Beautiful.jpg",
+                    imageType: 'image/jpeg',
+                    product: [
+                        shortDescription: "Nightwish llega desde Finlandia....",
+                        description: "Endless Forms Most Beautiful es el octavo álbum de la banda finlandesa Nightwish",
+                        videoClip: "VUb1p8fm7Ag",
+                        audioClip: "https://soundcloud.com/nuclearblastrecords/nightwish-endless-forms-most-beautiful",
+                        name: "Nightwish - Endless Forms Most Beautiful",
+                        price: 450,
+                        discount: 0,
+                        totalInStorage: 100,
+                        limitPerUser: 20,
+                        added: new Date(), // getting the current time
+                        tag: [tagList[2], tagList[0], tagList[3]]
+                    ]
+                ],
+                [
                     image: "grails-app/developmentData/ragethedevilstrikes.jpg",
                     imageType: 'image/jpeg',
                     artist: artistList[0],
