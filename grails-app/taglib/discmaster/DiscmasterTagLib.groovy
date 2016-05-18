@@ -27,6 +27,24 @@ class DiscmasterTagLib {
         out << ">"
     }
 
+    def artistImg = { attr, body ->
+        Artist p = attr.artist
+        String defaultImg
+
+        if (p?.image) {
+            defaultImg = resource(dir: "images", file: "get/${p?.image.id}")
+        } else {
+            defaultImg = resource(dir: "images", file: "sin_imagen.png")
+        }
+
+        out << """<img src="${defaultImg}" """
+        attr.remove("artist")
+        attr.each { attribute, value ->
+            out << """${attribute}="${value}" """
+        }
+        out << ">"
+    }
+
     def productPrice = { attr, body ->
         Product p = attr.product
         String priceFormat = "\$#,###,###0.##"

@@ -1984,6 +1984,12 @@ h6 {
   line-height: 1.4;
 }
 /* line 299, foundation/typography/_base.scss */
+
+h1.tipo_1{
+  font-size: 500%;
+}
+
+
 h1 small,
 h2 small,
 h3 small,
@@ -3297,6 +3303,11 @@ select[multiple] {
 .menu > li > a {
   display: block;
   padding: 0.7rem 1rem;
+}
+
+.menu > li.logged {
+  display: block;
+  padding: 25px 10px;
   line-height: 1;
 }
 /* line 66, foundation/components/_menu.scss */
@@ -5160,6 +5171,11 @@ table.hover tr:nth-of-type(even):hover {
   padding: 10px;
 }
 
+.logged {
+  display: block;
+  padding: 0.7rem 1rem;
+  line-height: 1;
+}
 .top-bar {
   padding: 0.5rem;
 }
@@ -5250,33 +5266,51 @@ table.hover tr:nth-of-type(even):hover {
   visibility: hidden;
 }
 
-@media screen and (max-width: 750px){
+@media screen and (max-width: 1300px){
   #search-icon{
     display: inline-block;
   }
   #menu-icon{
     display: inline-block;
   }
-  nav ul, nav:active ul{
-    display: none;
-    position: absolute;
-    padding: 0;
-    background: #ea2e2e;
-    border: 1px solid black;
-    right: 20px;
-    top: 20px;
-    width: 50%;
-    border-radius: 2px 0 2px 2px;
-    float:left
+
+  h1.tipo_1{
+    font-size: 300%;
   }
 
-  nav.searching ul, nav:active ul{
+  /*nav ul, nav:active ul{*/
+    /*display: none;*/
+    /*position: absolute;*/
+    /*padding: 0;*/
+    /*background: #ea2e2e;*/
+    /*border: 1px solid black;*/
+    /*right: 20px;*/
+    /*top: 20px;*/
+    /*width: 50%;*/
+    /*border-radius: 2px 0 2px 2px;*/
+    /*float:left*/
+  /*}*/
+
+  nav.searching ul{
     display: none;
     position: absolute;
     padding: 0;
     background: #ea2e2e;
     border: 1px solid black;
     left: 20px;
+    top: 20px;
+    width: 50%;
+    border-radius: 2px 0 2px 2px;
+    float:left
+  }
+
+  nav.logging ul, nav:active ul{
+    display: none;
+    position: absolute;
+    padding: 0;
+    background: #ea2e2e;
+    border: 1px solid black;
+    right: 20px;
     top: 20px;
     width: 50%;
     border-radius: 2px 0 2px 2px;

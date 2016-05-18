@@ -20,25 +20,27 @@
                             <%-- <li><g:link uri="/" title="Site's page">DiscMaster</g:link></li> --%>
 
                             <li> <%-- based on: http://zurb.com/building-blocks/top-bar-with-mobile-and-desktop-search-bar --%>
-                                <g:form controller="store" action="search-products" class="has-form row large-collapse small-collapse" method="GET"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
-                                    <div class="large-9 columns"><g:textField name="to-search" placeholder="Busca el 'merchandising'"></g:textField></div>
-                                    <div class="large-3 columns"><g:submitButton class="button alert expand" name="buscar" value="Buscar"></g:submitButton></div>
+                                <g:form controller="store" action="search" class="has-form row large-collapse small-collapse" method="GET"> <%-- look at foundation grids: http://foundation.zurb.com/sites/docs/grid.html --%>
+                                    <div class="large-9 columns"><g:textField name="string" placeholder="Busca el 'merchandising'"></g:textField></div>
+                                    <div class="large-3 columns"><g:submitButton class="button alert expand" name="referer" value="Buscar producto"></g:submitButton></div>
                                 </g:form>
                             </li>
                         </ul>
                     </nav>
                 </div>
                 <div class="top-bar-right">
-                    <nav>
+                    <nav class="logging">
                         <a href="#" id="menu-icon"></a>
                         <ul class="menu">
                             <g:if test="${session?.user}">
-                                <li>Estas logeado como: ${session.user?.name}</li>
+                                <li class="logged">Estas logeado como: ${session.user?.name}</li>
                                 <li><g:link action="logout" controller="user" title="Logout">Logout</g:link></li>
+                                <li><g:link action="profile" controller="user" title="Profile">Perfil</g:link></li>
                             </g:if>
                             <g:elseif test="${session?.admin}">
-                                <li>Bienvenido administrador: ${session.admin?.name}</li>
+                                <li class="logged">Bienvenido administrador: ${session.admin?.name}</li>
                                 <li><g:link action="logout" controller="user" title="Logout">Logout</g:link></li>
+                                <li><g:link action="profile" controller="user" title="Profile">Perfil</g:link></li>
                             </g:elseif>
                             <g:else>
                                 <li>
@@ -51,7 +53,7 @@
                                 <li><g:link action="register" controller="user" title="Sign In">Registrarse</g:link></li>
                             </g:else>
 
-                            <li><g:link action="profile" controller="user" title="Profile">Perfil</g:link></li>
+                            <li><g:link controller="WishList" action="show" title="Deseos">Deseos</g:link></li>
 
                             <li>
                                 <g:link controller="CarList" action="show" title="Carrito de compras">
@@ -76,7 +78,7 @@
             <div class="top-bar" id="main-menu">
                 <ul class="menu vertical medium-horizontal expanded medium-text-center" data-responsive-menu="drilldown medium-dropdown">
                     <li><g:link controller="store" action="index" class="botonMenu" title="Home">Home</g:link></li>
-                    <li><a class="botonMenu" href="#">Bandas</a></li>
+                    <li><g:link controller="artist" action="index" class="botonMenu" title="Bandas">Bandas</g:link></li>
                     <li><g:link controller="store" action="catalog" class="botonMenu" title="Catálogo">Catálogo</g:link></li>
                     <li><a class="botonMenu" href="#">Contacto</a></li>
                 </ul>

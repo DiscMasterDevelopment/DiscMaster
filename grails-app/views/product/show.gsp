@@ -1,4 +1,3 @@
-
 <%@ page import="discmaster.Product" %>
 <!DOCTYPE html>
 <html>
@@ -36,19 +35,25 @@
 			</g:if>
 
             <g:form action="addProduct" controller="carList" id="${productInstance?.id}">
-                <div class="row">
-                    <span id="quantity-label" class="property-label"><g:message code="quantity.label" default="Cantidad:" /></span>
-                    <span class="property-value" aria-labelledby="quantity-label"><g:select name="quantity" from="${1..99}" value="${quantity}"></g:select></span>
+                <span id="quantity-label" class="property-label"><g:message code="quantity.label" default="Cantidad:" /></span>
+                <span class="property-value" aria-labelledby="quantity-label"><g:select name="quantity" from="${1..99}" value="${quantity}"></g:select></span>
 
+                <div class="row small-up-2 collapse">
+                    <div class="column">
+                        <g:submitButton class="button expanded" name="addProduct" required="" value="Añadir al carrito" title="Agregar al carrito" ></g:submitButton>
+                    </div>
+                    <div class="column">
+                        <g:link controller="wishList" action="addProduct" id="${productInstance?.id}" class="button expanded" title="Añadir a la lista de deseos">Añadir a la lista de deseos</g:link>
+                    </div>
                 </div>
-
-            <g:submitButton class="button expanded" name="addProduct" required="" value="Añadir al carrito" title="Agregar al carrito" ></g:submitButton>
             </g:form>
 
 			<g:if test="${productInstance?.tag}">
 				<div class="row" style="text-align: center">
 					<g:each in="${productInstance.tag}" var="t">
-						<span class="label" aria-labelledby="tag-label"><g:fieldValue bean="${t}" field="tag"/></span>
+						<g:link controller="store" action="search" params="${[string:'', tag: t.tag]}" >
+                            <span class="label" aria-labelledby="tag-label"><g:fieldValue bean="${t}" field="tag"/></span>
+                        </g:link>
 					</g:each>
 
 				</div>

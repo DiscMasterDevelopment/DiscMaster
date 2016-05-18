@@ -9,9 +9,9 @@
 <body>
 <h1>Registro</h1>
 <g:hasErrors bean="${User}">
-    <div class="errors">
-        <g:renderErrors bean="${user}"></g:renderErrors>
-    </div>
+	<div class="errors">
+		<g:renderErrors bean="${user}"></g:renderErrors>
+	</div>
 </g:hasErrors>
 <g:form action="create">
     <label for="name">Nick:
