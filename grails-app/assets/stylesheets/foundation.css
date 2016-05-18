@@ -566,6 +566,54 @@ button {
   margin-left: -0.625rem;
   margin-right: -0.625rem;
 }
+
+/*Begin of sign up css code*/
+.center.row {
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  max-width: 500px;
+}
+
+.signup-panel {
+  padding: 15px;
+}
+
+.signup-panel i {
+  font-size: 30px;
+  line-height: 50px;
+  color: #999;
+}
+
+.signup-panel form input, .signup-panel form span {
+  height: 50px;
+}
+
+.signup-panel .welcome {
+  font-size: 26px;
+  text-align: center;
+  margin-left: 0;
+}
+
+.signup-panel .button {
+  margin-left: 35%;
+}
+
+section.active {
+  padding-top: 75px !important;
+}
+
+p.title {
+  border-bottom: 1px solid #cccccc !important;
+}
+
+.content{
+  height: 450px;
+}
+/*End of sign up code*/
+
+
 @media screen and (min-width: 40em) {
   /* line 37, foundation/grid/_classes.scss */
   .row .row {
@@ -1984,6 +2032,12 @@ h6 {
   line-height: 1.4;
 }
 /* line 299, foundation/typography/_base.scss */
+
+h1.tipo_1{
+  font-size: 500%;
+}
+
+
 h1 small,
 h2 small,
 h3 small,
@@ -5268,26 +5322,43 @@ table.hover tr:nth-of-type(even):hover {
     display: inline-block;
   }
 
-  nav ul, nav:active ul{
-    display: none;
-    position: absolute;
-    padding: 0;
-    background: #ea2e2e;
-    border: 1px solid black;
-    right: 20px;
-    top: 20px;
-    width: 50%;
-    border-radius: 2px 0 2px 2px;
-    float:left
+  h1.tipo_1{
+    font-size: 300%;
   }
 
-  nav.searching ul, nav:active ul{
+  /*nav ul, nav:active ul{*/
+    /*display: none;*/
+    /*position: absolute;*/
+    /*padding: 0;*/
+    /*background: #ea2e2e;*/
+    /*border: 1px solid black;*/
+    /*right: 20px;*/
+    /*top: 20px;*/
+    /*width: 50%;*/
+    /*border-radius: 2px 0 2px 2px;*/
+    /*float:left*/
+  /*}*/
+
+  nav.searching ul{
     display: none;
     position: absolute;
     padding: 0;
     background: #ea2e2e;
     border: 1px solid black;
     left: 20px;
+    top: 20px;
+    width: 50%;
+    border-radius: 2px 0 2px 2px;
+    float:left
+  }
+
+  nav.logging ul, nav:active ul{
+    display: none;
+    position: absolute;
+    padding: 0;
+    background: #ea2e2e;
+    border: 1px solid black;
+    right: 20px;
     top: 20px;
     width: 50%;
     border-radius: 2px 0 2px 2px;

@@ -29,7 +29,7 @@
                     </nav>
                 </div>
                 <div class="top-bar-right">
-                    <nav>
+                    <nav class="logging">
                         <a href="#" id="menu-icon"></a>
                         <ul class="menu">
                             <g:if test="${session?.user}">
