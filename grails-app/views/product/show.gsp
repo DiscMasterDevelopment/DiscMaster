@@ -1,4 +1,3 @@
-
 <%@ page import="discmaster.Product" %>
 <!DOCTYPE html>
 <html>
@@ -15,10 +14,13 @@
             <discmaster:productImg product="${productInstance}" class="thumbnail" width="360px"/>
 		</div>
 		<div class="medium-1 columns" style="text-align: center">
-			<g:if test="${productInstance?.description?.videoClip}">
+			<g:if test="${productInstance?.videoClip}">
                 <div class="videoWrapper">
-                    <iframe width="640" height="360" src="${"https://www.youtube.com/embed/"+ productInstance?.description?.videoClip}" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="640" height="360" src="${"https://www.youtube.com/embed/"+ productInstance?.videoClip}" frameborder="0" allowfullscreen></iframe>
                 </div>
+            </g:if>
+            <g:if test="${productInstance?.audioClip}">
+                <iframe width="100%" height="166" scrolling="no" frameborder="no" src= "${"https://w.soundcloud.com/player/?url="+ productInstance?.audioClip + "&amp;color=000000&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"}"></iframe>
             </g:if>
             <div>
                 <span class="property-value" aria-labelledby="price-label"><discmaster:productPrice product="${productInstance}"/></span>
@@ -33,22 +35,25 @@
 			</g:if>
 
             <g:form action="addProduct" controller="carList" id="${productInstance?.id}">
-                <div class="row">
-                    <span id="quantity-label" class="property-label"><g:message code="quantity.label" default="Cantidad:" /></span>
-                    <span class="property-value" aria-labelledby="quantity-label"><g:select name="quantity" from="${1..99}" value="${quantity}"></g:select></span>
+                <span id="quantity-label" class="property-label"><g:message code="quantity.label" default="Cantidad:" /></span>
+                <span class="property-value" aria-labelledby="quantity-label"><g:select name="quantity" from="${1..99}" value="${quantity}"></g:select></span>
 
+                <div class="row small-up-2 collapse">
+                    <div class="column">
+                        <g:submitButton class="button expanded" name="addProduct" required="" value="Añadir al carrito" title="Agregar al carrito" ></g:submitButton>
+                    </div>
+                    <div class="column">
+                        <g:link controller="wishList" action="addProduct" id="${productInstance?.id}" class="button expanded" title="Añadir a la lista de deseos">Añadir a la lista de deseos</g:link>
+                    </div>
                 </div>
-
-            <g:submitButton class="button expanded" name="addProduct" required="" value="Añadir al carrito" title="Agregar al carrito" ></g:submitButton>
-            <h2>Califique el producto</h2>
-				<g:select name="calificacion" from="${1..5}" noSelection="['':'Elige tu calificacion']" required="" value="${product?.calif}"></g:select>
-
-			</g:form>
+            </g:form>
 
 			<g:if test="${productInstance?.tag}">
 				<div class="row" style="text-align: center">
 					<g:each in="${productInstance.tag}" var="t">
-						<span class="label" aria-labelledby="tag-label"><g:fieldValue bean="${t}" field="tag"/></span>
+						<g:link controller="store" action="search" params="${[string:'', tag: t.tag]}" >
+                            <span class="label" aria-labelledby="tag-label"><g:fieldValue bean="${t}" field="tag"/></span>
+                        </g:link>
 					</g:each>
 
 				</div>
@@ -58,21 +63,21 @@
 	</div>
 
 
-				<g:if test="${productInstance?.description?.description}">
+				<g:if test="${productInstance?.description}">
 					<div class="row" style="text-align: center">
-					<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${productInstance.description}" field="description"/></span>
+					<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${productInstance}" field="description"/></span>
 					</div>
 				</g:if>
 
-        <%--<g:if test="${!session?.admin}">
-            <g:form url="[resource:productInstance, action:'delete']" method="DELETE">
-            <fieldset class="buttons">
-            <g:link class="button" action="edit" resource="${productInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-            <g:actionSubmit class="button" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-            </fieldset>
-            </g:form>
+        <g:if test="${session?.admin}">
+				<g:form url="[resource:productInstance, action:'delete']" method="DELETE">
+					<fieldset class="buttons">
+						<g:link class="button" action="edit" resource="${productInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+						<g:actionSubmit class="button" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+					</fieldset>
+				</g:form>
             </g:if>
-        --%>
+
 
 	</body>
 </html>
