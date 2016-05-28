@@ -10,28 +10,13 @@ class CarListController {
             // this is necessary because the hibernate session close itself really quickly, so we need to make a query again
             def carList = User.get(session.user.id).car // TODO: use sql join to improve querying times
             int totalWithoutDisccount = carList.productList.collect {p -> p.unitaryPrice * p.quantity}.sum(0)
-            int totalToPay = carList.productList.collect {p -> p.unitaryPrice * p.quantity * p.discount}.sum(0)
+            int totalToPay = carList.productList.collect {p -> p.unitaryPrice * p.quantity * (1-p.discount)}.sum(0)
             return [carList: carList, totalToPay: totalToPay, totalWithoutDisccount: totalWithoutDisccount]
 
         } else { // if there is no user logged, redirect to register
             redirect controller: "user", action: "register"
         }
     }
-
-/*    def delete()
-    {
-        if(session.user)
-        {
-            try {
-
-                def u = User.get(session.user.id)
-                u.car.productList.remove(session)
-            }
-            catch (Exception e){
-                render "go fuck yourself"
-            }
-        }
-    }*/
 
     def deleteProduct(CarList carListInstance) {
 
