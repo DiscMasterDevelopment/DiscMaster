@@ -87,7 +87,7 @@ class DiscmasterTagLibSpec extends Specification {
 
         // Product with a disccount
         (
-        new String("<s>\$120 COP</s> &nbsp;&nbsp;&nbsp; \$72 COP - <b>%40</b>")
+        new String("<s>\$120 </s> &nbsp;&nbsp;&nbsp; \$72  - <b>%40</b>")
         == applyTemplate('<discmaster:productPrice product="${product}" />', [product: productWithImage])
         )
     }
