@@ -23,7 +23,7 @@
                 <g:set var="quantity" value="${carList.productList.size()}" />
                 <g:if test = "${quantity == 0}">
                     <div class="row small-up-1 large-up-2">
-                        <h1 style="text-align: center">Tu carrito de compras esta vacío</h1>
+                        <h1 style="text-align: center">Tu carrito de compras está vacío</h1>
                     </div>
                 </g:if>
                 <g:else>
@@ -47,6 +47,7 @@
       <h2>¡Tu carrito de compras!</h2>
       <p><b>Total a pagar (sin descuentos):</b> $${totalWithoutDisccount}</p>
       <p><b>Total a pagar:</b> $${totalToPay}</p>
+      <a href='#' class="button expanded alert" title="Próximamente pagos por PSE">Pagar y recibir mi mercancía</a>
     </div>
 
     </div>
