@@ -8,13 +8,9 @@
     </title>
 </head>
 <body>
-<h1>Eventos</h1>
 <div class="row">
-    <div class="large-12 columns">
-        <div class="panel">
-            <h1>Bienvenidos</h1>
-        </div>
-    </div>
+    <h1>Eventos</h1>
+    <h2>Bienvenidos</h2>
 </div>
 
 <div class="row">
