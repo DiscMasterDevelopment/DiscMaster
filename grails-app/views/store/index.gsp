@@ -55,7 +55,9 @@
 
 <hr>
 <div class="row column">
+    <g:link action="eventos" controller="store">
 	<h1 class="tipo_1">Eventos</h1>
+    </g:link>
 </div>
 <div class="row">
 	<div class="large-8 columns">

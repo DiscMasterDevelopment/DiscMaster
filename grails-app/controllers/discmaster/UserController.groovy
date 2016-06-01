@@ -40,8 +40,6 @@ class UserController {
 
     def register() {}
 
-    def eventos() {}
-
     def profile() {
         def userInstance
         if(session?.user || session?.admin){
