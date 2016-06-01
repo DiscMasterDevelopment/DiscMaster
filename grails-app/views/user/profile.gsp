@@ -46,7 +46,7 @@
       <g:form url="[resource:userInstance, action:'delete']" method="DELETE">
           <fieldset class="buttons">
               <g:link class="button" action="edit" resource="${userInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-              <g:actionSubmit class="button" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('Esta seguro de eliminar su cuenta?');" />
+              <g:actionSubmit class="button" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}"  onclick="return confirm('Esta seguro de eliminar su cuenta?');" />
           </fieldset>
       </g:form>
 
@@ -57,6 +57,14 @@
     <a class="button" href="#">Cambiar Contraseña</a>
     <a class="button" href="#">Mis compras</a>
   </div>
+
+<g:if test="${session?.admin}">
+    <fieldset class="buttons">
+        <g:link class="button" controller="product" action="register" >Agregar Producto</g:link>
+        <g:link controller="user" action="index" id="${product.id}" title="Lista Usuarios">Lista Usuario</g:link>
+
+    </fieldset>
+</g:if>
 </div>
 </body>
 </html>
