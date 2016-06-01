@@ -42,16 +42,22 @@ class UserController {
 
     def profile() {
         def userInstance
-        if(session?.user || session?.admin){
+        if(session?.user){
             userInstance = User.findByName(session.user.name)
             respond userInstance
-
         }
-        else{
-            redirect action: "register"
+        else {
+            if (session?.admin){
+                userInstance = Administrator.findByName(session.admin.name)
+                respond userInstance
+            }
+            else{
+                redirect action: "register"
+            }
 
         }
     }
+
     def create() {
         def u = new User()
         def c = new CarList(user: u)
@@ -139,10 +145,12 @@ class UserController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'User.label', default: 'User'), userInstance.id])
-                redirect action:"index", method:"GET"
+                redirect action:"register"
             }
             '*'{ render status: NO_CONTENT }
         }
+        if (session.user)
+            session.user = null
     }
 
     protected void notFound() {

@@ -7,14 +7,7 @@
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#edit-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
+
 		<div id="edit-user" class="content scaffold-edit" role="main">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -27,15 +20,55 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+			<div class="center row">
 			<g:form url="[resource:userInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${userInstance?.version}" />
 				<fieldset class="form">
-					<g:render template="form"/>
+
+					<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'name', 'error')} required">
+						<label for="name">
+							<g:message code="user.name.label" default="Name" />
+							<span class="required-indicator">*</span>
+						</label>
+						<g:textField name="name" required="" value="${userInstance?.name}"/>
+
+					</div>
+
+					<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'email', 'error')} required">
+						<label for="email">
+							<g:message code="user.email.label" default="Email" />
+							<span class="required-indicator">*</span>
+						</label>
+						<g:textField name="email" required="" value="${userInstance?.email}"/>
+
+					</div>
+
+					<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'phone', 'error')} ">
+						<label for="phone">
+							<g:message code="user.phone.label" default="Phone" />
+
+						</label>
+						<g:textField name="phone" value="${userInstance?.phone}"/>
+
+					</div>
+
+					<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'realName', 'error')} ">
+						<label for="realName">
+							<g:message code="user.realName.label" default="Real Name" />
+
+						</label>
+						<g:textField name="realName" value="${userInstance?.realName}"/>
+
+					</div>
+
 				</fieldset>
+				<div class="center row">
 				<fieldset class="buttons">
-					<g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+					<g:actionSubmit class="button" action="update" value="${message(code: 'default.button.update.label', default: 'Actualizar')}" />
 				</fieldset>
+				</div>
 			</g:form>
+			</div>
 		</div>
 	</body>
 </html>
