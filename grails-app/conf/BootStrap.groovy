@@ -29,6 +29,7 @@ class BootStrap {
                 tagList << t
             }
 
+            String lorem_ipsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat velit ac nunc pharetra, at ultricies sem bibendum. Morbi facilisis diam nec massa semper tristique. Etiam sed hendrerit sem. Sed consequat libero eros. Integer sollicitudin ut massa eu euismod. Aenean nec odio leo. Etiam vel velit sit amet lectus facilisis eleifend. Pellentesque mattis augue ac mi feugiat, vitae gravida augue auctor.\nSuspendisse potenti. Nulla faucibus, ligula ut scelerisque malesuada, tortor elit accumsan est, sit amet laoreet eros turpis et nibh. Sed nulla est, facilisis at lacus sit amet, egestas tristique ligula. Pellentesque ipsum turpis, imperdiet vitae tortor nec, pulvinar varius magna. Vivamus laoreet turpis at lorem tristique, in tempor quam egestas. Donec viverra sed ex in sollicitudin. Integer eget bibendum risus. Curabitur arcu magna, rhoncus ac elit sed, porttitor gravida diam. Vivamus at hendrerit velit, suscipit mollis urna."
             // Defining Artists
             def artists = [
                 [
@@ -40,10 +41,32 @@ class BootStrap {
                             "brutalidad del death y algunos retoques vocales del metalcore. Una combinacion ganadora al " +
                             "momento de presentarse en tarima.", shortDescription: "La leyenda de Inglaterra"],
                 ],
+                [
+                    artist: [name: "Artists 001", officialPage: "http://aweb-example-page.com"],
+                    description: [description: lorem_ipsum, shortDescription: "short lorem ipsum en espalin"],
+                ],
+                [
+                    artist: [name: "Artists 002", officialPage: "http://aweb-example-page.com"],
+                    description: [description: lorem_ipsum, shortDescription: "short lorem ipsum en espalin"],
+                ],
+                [
+                    artist: [name: "Artists 003", officialPage: "http://aweb-example-page.com"],
+                    description: [description: lorem_ipsum, shortDescription: "short lorem ipsum en espalin"],
+                ],
+                [
+                    artist: [name: "Artists 004", officialPage: "http://aweb-example-page.com"],
+                    description: [description: lorem_ipsum, shortDescription: "short lorem ipsum en espalin"],
+                ],
+                [
+                    artist: [name: "Artists 005", officialPage: "http://aweb-example-page.com"],
+                    description: [description: lorem_ipsum, shortDescription: "short lorem ipsum en espalin"],
+                ],
             ]
 
             def artistList = []
             artists.each { artist ->
+
+
                 Description d = new Description(artist["description"])
                 d.save()
 

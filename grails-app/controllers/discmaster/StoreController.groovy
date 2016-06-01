@@ -6,6 +6,8 @@ class StoreController {
 
     def index() { }
 
+    def eventos() {}
+
     def catalog() {
         //def productList   = Product.list() // the whole list of products
         def newest = Product.withCriteria {
