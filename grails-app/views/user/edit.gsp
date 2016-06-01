@@ -7,6 +7,7 @@
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 	</head>
 	<body>
+
 		<div id="edit-user" class="content scaffold-edit" role="main">
 			<h1><g:message code="default.edit.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
@@ -19,6 +20,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
+			<div class="center row">
 			<g:form url="[resource:userInstance, action:'update']" method="PUT" >
 				<g:hiddenField name="version" value="${userInstance?.version}" />
 				<fieldset class="form">
@@ -60,10 +62,13 @@
 					</div>
 
 				</fieldset>
+				<div class="center row">
 				<fieldset class="buttons">
 					<g:actionSubmit class="button" action="update" value="${message(code: 'default.button.update.label', default: 'Actualizar')}" />
 				</fieldset>
+				</div>
 			</g:form>
+			</div>
 		</div>
 	</body>
 </html>
